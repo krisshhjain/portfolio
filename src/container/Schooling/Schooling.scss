@@ -1,0 +1,233 @@
+.schooling-description {
+  text-align: center;
+  margin-top: 1rem;
+  color: var(--gray-color);
+  font-size: 1.1rem;
+}
+
+.app__schooling {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin: 4rem 0;
+  width: 100%;
+  max-width: 1800px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 1rem;
+
+  @media screen and (max-width: 1200px) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    max-width: 1400px;
+  }
+
+  @media screen and (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    max-width: 100%;
+    padding: 0 1rem;
+  }
+}
+
+.schooling-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(15px);
+  border: 1px solid var(--glass-border);
+  border-radius: 25px;
+  padding: 3rem;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+  transition: all 0.4s ease;
+  min-height: 600px;
+  width: 100%;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 6px;
+    background: var(--gradient-primary);
+  }
+
+  &:hover {
+    transform: translateY(-10px) rotateX(5deg);
+    box-shadow: 0 25px 50px rgba(37, 99, 235, 0.2);
+  }
+
+  @media screen and (max-width: 1024px) {
+    min-height: auto;
+    padding: 2rem;
+  }
+
+  @media screen and (max-width: 768px) {
+    padding: 1.5rem;
+  }
+}
+
+.school-header {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.school-image {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  border-radius: 25px;
+  overflow: hidden;
+  background: var(--gradient-primary);
+  padding: 15px;
+  box-shadow: 0 15px 30px rgba(37, 99, 235, 0.3);
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 15px;
+  }
+
+  .grade-badge {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    background: var(--gradient-secondary);
+    color: var(--white-color);
+    padding: 0.5rem 0.8rem;
+    border-radius: 15px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    box-shadow: 0 8px 20px rgba(245, 158, 11, 0.4);
+    animation: bounce 2s infinite;
+  }
+}
+
+.school-info {
+  flex: 1;
+
+  h3 {
+    color: var(--black-color);
+    margin-bottom: 0.5rem;
+    font-size: 1.6rem;
+  }
+
+  .school-name {
+    color: var(--secondary-color);
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    font-size: 1.2rem;
+  }
+
+  .school-period {
+    color: var(--accent-color);
+    font-size: 1rem;
+    font-weight: 500;
+    background: var(--gradient-secondary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+}
+
+.school-desc {
+  color: var(--gray-color);
+  line-height: 1.7;
+  margin-bottom: 2rem;
+  font-size: 1rem;
+}
+
+.highlights {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  margin-bottom: 2rem;
+
+  .highlight-tag {
+    background: var(--gradient-accent);
+    color: var(--white-color);
+    padding: 0.6rem 1rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    box-shadow: 0 6px 15px rgba(30, 41, 59, 0.3);
+  }
+}
+
+.subjects-section, .achievements-section {
+  margin-bottom: 2rem;
+
+  h5 {
+    color: var(--black-color);
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+  }
+}
+
+.subjects {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+
+  .subject-tag {
+    background: linear-gradient(135deg, var(--primary-color), var(--lightGray-color));
+    color: var(--secondary-color);
+    border: 2px solid var(--secondary-color);
+    padding: 0.5rem 1rem;
+    border-radius: 15px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+
+    &:hover {
+      background: var(--secondary-color);
+      color: var(--white-color);
+      transform: translateY(-2px);
+    }
+  }
+}
+
+.achievements-list {
+  list-style: none;
+  padding: 0;
+
+  li {
+    position: relative;
+    padding-left: 2rem;
+    margin-bottom: 1rem;
+    color: var(--gray-color);
+    line-height: 1.6;
+    font-size: 0.95rem;
+
+    &::before {
+      content: '🏆';
+      position: absolute;
+      left: 0;
+      font-size: 1.2rem;
+    }
+  }
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-10px);
+  }
+  60% {
+    transform: translateY(-5px);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .school-header {
+    flex-direction: column;
+    text-align: center;
+  }
+}
