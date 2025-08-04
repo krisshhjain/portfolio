@@ -3,6 +3,44 @@ import { motion } from 'framer-motion';
 import AppWrap from "../../Wrapper/AppWrap";
 import MotionWrap from '../../Wrapper/MotionRap';
 import './Certifications.scss';
+import * as images from "../../assets";
+
+// Skill to logo mapping
+const skillLogos = {
+  'C++': images.cpp,
+  'OOP': images.cpp,
+  'Programming': images.cpp,
+  'Data Structures': images.api,
+  'HTML': images.html,
+  'CSS': images.css,
+  'JavaScript': images.javascript,
+  'Web Development': images.reactPng,
+  'Algorithms': images.api,
+  'Problem Solving': images.api,
+  'Analysis': images.api,
+  'Networking': images.api,
+  'Protocols': images.api,
+  'Security': images.api,
+  'Infrastructure': images.api,
+  'P2P Protocols': images.api,
+  'LAN': images.api,
+  'Distributed Systems': images.api,
+  'Operating Systems': images.api,
+  'System Administration': images.api,
+  'Linux': images.api,
+  'Computational Thinking': images.api,
+  'Mathematics': images.api,
+  'Probability': images.api,
+  'Combinatorics': images.api,
+  'Statistics': images.api,
+  'MongoDB': images.MongoDB,
+  'NoSQL': images.MongoDB,
+  'Database Design': images.MongoDB,
+  'Data Modeling': images.MongoDB,
+  'AWS': images.api,
+  'Cloud Computing': images.api,
+  'DevOps': images.api,
+};
 
 const certifications = [
   {
@@ -164,7 +202,16 @@ const Certifications = () => {
         <p className="date">{certification.date}</p>
         <div className="skills">
           {certification.skills.map((skill, index) => (
-            <span key={index} className="skill-tag">{skill}</span>
+            <div key={index} className="skill-tag">
+              {skillLogos[skill] && (
+                <img 
+                  src={skillLogos[skill]} 
+                  alt={skill}
+                  className="skill-icon"
+                />
+              )}
+              <span className="skill-text">{skill}</span>
+            </div>
           ))}
         </div>
       </div>
@@ -212,7 +259,16 @@ const Certifications = () => {
             <h4>Skills Covered:</h4>
             <div className="skills">
               {certification.skills.map((skill, index) => (
-                <span key={index} className="skill-tag">{skill}</span>
+                <div key={index} className="skill-tag">
+                  {skillLogos[skill] && (
+                    <img 
+                      src={skillLogos[skill]} 
+                      alt={skill}
+                      className="skill-icon"
+                    />
+                  )}
+                  <span className="skill-text">{skill}</span>
+                </div>
               ))}
             </div>
           </div>

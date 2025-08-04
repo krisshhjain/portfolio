@@ -111,18 +111,90 @@
   flex: 1;
   width: 100%;
   height: 100%;
-  flex-direction: row;
+  flex-direction: column; // Mobile-first: column layout
+  justify-content: center;
+  align-items: center;
 
-  padding: 6rem, 2rem, 0;
+  padding: 4rem 2rem 0;
 
+  @media screen and (min-width: 1200px) {
+    flex-direction: row; // Desktop: restore original row layout
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 6rem 2rem 0;
+  }
   @media screen and (min-width: 2000px) {
     padding-top: 8rem;
   }
-  @media screen and (max-width: 1200px) {
-    flex-direction: column;
-  }
   @media screen and (max-width: 450px) {
-    padding: 6rem 1rem 2rem;
+    padding: 4rem 1rem 2rem;
+  }
+}
+
+// Mobile header top section (picture + greeting side by side)
+.mobile-header-top {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 2rem;
+  margin-top: 2rem; // Increased from 1rem to move further down from navbar
+  gap: 1.5rem;
+
+  @media screen and (min-width: 1200px) {
+    display: none; // Hide on desktop
+  }
+}
+
+.mobile-greeting {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  
+  .wave-emoji {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .p-text {
+    font-size: 0.9rem;
+    margin-bottom: 0.2rem;
+  }
+  
+  .head-text {
+    font-size: 1.8rem;
+    margin: 0;
+  }
+}
+
+.mobile-header-img {
+  width: 70vw; // Much larger - from 55vw to 70vw (matching your circle)
+  height: 70vw; // Keep it square
+  max-width: 400px; // Increased max size
+  max-height: 400px;
+  position: relative; // For overlay circle positioning
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; // Same as desktop
+    z-index: 2; // Higher z-index to appear above circle
+    position: relative; // Ensure z-index works
+  }
+
+  .mobile_overlay_circle {
+    position: absolute;
+    left: 0; // Align with container
+    top: 0; // Align with container
+    right: 0;
+    bottom: 0;
+    z-index: 1; // Lower z-index to appear behind picture
+    width: 100%;
+    height: 100%;
   }
 }
 
@@ -130,13 +202,29 @@
   flex: 0.65;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
+  justify-content: center;
+  align-items: center;
   height: 100%;
+  text-align: center;
+  order: 1; // Show after image on mobile
+
+  @media screen and (min-width: 1200px) {
+    justify-content: flex-start; // Desktop: restore original positioning
+    align-items: flex-start;
+    text-align: left;
+    order: 0; // Desktop: show before image (original order)
+  }
 
   @media screen and (max-width: 2000px) {
     width: 100%;
     margin-right: 0rem;
+  }
+
+  // Hide the entire badge section on mobile since we show it in mobile-header-top
+  .app__header-badge {
+    @media screen and (max-width: 1199px) {
+      display: none;
+    }
   }
 }
 
@@ -360,6 +448,46 @@
   height: 100%;
   margin-left: 1rem;
 
+  // Mobile: Position circles to overlap the large profile image
+  @media screen and (max-width: 1199px) {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 10; // Above profile image
+    flex: none;
+    margin: 0;
+    pointer-events: none; // Allow interaction with underlying content
+    
+    .circle-cmp {
+      pointer-events: auto; // Re-enable interaction for circles themselves
+      position: absolute;
+    }
+    
+    // Position individual circles around the large profile image
+    div:nth-child(1) {
+      top: 20%;
+      right: 10%;
+      width: 80px !important;
+      height: 80px !important;
+    }
+
+    div:nth-child(2) {
+      bottom: 30%;
+      left: 5%;
+      width: 100px !important;
+      height: 100px !important;
+    }
+
+    div:nth-child(3) {
+      top: 60%;
+      right: 5%;
+      width: 70px !important;
+      height: 70px !important;
+    }
+  }
+
   .circle-cmp {
     position: relative;
     border-radius: 50%;
@@ -497,31 +625,30 @@
 .app__header-img{
     flex: 1;
     height: 100%;
-
-    display: flex;
-    justify-content: flex-end;
-    align-items: flex-end;
+    display: none; // Hide on mobile (we use mobile-header-top instead)
     position: relative;
 
-
-    img{
-        width: 100%;
-        object-fit: contain;
-        z-index: 1;
-        margin-top: 2rem;
+    @media screen and (min-width: 1200px) {
+        display: flex; // Show on desktop
+        order: 1; // Desktop: show after content (original order)
+        justify-content: flex-end; // Desktop: restore original positioning
+        align-items: flex-end;
+        
+        img {
+            width: 100%;
+            object-fit: contain;
+            z-index: 1;
+            margin-top: 2rem;
+        }
+        
+        .overlay_circle {
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 0;
+            width: 100%;
+            height: 90%;
+        }
     }
-
-    .overlay_circle{
-        position: absolute;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        z-index: 0;
-        width: 100%;
-        height: 90%;
-    }
-
-     @media screen and (max-width: 1200px) {
-        margin: 2rem, 0;
-     }
 }

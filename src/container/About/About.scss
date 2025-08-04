@@ -16,6 +16,10 @@
   margin-left: auto;
   margin-right: auto;
 
+  @media screen and (max-width: 768px) {
+    margin: 2rem 0;
+  }
+
   .intro-content {
     display: grid;
     grid-template-columns: 2fr 1fr;
@@ -27,6 +31,11 @@
       grid-template-columns: 1fr;
       gap: 2rem;
       text-align: center;
+    }
+
+    @media screen and (max-width: 768px) {
+      padding: 0 1rem;
+      gap: 1.5rem;
     }
   }
 
@@ -90,6 +99,13 @@
   margin-left: auto;
   margin-right: auto;
 
+  @media screen and (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    margin: 2rem 0;
+    padding: 0 1rem;
+  }
+
   .stat-card {
     background: var(--glass-bg);
     backdrop-filter: blur(15px);
@@ -99,6 +115,11 @@
     text-align: center;
     transition: all 0.3s ease;
     cursor: pointer;
+
+    @media screen and (max-width: 768px) {
+      padding: 1.5rem;
+      border-radius: 15px;
+    }
 
     &:hover {
       box-shadow: 0 15px 35px rgba(37, 99, 235, 0.2);
@@ -336,11 +357,6 @@
         color: #ef4444;
       }
 
-      &.mobile:hover {
-        border-color: #22c55e;
-        color: #22c55e;
-      }
-
       &.linkedin:hover {
         border-color: #0ea5e9;
         color: #0ea5e9;
@@ -351,23 +367,117 @@
 
 @media screen and (max-width: 768px) {
   .achievement-stats {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr 1fr;
     gap: 1rem;
+    margin: 2rem 0;
+    padding: 0 1rem;
+    max-width: 600px;
+  }
+
+  .stat-card {
+    padding: 1.2rem;
+    border-radius: 15px;
+    
+    .stat-icon {
+      font-size: 2rem !important;
+      margin-bottom: 0.8rem;
+    }
+    
+    .stat-title {
+      font-size: 1rem !important;
+      margin-bottom: 0.5rem;
+      line-height: 1.2;
+    }
+    
+    .stat-value {
+      font-size: 0.85rem !important;
+      margin-bottom: 0.3rem;
+      font-weight: 600;
+    }
+    
+    .stat-description {
+      font-size: 0.7rem !important;
+      line-height: 1.3;
+      opacity: 0.8;
+    }
+  }
+
+  .expertise-section {
+    margin: 3rem 0 2rem 0;
+    
+    .section-title {
+      font-size: 1.5rem;
+      margin-bottom: 2rem;
+      
+      &::after {
+        width: 60px;
+        height: 3px;
+      }
+    }
   }
 
   .app__profiles {
-    gap: 1.5rem;
+    gap: 1rem;
+    padding: 0 1rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    max-width: 600px;
+    margin: 2rem auto 0 auto;
   }
 
   .app__profile-item {
     width: 100%;
-    max-width: 320px;
+    max-width: none;
     margin: 0;
+    padding: 1.2rem;
+    
+    .profile-image-container {
+      margin-bottom: 0.8rem;
+      
+      img {
+        height: 120px;
+        object-fit: cover;
+      }
+    }
+    
+    .bold-text {
+      font-size: 0.9rem;
+      margin-bottom: 0.5rem;
+      line-height: 1.2;
+    }
+    
+    .p-text {
+      font-size: 0.75rem;
+      line-height: 1.3;
+      margin-bottom: 0.8rem;
+    }
+    
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.3rem;
+      
+      .skill-tag {
+        padding: 0.2rem 0.5rem;
+        font-size: 0.65rem;
+        border-radius: 8px;
+      }
+    }
   }
 
   .contact-cta {
     margin: 2rem 1rem;
     padding: 2rem 1rem;
+
+    h3 {
+      font-size: 1.5rem;
+      margin-bottom: 0.8rem;
+    }
+
+    p {
+      font-size: 1rem;
+      margin-bottom: 1.5rem;
+    }
 
     .contact-links {
       flex-direction: column;
@@ -375,7 +485,67 @@
 
       .contact-link {
         padding: 0.8rem 1.5rem;
+        font-size: 0.9rem;
       }
+    }
+  }
+  
+  // Ensure consistent section spacing on mobile
+  .app__about {
+    padding: 2rem 1rem;
+  }
+}
+
+// Extra small mobile devices
+@media screen and (max-width: 480px) {
+  .achievement-stats {
+    gap: 0.8rem;
+    padding: 0 0.5rem;
+    
+    .stat-card {
+      padding: 1rem;
+      
+      .stat-icon {
+        font-size: 1.8rem !important;
+      }
+      
+      .stat-title {
+        font-size: 0.9rem !important;
+      }
+      
+      .stat-value {
+        font-size: 0.8rem !important;
+      }
+      
+      .stat-description {
+        font-size: 0.65rem !important;
+      }
+    }
+  }
+
+  .app__profiles {
+    gap: 0.8rem;
+    padding: 0 0.5rem;
+  }
+
+  .app__profile-item {
+    padding: 1rem;
+    
+    .profile-image-container img {
+      height: 100px;
+    }
+    
+    .bold-text {
+      font-size: 0.85rem;
+    }
+    
+    .p-text {
+      font-size: 0.7rem;
+    }
+    
+    .skill-tags .skill-tag {
+      font-size: 0.6rem;
+      padding: 0.15rem 0.4rem;
     }
   }
 }

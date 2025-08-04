@@ -170,9 +170,6 @@ const About = () => {
           <a href={`mailto:${personalInfo.contact.email}`} className="contact-link email">
             📧 {personalInfo.contact.email}
           </a>
-          <a href={`tel:${personalInfo.contact.mobile}`} className="contact-link mobile">
-            📱 {personalInfo.contact.mobile}
-          </a>
           <a href={`https://${personalInfo.contact.linkedin}`} target="_blank" rel="noopener noreferrer" className="contact-link linkedin">
             💼 LinkedIn
           </a>

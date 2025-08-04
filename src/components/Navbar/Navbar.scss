@@ -23,12 +23,24 @@
   align-items: center;
 
   img {
-    width: 170px;
-    height: 50px;
+    height: 110px;
+    width: auto;
+    object-fit: contain;
+    max-width: 400px;
 
     @media screen and (min-width: 2000px) {
-      width: 340px;
-      height: 100px;
+      height: 160px;
+      max-width: 600px;
+    }
+    
+    @media screen and (max-width: 768px) {
+      height: 80px;
+      max-width: 280px;
+    }
+    
+    @media screen and (max-width: 450px) {
+      height: 60px;
+      max-width: 200px;
     }
   }
 }

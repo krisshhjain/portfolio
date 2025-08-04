@@ -42,6 +42,61 @@ const Header = () => {
         <div className="floating-code">{"🚀"}</div>
       </div>
 
+      {/* Mobile-only: Picture + Greeting side by side at top */}
+      <div className="mobile-header-top">
+        <motion.div
+          whileInView={{ opacity: [0, 1] }}
+          transition={{ duration: 1, delayChildren: 0.5 }}
+          className='mobile-header-img'
+        >
+          <motion.img 
+            src={images.profile} 
+            alt="Krish Jain - SDE Intern"
+            whileHover={{ scale: 1.05 }}
+            transition={{ duration: 0.3 }}
+          />
+          <motion.img
+            whileInView={{ scale: [0, 1], rotate: [0, 360] }}
+            transition={{ duration: 2, ease: 'easeInOut', repeat: Infinity, repeatDelay: 3 }}
+            src={images.circle}
+            alt="profile_circle"
+            className='mobile_overlay_circle'
+          />
+        </motion.div>
+        
+        <motion.div
+          variants={textVariants}
+          initial="initial"
+          animate="animate"
+          className='mobile-greeting'
+        >
+          <span className="wave-emoji">👋</span>
+          <p className='p-text'>Hello, I am</p>
+          <h1 className="head-text">Krish Jain</h1>
+        </motion.div>
+      </div>
+
+      {/* Desktop-first layout: Image first, then content */}
+      <motion.div
+        whileInView={{ opacity: [0, 1] }}
+        transition={{ duration: 1, delayChildren: 0.5 }}
+        className='app__header-img'
+      >
+        <motion.img 
+          src={images.profile} 
+          alt="Krish Jain - SDE Intern"
+          whileHover={{ scale: 1.05 }}
+          transition={{ duration: 0.3 }}
+        />
+        <motion.img
+          whileInView={{ scale: [0, 1], rotate: [0, 360] }}
+          transition={{ duration: 2, ease: 'easeInOut', repeat: Infinity, repeatDelay: 3 }}
+          src={images.circle}
+          alt="profile_circle"
+          className='overlay_circle'
+        />
+      </motion.div>
+
       <motion.div
         variants={textVariants}
         initial="initial"
@@ -136,26 +191,6 @@ const Header = () => {
             </div>
           </motion.div>
         </div>
-      </motion.div>
-
-      <motion.div
-        whileInView={{ opacity: [0, 1] }}
-        transition={{ duration: 1, delayChildren: 0.5 }}
-        className='app__header-img'
-      >
-        <motion.img 
-          src={images.profile} 
-          alt="Krish Jain - SDE Intern"
-          whileHover={{ scale: 1.05 }}
-          transition={{ duration: 0.3 }}
-        />
-        <motion.img
-          whileInView={{ scale: [0, 1], rotate: [0, 360] }}
-          transition={{ duration: 2, ease: 'easeInOut', repeat: Infinity, repeatDelay: 3 }}
-          src={images.circle}
-          alt="profile_circle"
-          className='overlay_circle'
-        />
       </motion.div>
 
       <motion.div

@@ -74,14 +74,16 @@
   padding: 0 2rem;
 
   @media screen and (max-width: 768px) {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
     margin-top: 2rem;
     padding: 0 1rem;
+    max-width: 600px;
   }
 
   @media screen and (max-width: 450px) {
     padding: 0 0.5rem;
+    gap: 0.8rem;
   }
 }
 
@@ -152,12 +154,34 @@
       gap: 0.5rem;
 
       .skill-tag {
-        background: var(--lightGray-color);
-        color: var(--black-color);
-        padding: 0.25rem 0.75rem;
-        border-radius: 15px;
+        background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+        color: var(--white-color);
+        padding: 0.4rem 0.8rem;
+        border-radius: 20px;
         font-size: 0.75rem;
         font-weight: 500;
+        display: flex;
+        align-items: center;
+        gap: 0.3rem;
+        transition: all 0.3s ease;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        
+        &:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .skill-icon {
+          width: 16px;
+          height: 16px;
+          object-fit: contain;
+          filter: brightness(0) invert(1); // Make icons white
+        }
+
+        .skill-text {
+          font-weight: 600;
+          letter-spacing: 0.3px;
+        }
       }
     }
   }
@@ -185,7 +209,12 @@
 
       .skills .skill-tag {
         font-size: 0.7rem;
-        padding: 0.2rem 0.5rem;
+        padding: 0.3rem 0.6rem;
+        
+        .skill-icon {
+          width: 14px;
+          height: 14px;
+        }
       }
     }
   }
@@ -203,6 +232,10 @@
   justify-content: center;
   z-index: 1000;
   padding: 2rem;
+  
+  // Ensure perfect centering on all devices
+  min-height: 100vh;
+  min-width: 100vw;
 
   @media screen and (max-width: 768px) {
     padding: 1rem;
@@ -213,10 +246,23 @@
   background: var(--white-color);
   border-radius: 1rem;
   max-width: 900px;
-  width: 100%;
-  max-height: 90vh;
+  width: 90%;
+  max-height: 85vh;
   overflow-y: auto;
   position: relative;
+  
+  // Perfect centering with transform
+  transform: translate(0, 0);
+  margin: auto;
+  
+  // Ensure it doesn't overflow viewport
+  box-sizing: border-box;
+
+  @media screen and (max-width: 768px) {
+    width: 95%;
+    max-height: 80vh;
+    border-radius: 0.8rem;
+  }
 
   .preview-header {
     display: flex;
@@ -316,25 +362,59 @@
       }
 
       .skills-section {
+        margin-top: 1.5rem;
+        
         h4 {
-          font-size: 1rem;
-          font-weight: 600;
+          font-size: 1.1rem;
+          font-weight: 700;
           color: var(--black-color);
-          margin-bottom: 0.75rem;
+          margin-bottom: 1rem;
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+          
+          &::before {
+            content: '🛠️';
+            font-size: 1.2rem;
+          }
         }
 
         .skills {
           display: flex;
           flex-wrap: wrap;
-          gap: 0.5rem;
+          gap: 0.75rem;
 
           .skill-tag {
-            background: var(--secondary-color);
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
             color: var(--white-color);
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 500;
+            padding: 0.6rem 1.2rem;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            border: 2px solid transparent;
+            
+            &:hover {
+              transform: translateY(-3px);
+              box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+              border-color: var(--white-color);
+            }
+
+            .skill-icon {
+              width: 20px;
+              height: 20px;
+              object-fit: contain;
+              filter: brightness(0) invert(1);
+            }
+
+            .skill-text {
+              font-weight: 600;
+              letter-spacing: 0.5px;
+            }
           }
         }
       }
@@ -392,6 +472,12 @@
           .skills .skill-tag {
             font-size: 0.75rem;
             padding: 0.4rem 0.8rem;
+            gap: 0.3rem;
+            
+            .skill-icon {
+              width: 16px;
+              height: 16px;
+            }
           }
         }
       }
@@ -418,6 +504,87 @@
     .certification-card {
       position: static;
       overflow: visible;
+      padding: 1.2rem;
+      
+      .certification-image {
+        width: 50px;
+        height: 50px;
+        margin-bottom: 1rem;
+      }
+      
+      .certification-content {
+        h3 {
+          font-size: 0.9rem;
+          line-height: 1.3;
+          margin-bottom: 0.5rem;
+        }
+        
+        .organization {
+          font-size: 0.8rem;
+          margin-bottom: 0.3rem;
+        }
+        
+        .platform, .date {
+          font-size: 0.75rem;
+          margin-bottom: 0.25rem;
+        }
+        
+        .skills {
+          gap: 0.3rem;
+          margin-top: 0.8rem;
+          
+          .skill-tag {
+            padding: 0.25rem 0.6rem;
+            font-size: 0.65rem;
+            
+            .skill-icon {
+              width: 12px;
+              height: 12px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+// Extra small mobile devices
+@media screen and (max-width: 480px) {
+  .app__certifications-portfolio {
+    gap: 0.8rem;
+    padding: 0 0.5rem;
+    
+    .certification-card {
+      padding: 1rem;
+      
+      .certification-image {
+        width: 45px;
+        height: 45px;
+      }
+      
+      .certification-content {
+        h3 {
+          font-size: 0.85rem;
+        }
+        
+        .organization {
+          font-size: 0.75rem;
+        }
+        
+        .platform, .date {
+          font-size: 0.7rem;
+        }
+        
+        .skills .skill-tag {
+          padding: 0.2rem 0.5rem;
+          font-size: 0.6rem;
+          
+          .skill-icon {
+            width: 10px;
+            height: 10px;
+          }
+        }
+      }
     }
   }
 }
