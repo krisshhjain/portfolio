@@ -50,8 +50,8 @@ const certifications = [
     platform: 'Coursera',
     date: '09/2024',
     description: 'Comprehensive course covering C++ programming fundamentals, object-oriented programming, and advanced concepts',
-    imgUrl: '/Certification images/infosys.jpeg',
-    certificateImage: '/Certifications jpg/Programmiing-Using-C++.jpg',
+    imgUrl: '/src/assets/Certification images/infosys.jpeg',
+    certificateImage: '/src/assets/Certifications jpg/Programmiing-Using-C++.jpg',
     skills: ['C++', 'OOP', 'Programming', 'Data Structures'],
     category: 'Programming'
   },
@@ -62,8 +62,8 @@ const certifications = [
     platform: 'Coursera',
     date: '10/2024',
     description: 'Full-stack web development course covering modern web technologies and frameworks',
-    imgUrl: '/Certification images/IBM.jpeg',
-    certificateImage: '/Certifications jpg/Getting-Started-with-Front-End-and-Web-Development.jpg',
+    imgUrl: '/src/assets/Certification images/IBM.jpeg',
+    certificateImage: '/src/assets/Certifications jpg/Getting-Started-with-Front-End-and-Web-Development.jpg',
     skills: ['HTML', 'CSS', 'JavaScript', 'Web Development'],
     category: 'Web Development'
   },
@@ -74,8 +74,8 @@ const certifications = [
     platform: 'Coursera',
     date: '11/2024',
     description: 'Advanced data structures and algorithms course focusing on efficient problem-solving techniques',
-    imgUrl: '/Certification images/UCSD.png',
-    certificateImage: '/Certifications jpg/Data-Structures.jpg',
+    imgUrl: '/src/assets/Certification images/UCSD.png',
+    certificateImage: '/src/assets/Certifications jpg/Data-Structures.jpg',
     skills: ['Data Structures', 'Algorithms', 'Problem Solving', 'Analysis'],
     category: 'Data & Algorithms'
   },
@@ -86,8 +86,8 @@ const certifications = [
     platform: 'Coursera',
     date: '01/2025',
     description: 'Network protocols, architecture, and security fundamentals',
-    imgUrl: '/Certification images/universitycolorado.jpeg',
-    certificateImage: '/Certifications jpg/Fundamentals-of-Network-Communication.jpg',
+    imgUrl: '/src/assets/Certification images/universitycolorado.jpeg',
+    certificateImage: '/src/assets/Certifications jpg/Fundamentals-of-Network-Communication.jpg',
     skills: ['Networking', 'Protocols', 'Security', 'Infrastructure'],
     category: 'Networking'
   },
@@ -98,8 +98,8 @@ const certifications = [
     platform: 'Coursera',
     date: '04/2025',
     description: 'Advanced networking concepts focusing on P2P protocols and LAN technologies',
-    imgUrl: '/Certification images/universitycolorado.jpeg',
-    certificateImage: '/Certifications jpg/P2p-Protocols-and-Local-Area-Networks.jpg',
+    imgUrl: '/src/assets/Certification images/universitycolorado.jpeg',
+    certificateImage: '/src/assets/Certifications jpg/P2p-Protocols-and-Local-Area-Networks.jpg',
     skills: ['P2P Protocols', 'LAN', 'Networking', 'Distributed Systems'],
     category: 'Networking'
   },
@@ -110,8 +110,8 @@ const certifications = [
     platform: 'Coursera',
     date: '04/2025',
     description: 'Operating systems fundamentals and system administration concepts',
-    imgUrl: '/Certification images/google.jpeg',
-    certificateImage: '/Certifications jpg/Operating-System-And-you.jpg',
+    imgUrl: '/src/assets/Certification images/google.jpeg',
+    certificateImage: '/src/assets/Certifications jpg/Operating-System-And-you.jpg',
     skills: ['Operating Systems', 'System Administration', 'Linux', 'Security'],
     category: 'Systems'
   },
@@ -122,8 +122,8 @@ const certifications = [
     platform: 'Coursera',
     date: '04/2025',
     description: 'Advanced algorithms and computational thinking for problem-solving',
-    imgUrl: '/Certification images/UCSD.png',
-    certificateImage: '/Certifications jpg/Algorithmic-Toolbox.jpg',
+    imgUrl: '/src/assets/Certification images/UCSD.png',
+    certificateImage: '/src/assets/Certifications jpg/Algorithmic-Toolbox.jpg',
     skills: ['Algorithms', 'Problem Solving', 'Computational Thinking', 'Analysis'],
     category: 'Data & Algorithms'
   },
@@ -134,8 +134,8 @@ const certifications = [
     platform: 'Coursera',
     date: '07/2025',
     description: 'Mathematical foundations of combinatorics and probability theory',
-    imgUrl: '/Certification images/UCSD.png',
-    certificateImage: '/Certifications jpg/Combinatorics-and-Probability.jpg',
+    imgUrl: '/src/assets/Certification images/UCSD.png',
+    certificateImage: '/src/assets/Certifications jpg/Combinatorics-and-Probability.jpg',
     skills: ['Mathematics', 'Probability', 'Combinatorics', 'Statistics'],
     category: 'Mathematics'
   },
@@ -146,8 +146,8 @@ const certifications = [
     platform: 'Coursera',
     date: '07/2025',
     description: 'Database fundamentals and MongoDB development techniques',
-    imgUrl: '/Certification images/mongodb.jpg',
-    certificateImage: '/Certifications jpg/Mongodb.jpg',
+    imgUrl: '/src/assets/Certification images/mongodb.jpg',
+    certificateImage: '/src/assets/Certifications jpg/Mongodb.jpg',
     skills: ['MongoDB', 'NoSQL', 'Database Design', 'Data Modeling'],
     category: 'Database'
   },
@@ -158,8 +158,8 @@ const certifications = [
     platform: 'Coursera',
     date: '08/2025',
     description: 'Cloud computing fundamentals and AWS services overview',
-    imgUrl: '/Certification images/aws.png',
-    certificateImage: '/Certifications jpg/AWS.jpg',
+    imgUrl: '/src/assets/Certification images/aws.png',
+    certificateImage: '/src/assets/Certifications jpg/AWS.jpg',
     skills: ['AWS', 'Cloud Computing', 'Infrastructure', 'DevOps'],
     category: 'Cloud'
   }
@@ -177,7 +177,7 @@ const Certifications = () => {
 
   const handleImageError = (e) => {
     // If organization logo fails, show a fallback
-    e.target.src = '/Certification images/default-cert.png';
+    e.target.src = '/src/assets/Certification images/default-cert.png';
     e.target.onerror = null; // Prevent infinite loop
   };
 
