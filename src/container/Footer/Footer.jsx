@@ -26,6 +26,13 @@ const Footer = () => {
     const templateID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
     const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
 
+    // Debug logging (remove in production)
+    console.log('EmailJS Config:', {
+      serviceID: serviceID ? 'Set' : 'Missing',
+      templateID: templateID ? 'Set' : 'Missing',
+      publicKey: publicKey ? 'Set' : 'Missing'
+    });
+
     // Check if environment variables are available
     if (!serviceID || !templateID || !publicKey) {
       setLoading(false);

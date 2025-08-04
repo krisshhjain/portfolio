@@ -5,6 +5,27 @@ import MotionWrap from '../../Wrapper/MotionRap';
 import './Certifications.scss';
 import * as images from "../../assets";
 
+// Import certification images
+import infosysLogo from '../../assets/Certification images/infosys.jpeg';
+import ibmLogo from '../../assets/Certification images/IBM.jpeg';
+import ucsdLogo from '../../assets/Certification images/UCSD.png';
+import universityColoradoLogo from '../../assets/Certification images/universitycolorado.jpeg';
+import googleLogo from '../../assets/Certification images/google.jpeg';
+import mongodbLogo from '../../assets/Certification images/mongodb.jpg';
+import awsLogo from '../../assets/Certification images/aws.png';
+
+// Import certificate images
+import cppCert from '../../assets/Certifications jpg/Programmiing-Using-C++.jpg';
+import webDevCert from '../../assets/Certifications jpg/Getting-Started-with-Front-End-and-Web-Development.jpg';
+import dataStructuresCert from '../../assets/Certifications jpg/Data-Structures.jpg';
+import networkCommCert from '../../assets/Certifications jpg/Fundamentals-of-Network-Communication.jpg';
+import p2pProtocolsCert from '../../assets/Certifications jpg/P2p-Protocols-and-Local-Area-Networks.jpg';
+import osCert from '../../assets/Certifications jpg/Operating-System-And-you.jpg';
+import algorithmCert from '../../assets/Certifications jpg/Algorithmic-Toolbox.jpg';
+import combProbCert from '../../assets/Certifications jpg/Combinatorics-and-Probability.jpg';
+import mongodbCert from '../../assets/Certifications jpg/Mongodb.jpg';
+import awsCert from '../../assets/Certifications jpg/AWS.jpg';
+
 // Skill to logo mapping
 const skillLogos = {
   'C++': images.cpp,
@@ -50,8 +71,8 @@ const certifications = [
     platform: 'Coursera',
     date: '09/2024',
     description: 'Comprehensive course covering C++ programming fundamentals, object-oriented programming, and advanced concepts',
-    imgUrl: '/src/assets/Certification images/infosys.jpeg',
-    certificateImage: '/src/assets/Certifications jpg/Programmiing-Using-C++.jpg',
+    imgUrl: infosysLogo,
+    certificateImage: cppCert,
     skills: ['C++', 'OOP', 'Programming', 'Data Structures'],
     category: 'Programming'
   },
@@ -62,8 +83,8 @@ const certifications = [
     platform: 'Coursera',
     date: '10/2024',
     description: 'Full-stack web development course covering modern web technologies and frameworks',
-    imgUrl: '/src/assets/Certification images/IBM.jpeg',
-    certificateImage: '/src/assets/Certifications jpg/Getting-Started-with-Front-End-and-Web-Development.jpg',
+    imgUrl: ibmLogo,
+    certificateImage: webDevCert,
     skills: ['HTML', 'CSS', 'JavaScript', 'Web Development'],
     category: 'Web Development'
   },
@@ -74,8 +95,8 @@ const certifications = [
     platform: 'Coursera',
     date: '11/2024',
     description: 'Advanced data structures and algorithms course focusing on efficient problem-solving techniques',
-    imgUrl: '/src/assets/Certification images/UCSD.png',
-    certificateImage: '/src/assets/Certifications jpg/Data-Structures.jpg',
+    imgUrl: ucsdLogo,
+    certificateImage: dataStructuresCert,
     skills: ['Data Structures', 'Algorithms', 'Problem Solving', 'Analysis'],
     category: 'Data & Algorithms'
   },
@@ -86,8 +107,8 @@ const certifications = [
     platform: 'Coursera',
     date: '01/2025',
     description: 'Network protocols, architecture, and security fundamentals',
-    imgUrl: '/src/assets/Certification images/universitycolorado.jpeg',
-    certificateImage: '/src/assets/Certifications jpg/Fundamentals-of-Network-Communication.jpg',
+    imgUrl: universityColoradoLogo,
+    certificateImage: networkCommCert,
     skills: ['Networking', 'Protocols', 'Security', 'Infrastructure'],
     category: 'Networking'
   },
@@ -98,8 +119,8 @@ const certifications = [
     platform: 'Coursera',
     date: '04/2025',
     description: 'Advanced networking concepts focusing on P2P protocols and LAN technologies',
-    imgUrl: '/src/assets/Certification images/universitycolorado.jpeg',
-    certificateImage: '/src/assets/Certifications jpg/P2p-Protocols-and-Local-Area-Networks.jpg',
+    imgUrl: universityColoradoLogo,
+    certificateImage: p2pProtocolsCert,
     skills: ['P2P Protocols', 'LAN', 'Networking', 'Distributed Systems'],
     category: 'Networking'
   },
@@ -110,8 +131,8 @@ const certifications = [
     platform: 'Coursera',
     date: '04/2025',
     description: 'Operating systems fundamentals and system administration concepts',
-    imgUrl: '/src/assets/Certification images/google.jpeg',
-    certificateImage: '/src/assets/Certifications jpg/Operating-System-And-you.jpg',
+    imgUrl: googleLogo,
+    certificateImage: osCert,
     skills: ['Operating Systems', 'System Administration', 'Linux', 'Security'],
     category: 'Systems'
   },
@@ -122,8 +143,8 @@ const certifications = [
     platform: 'Coursera',
     date: '04/2025',
     description: 'Advanced algorithms and computational thinking for problem-solving',
-    imgUrl: '/src/assets/Certification images/UCSD.png',
-    certificateImage: '/src/assets/Certifications jpg/Algorithmic-Toolbox.jpg',
+    imgUrl: ucsdLogo,
+    certificateImage: algorithmCert,
     skills: ['Algorithms', 'Problem Solving', 'Computational Thinking', 'Analysis'],
     category: 'Data & Algorithms'
   },
@@ -134,8 +155,8 @@ const certifications = [
     platform: 'Coursera',
     date: '07/2025',
     description: 'Mathematical foundations of combinatorics and probability theory',
-    imgUrl: '/src/assets/Certification images/UCSD.png',
-    certificateImage: '/src/assets/Certifications jpg/Combinatorics-and-Probability.jpg',
+    imgUrl: ucsdLogo,
+    certificateImage: combProbCert,
     skills: ['Mathematics', 'Probability', 'Combinatorics', 'Statistics'],
     category: 'Mathematics'
   },
@@ -146,8 +167,8 @@ const certifications = [
     platform: 'Coursera',
     date: '07/2025',
     description: 'Database fundamentals and MongoDB development techniques',
-    imgUrl: '/src/assets/Certification images/mongodb.jpg',
-    certificateImage: '/src/assets/Certifications jpg/Mongodb.jpg',
+    imgUrl: mongodbLogo,
+    certificateImage: mongodbCert,
     skills: ['MongoDB', 'NoSQL', 'Database Design', 'Data Modeling'],
     category: 'Database'
   },
@@ -158,8 +179,8 @@ const certifications = [
     platform: 'Coursera',
     date: '08/2025',
     description: 'Cloud computing fundamentals and AWS services overview',
-    imgUrl: '/src/assets/Certification images/aws.png',
-    certificateImage: '/src/assets/Certifications jpg/AWS.jpg',
+    imgUrl: awsLogo,
+    certificateImage: awsCert,
     skills: ['AWS', 'Cloud Computing', 'Infrastructure', 'DevOps'],
     category: 'Cloud'
   }
@@ -176,8 +197,8 @@ const Certifications = () => {
     : certifications.filter(cert => cert.category === selectedCategory);
 
   const handleImageError = (e) => {
-    // If organization logo fails, show a fallback
-    e.target.src = '/src/assets/Certification images/default-cert.png';
+    // If organization logo fails, show a generic fallback icon
+    e.target.style.display = 'none';
     e.target.onerror = null; // Prevent infinite loop
   };
 
