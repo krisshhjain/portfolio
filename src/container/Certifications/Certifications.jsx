@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import * as images from "../../assets";
 import AppWrap from "../../Wrapper/AppWrap";
 import MotionWrap from '../../Wrapper/MotionRap';
 import './Certifications.scss';
@@ -8,221 +7,258 @@ import './Certifications.scss';
 const certifications = [
   {
     id: 1,
-    title: 'Full Stack Web Development',
-    organization: 'freeCodeCamp',
-    date: '2024',
-    description: 'Comprehensive certification covering React, Node.js, Express, and MongoDB',
-    imgUrl: images.reactPng,
-    credentialUrl: '#',
-    pdfUrl: '/certificates/fullstack-cert.pdf', // You'll add these PDFs
-    skills: ['React', 'Node.js', 'MongoDB', 'Express'],
-    status: 'Completed'
+    title: 'Programming using C++',
+    organization: 'Infosys',
+    platform: 'Coursera',
+    date: '09/2024',
+    description: 'Comprehensive course covering C++ programming fundamentals, object-oriented programming, and advanced concepts',
+    imgUrl: '/Certification images/infosys.jpeg',
+    certificateImage: '/Certifications jpg/Programmiing-Using-C++.jpg',
+    skills: ['C++', 'OOP', 'Programming', 'Data Structures'],
+    category: 'Programming'
   },
   {
     id: 2,
-    title: 'JavaScript Algorithms and Data Structures',
-    organization: 'freeCodeCamp',
-    date: '2023',
-    description: 'Advanced JavaScript programming and algorithmic thinking',
-    imgUrl: images.javascript,
-    credentialUrl: '#',
-    pdfUrl: '/certificates/javascript-cert.pdf',
-    skills: ['JavaScript', 'Algorithms', 'Data Structures'],
-    status: 'Completed'
+    title: 'IBM Web Development',
+    organization: 'IBM',
+    platform: 'Coursera',
+    date: '10/2024',
+    description: 'Full-stack web development course covering modern web technologies and frameworks',
+    imgUrl: '/Certification images/IBM.jpeg',
+    certificateImage: '/Certifications jpg/Getting-Started-with-Front-End-and-Web-Development.jpg',
+    skills: ['HTML', 'CSS', 'JavaScript', 'Web Development'],
+    category: 'Web Development'
   },
   {
     id: 3,
-    title: 'AWS Cloud Practitioner',
-    organization: 'Amazon Web Services',
-    date: '2024',
-    description: 'Foundational understanding of AWS Cloud concepts and services',
-    imgUrl: images.amazon,
-    credentialUrl: '#',
-    pdfUrl: '/certificates/aws-cert.pdf',
-    skills: ['AWS', 'Cloud Computing', 'DevOps'],
-    status: 'Completed'
+    title: 'Data Structures',
+    organization: 'University Of California San Diego',
+    platform: 'Coursera',
+    date: '11/2024',
+    description: 'Advanced data structures and algorithms course focusing on efficient problem-solving techniques',
+    imgUrl: '/Certification images/UCSD.png',
+    certificateImage: '/Certifications jpg/Data-Structures.jpg',
+    skills: ['Data Structures', 'Algorithms', 'Problem Solving', 'Analysis'],
+    category: 'Data & Algorithms'
   },
   {
     id: 4,
-    title: 'Python Programming',
-    organization: 'Coursera',
-    date: '2023',
-    description: 'Object-oriented programming and data analysis with Python',
-    imgUrl: images.python,
-    credentialUrl: '#',
-    pdfUrl: '/certificates/python-cert.pdf',
-    skills: ['Python', 'OOP', 'Data Analysis'],
-    status: 'Completed'
+    title: 'Fundamentals of Computer Networks',
+    organization: 'University of Colorado System',
+    platform: 'Coursera',
+    date: '01/2025',
+    description: 'Network protocols, architecture, and security fundamentals',
+    imgUrl: '/Certification images/universitycolorado.jpeg',
+    certificateImage: '/Certifications jpg/Fundamentals-of-Network-Communication.jpg',
+    skills: ['Networking', 'Protocols', 'Security', 'Infrastructure'],
+    category: 'Networking'
   },
   {
     id: 5,
-    title: 'React Native Development',
-    organization: 'Meta',
-    date: '2024',
-    description: 'Mobile app development with React Native framework',
-    imgUrl: images.reactPng,
-    credentialUrl: '#',
-    pdfUrl: '/certificates/react-native-cert.pdf',
-    skills: ['React Native', 'Mobile Development', 'JavaScript'],
-    status: 'In Progress'
+    title: 'Peer To Peer Protocols and Local Area Networks',
+    organization: 'University of Colorado System',
+    platform: 'Coursera',
+    date: '04/2025',
+    description: 'Advanced networking concepts focusing on P2P protocols and LAN technologies',
+    imgUrl: '/Certification images/universitycolorado.jpeg',
+    certificateImage: '/Certifications jpg/P2p-Protocols-and-Local-Area-Networks.jpg',
+    skills: ['P2P Protocols', 'LAN', 'Networking', 'Distributed Systems'],
+    category: 'Networking'
   },
   {
     id: 6,
-    title: 'Machine Learning Specialization',
-    organization: 'Stanford University',
-    date: '2024',
-    description: 'Comprehensive ML course covering algorithms and applications',
-    imgUrl: images.python,
-    credentialUrl: '#',
-    pdfUrl: '/certificates/ml-cert.pdf',
-    skills: ['Machine Learning', 'Python', 'TensorFlow'],
-    status: 'In Progress'
+    title: 'OS & You',
+    organization: 'Google',
+    platform: 'Coursera',
+    date: '04/2025',
+    description: 'Operating systems fundamentals and system administration concepts',
+    imgUrl: '/Certification images/google.jpeg',
+    certificateImage: '/Certifications jpg/Operating-System-And-you.jpg',
+    skills: ['Operating Systems', 'System Administration', 'Linux', 'Security'],
+    category: 'Systems'
+  },
+  {
+    id: 7,
+    title: 'Algorithmic Toolbox',
+    organization: 'University Of California San Diego',
+    platform: 'Coursera',
+    date: '04/2025',
+    description: 'Advanced algorithms and computational thinking for problem-solving',
+    imgUrl: '/Certification images/UCSD.png',
+    certificateImage: '/Certifications jpg/Algorithmic-Toolbox.jpg',
+    skills: ['Algorithms', 'Problem Solving', 'Computational Thinking', 'Analysis'],
+    category: 'Data & Algorithms'
+  },
+  {
+    id: 9,
+    title: 'Combinatorics and Probability',
+    organization: 'University Of California San Diego',
+    platform: 'Coursera',
+    date: '07/2025',
+    description: 'Mathematical foundations of combinatorics and probability theory',
+    imgUrl: '/Certification images/UCSD.png',
+    certificateImage: '/Certifications jpg/Combinatorics-and-Probability.jpg',
+    skills: ['Mathematics', 'Probability', 'Combinatorics', 'Statistics'],
+    category: 'Mathematics'
+  },
+  {
+    id: 10,
+    title: 'Introduction to MongoDB',
+    organization: 'MongoDB',
+    platform: 'Coursera',
+    date: '07/2025',
+    description: 'Database fundamentals and MongoDB development techniques',
+    imgUrl: '/Certification images/mongodb.jpg',
+    certificateImage: '/Certifications jpg/Mongodb.jpg',
+    skills: ['MongoDB', 'NoSQL', 'Database Design', 'Data Modeling'],
+    category: 'Database'
+  },
+  {
+    id: 11,
+    title: 'AWS Cloud Technical Essentials',
+    organization: 'AWS',
+    platform: 'Coursera',
+    date: '08/2025',
+    description: 'Cloud computing fundamentals and AWS services overview',
+    imgUrl: '/Certification images/aws.png',
+    certificateImage: '/Certifications jpg/AWS.jpg',
+    skills: ['AWS', 'Cloud Computing', 'Infrastructure', 'DevOps'],
+    category: 'Cloud'
   }
 ];
 
+const categories = ['All', 'Programming', 'Web Development', 'Data & Algorithms', 'Networking', 'Systems', 'Mathematics', 'Database', 'Cloud'];
+
 const Certifications = () => {
-  const [selectedCert, setSelectedCert] = useState(certifications[0]);
+  const [selectedCategory, setSelectedCategory] = useState('All');
+  const [selectedCertification, setSelectedCertification] = useState(null);
+
+  const filteredCertifications = selectedCategory === 'All' 
+    ? certifications 
+    : certifications.filter(cert => cert.category === selectedCategory);
+
+  const handleImageError = (e) => {
+    // If organization logo fails, show a fallback
+    e.target.src = '/Certification images/default-cert.png';
+    e.target.onerror = null; // Prevent infinite loop
+  };
+
+  const CertificationCard = ({ certification }) => (
+    <motion.div
+      className="certification-card"
+      whileHover={{ scale: 1.02 }}
+      whileTap={{ scale: 0.98 }}
+      onClick={() => setSelectedCertification(certification)}
+    >
+      <div className="certification-image">
+        <img 
+          src={certification.imgUrl} 
+          alt={certification.organization}
+          onError={handleImageError}
+        />
+      </div>
+      <div className="certification-content">
+        <h3>{certification.title}</h3>
+        <p className="organization">{certification.organization}</p>
+        <p className="platform">{certification.platform}</p>
+        <p className="date">{certification.date}</p>
+        <div className="skills">
+          {certification.skills.map((skill, index) => (
+            <span key={index} className="skill-tag">{skill}</span>
+          ))}
+        </div>
+      </div>
+    </motion.div>
+  );
+
+  const CertificationPreview = ({ certification }) => (
+    <motion.div
+      className="certification-preview"
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: -20 }}
+    >
+      <div className="preview-header">
+        <h2>{certification.title}</h2>
+        <button 
+          className="close-btn"
+          onClick={() => setSelectedCertification(null)}
+        >
+          ×
+        </button>
+      </div>
+      <div className="preview-content">
+        <div className="preview-image">
+          <img 
+            src={certification.certificateImage} 
+            alt={certification.title}
+          />
+        </div>
+        <div className="preview-details">
+          <div className="org-info">
+            <img 
+              src={certification.imgUrl} 
+              alt={certification.organization}
+              onError={handleImageError}
+            />
+            <div>
+              <h3>{certification.organization}</h3>
+              <p>{certification.platform}</p>
+              <p>{certification.date}</p>
+            </div>
+          </div>
+          <p className="description">{certification.description}</p>
+          <div className="skills-section">
+            <h4>Skills Covered:</h4>
+            <div className="skills">
+              {certification.skills.map((skill, index) => (
+                <span key={index} className="skill-tag">{skill}</span>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </motion.div>
+  );
 
   return (
-    <>
+    <div className="app__certifications">
       <h2 className="head-text">
-        My <span>Certifications</span> & Achievements
+        My <span>Certifications</span>
       </h2>
-      <p className="p-text cert-description">
-        Continuous learning and professional development through industry-recognized certifications
-      </p>
 
-      <div className="app__certifications-container">
-        {/* Left Side - Certifications List */}
-        <motion.div 
-          className="certifications-list"
-          initial={{ opacity: 0, x: -50 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.6 }}
-        >
-
-
-          <div className="certificates-grid">
-            {certifications.map((cert, index) => (
-              <motion.div
-                key={cert.id}
-                className={`cert-item ${selectedCert.id === cert.id ? 'active' : ''}`}
-                onClick={() => setSelectedCert(cert)}
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1 }}
-              >
-                <div className="cert-item-header">
-                  <div className="cert-icon">
-                    <img src={cert.imgUrl} alt={cert.organization} />
-                  </div>
-                  <div className="cert-info">
-                    <h4>{cert.title}</h4>
-                    <p className="cert-org">{cert.organization}</p>
-                    <span className="cert-date">{cert.date}</span>
-                  </div>
-                  <div className={`status-badge ${cert.status.toLowerCase().replace(' ', '-')}`}>
-                    {cert.status}
-                  </div>
-                </div>
-                
-                <div className="cert-skills">
-                  {cert.skills.slice(0, 3).map((skill, skillIndex) => (
-                    <span key={skillIndex} className="skill-tag-mini">
-                      {skill}
-                    </span>
-                  ))}
-                  {cert.skills.length > 3 && (
-                    <span className="skill-tag-mini more">+{cert.skills.length - 3}</span>
-                  )}
-                </div>
-              </motion.div>
-            ))}
+      <div className="app__certifications-filter">
+        {categories.map((category, index) => (
+          <div
+            key={index}
+            onClick={() => setSelectedCategory(category)}
+            className={`app__certifications-filter-item ${selectedCategory === category ? 'item-active' : ''}`}
+          >
+            {category}
           </div>
-        </motion.div>
-
-        {/* Right Side - Certificate Preview */}
-        <motion.div 
-          className="certificate-preview"
-          initial={{ opacity: 0, x: 50 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-        >
-          <div className="preview-header">
-            <h3>{selectedCert.title}</h3>
-            <div className="preview-actions">
-              <motion.button 
-                className="action-btn view-btn"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                View Full
-              </motion.button>
-              <motion.button 
-                className="action-btn download-btn"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                Download
-              </motion.button>
-            </div>
-          </div>
-
-          <div className="pdf-viewer">
-            {/* Placeholder for PDF viewer - you can integrate react-pdf or similar */}
-            <div className="pdf-placeholder">
-              <div className="pdf-icon">📄</div>
-              <h4>Certificate Preview</h4>
-              <p>{selectedCert.title}</p>
-              <p className="pdf-org">{selectedCert.organization}</p>
-              <div className="pdf-details">
-                <div className="detail-item">
-                  <strong>Date Earned:</strong> {selectedCert.date}
-                </div>
-                <div className="detail-item">
-                  <strong>Status:</strong> 
-                  <span className={`status ${selectedCert.status.toLowerCase().replace(' ', '-')}`}>
-                    {selectedCert.status}
-                  </span>
-                </div>
-                <div className="detail-item">
-                  <strong>Description:</strong>
-                  <p>{selectedCert.description}</p>
-                </div>
-              </div>
-              
-              <div className="skills-section">
-                <strong>Skills Covered:</strong>
-                <div className="skills-list">
-                  {selectedCert.skills.map((skill, index) => (
-                    <span key={index} className="skill-pill">{skill}</span>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div className="preview-footer">
-            <motion.a 
-              href={selectedCert.credentialUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="verify-link"
-              whileHover={{ scale: 1.02 }}
-            >
-              🔗 Verify Credential
-            </motion.a>
-          </div>
-        </motion.div>
+        ))}
       </div>
-    </>
+
+      <div className="app__certifications-portfolio">
+        {filteredCertifications.map((certification, index) => (
+          <CertificationCard 
+            key={certification.id} 
+            certification={certification} 
+          />
+        ))}
+      </div>
+
+      {selectedCertification && (
+        <div className="certification-preview-overlay">
+          <CertificationPreview certification={selectedCertification} />
+        </div>
+      )}
+    </div>
   );
 };
 
 export default AppWrap(
   MotionWrap(Certifications, 'app__certifications'),
   'certifications',
-  'app__whitebg'
+  'app__whitebg',
 );

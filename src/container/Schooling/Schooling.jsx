@@ -54,15 +54,12 @@ const schoolingData = [
 
 const Schooling = () => {
   return (
-    <>
+    <div className="app__schooling">
       <h2 className="head-text">
         My <span>Academic</span> Foundation
       </h2>
-      <p className="p-text schooling-description">
-        Building strong fundamentals and discovering my passion for technology
-      </p>
-
-      <div className="app__schooling">
+      
+      <div className="app__schooling-portfolio">
         {schoolingData.map((school, index) => (
           <motion.div
             key={index}
@@ -78,7 +75,7 @@ const Schooling = () => {
           >
             <div className="school-header">
               <div className="school-image">
-                <img src={school.imgUrl || images.profile} alt={school.institution} />
+                <img src={school.imgUrl} alt={school.institution} />
                 {school.grade && <div className="grade-badge">{school.grade}</div>}
               </div>
               <div className="school-info">
@@ -136,7 +133,7 @@ const Schooling = () => {
           </motion.div>
         ))}
       </div>
-    </>
+    </div>
   );
 };
 

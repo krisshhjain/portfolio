@@ -47,9 +47,6 @@ import sass from "./sass.png";
 import armyLogo from "./armyLogo.png";
 import army1 from "./army1.jpeg";
 import army2 from "./army2.jpeg";
-import BPS from "./BPS.jpg";
-import BU from "./BU.png";
-import RHS from "./RHS.jpeg";
 import skype from "./skype.png";
 import Socketio from "./Socket.io.png";
 import spotify from "./spotify.png";
@@ -58,6 +55,11 @@ import TailwindCSS from "./TailwindCSS.png";
 import typescript from "./typescript.png";
 import vue from "./vue.png";
 import X_logo from "./X_logo.jpg";
+
+// School logos
+import BU from "./BU.png";
+import BPS from "./BPS.jpg";
+import RHS from "./RHS.jpeg";
 
 // SVG images
 import circle from "./circle.svg";
@@ -79,6 +81,8 @@ export {
   bgIMG,
   bgWhite,
   bolt,
+  BU,
+  BPS,
   cpp,
   css,
   ecosort,
@@ -111,13 +115,12 @@ export {
   python,
   reactPng,
   redux,
+  Resume,
+  RHS,
   sass,
   armyLogo,
   army1,
   army2,
-  BPS,
-  BU,
-  RHS,
   skype,
   Socketio,
   spotify,
@@ -128,5 +131,4 @@ export {
   X_logo,
   circle,
   reactSvg,
-  Resume,
 };
