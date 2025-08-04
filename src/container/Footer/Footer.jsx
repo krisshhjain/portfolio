@@ -22,9 +22,16 @@ const Footer = () => {
     e.preventDefault();
     setLoading(true);
 
-const serviceID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
-const templateID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
-const publicKey  = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+    const serviceID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+    const templateID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+    const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+
+    // Check if environment variables are available
+    if (!serviceID || !templateID || !publicKey) {
+      setLoading(false);
+      alert('Email service is currently unavailable. Please contact me directly at krishjain710@gmail.com');
+      return;
+    }
 
     const templateParams = {
       from_name: username,
@@ -39,6 +46,7 @@ const publicKey  = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
         setIsFormSubmitted(true);
       }, (error) => {
         setLoading(false);
+        alert('Failed to send message. Please contact me directly at krishjain710@gmail.com');
         console.log('FAILED...', error);
       });
   };
