@@ -28,7 +28,7 @@ import node from "./node.png";
 import PostgresSQL from "./PostgresSQL.png";
 import Postman from "./Postman.png";
 import potfoliologo from "./potfoliologo.jpg";
-import profile from "./profile.png";
+import profile from "./profile.PNG";
 import python from "./python.png";
 import reactPng from "./react.png";
 import redux from "./redux.png";
