@@ -14,8 +14,7 @@ const schoolingData = [
     achievements: [
       'Currently pursuing BTech in Computer Science',
       'Strong focus on practical programming and software development',
-      'Active participation in coding competitions and tech events',
-      'Internship at Indian Army - Defense Technology'
+      'Active participation in coding competitions and tech events'
     ],
     description: 'Pursuing Bachelor of Technology in Computer Science with emphasis on modern software development, cloud computing, and emerging technologies. Gaining hands-on experience through internships and real-world projects.',
     imgUrl: images.BU,
@@ -27,9 +26,12 @@ const schoolingData = [
     period: 'April 2021 - March 2023',
     subjects: ['Physics', 'Chemistry', 'Mathematics'],
     achievements: [
-      'Strong foundation in Science and Mathematics',
+
+      'Student Council Member',
       'Participated in Academic competitions',
+      'School Basketball Team Captain',
       'Consistent academic performance'
+      
     ],
     description: 'Focused on Science stream with Mathematics, building analytical and problem-solving skills that form the foundation of my engineering journey.',
     imgUrl: images.RHS,
@@ -41,10 +43,10 @@ const schoolingData = [
     period: 'April 2015 - March 2021',
     subjects: ['Mathematics', 'Science', 'English', 'Social Science', 'Hindi'],
     achievements: [
-      'Student Council Member',
       'Participated in multiple MUN as Chair and Vice Chair',
+      'Strong foundation in Science and Mathematics',     
       'Most Promising Student award in 2020',
-      'School Topper in various subjects'
+      'U14 Basketball Team Captain'
     ],
     description: 'Comprehensive education with strong emphasis on leadership, communication skills, and academic excellence. Active participation in Model United Nations and student governance.',
     imgUrl: images.BPS,
