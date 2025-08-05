@@ -34,13 +34,12 @@ const worksData = [
   },
   {
     title: "DataZen",
-    description: "I am DataZen, a modern cloud storage and file management platform. It enables secure uploads, efficient organization, and seamless access to your files, leveraging Next.js for a fast, responsive, and user-friendly experience.",
-    projectLink: "https://github.com/krisshhjain/",
-    codeLink: "https://github.com/krisshhjain/",
+    description: "I have created DataZen, a modern cloud storage and file management platform. It enables secure uploads, efficient organization, and seamless access to your files, leveraging Next.js for a fast, responsive, and user-friendly experience.",
+    projectLink: "https://github.com/krisshhjain/DataZen",
+    codeLink: "https://github.com/krisshhjain/DataZen",
     imgUrl: images.Datazen,
     tags: ["Under Development"],
   },
-
 ];
 
 const Work = () => {

@@ -41,6 +41,8 @@ import SyncFit from "./SyncFit.png";
 import TailwindCSS from "./TailwindCSS.png";
 import typescript from "./typescript.png";
 import X_logo from "./X_logo.jpg";
+import Pineapple_muzic from "./Pineapple-Muzic.jpg";
+import Datazen from "./DataZen.png";
 
 // School logos
 import BU from "./BU.png";
@@ -63,6 +65,7 @@ export {
   BPS,
   cpp,
   css,
+  Datazen,
   ecosort,
   email,
   Express,
@@ -82,6 +85,7 @@ export {
   Netflix,
   Nextjs,
   node,
+  Pineapple_muzic,
   PostgresSQL,
   Postman,
   potfoliologo,

@@ -25,6 +25,19 @@
       border-radius: 0.75rem;
     }
 
+    // Mobile layout: 2 projects per row
+    @media screen and (max-width: 768px) {
+      width: calc(50% - 1rem);
+      margin: 0.5rem;
+      padding: 0.75rem;
+    }
+
+    @media screen and (max-width: 450px) {
+      width: calc(50% - 0.5rem);
+      margin: 0.25rem;
+      padding: 0.5rem;
+    }
+
     @media screen and (max-width: 300px) {
       width: 100%;
       margin: 1rem;
@@ -44,6 +57,15 @@
     border-radius: 0.5rem;
     object-fit: cover;
     transition: all 0.3s ease;
+  }
+
+  // Adjust image height for mobile
+  @media screen and (max-width: 768px) {
+    height: 150px;
+  }
+
+  @media screen and (max-width: 450px) {
+    height: 120px;
   }
 
   .app__work-hover {
@@ -101,6 +123,30 @@
     @media screen and (min-width: 2000px) {
       margin-top: 3rem;
     }
+
+    // Adjust heading for mobile
+    @media screen and (max-width: 768px) {
+      margin-top: 0.5rem;
+      font-size: 1rem;
+    }
+
+    @media screen and (max-width: 450px) {
+      margin-top: 0.25rem;
+      font-size: 0.9rem;
+    }
+  }
+
+  // Adjust paragraph text for mobile
+  .p-text {
+    @media screen and (max-width: 768px) {
+      font-size: 0.8rem;
+      line-height: 1.3;
+    }
+
+    @media screen and (max-width: 450px) {
+      font-size: 0.75rem;
+      line-height: 1.2;
+    }
   }
 
   .app__work-tag {
@@ -109,5 +155,24 @@
     border-radius: 10px;
     background-color: #fff;
     top: -25px;
+
+    // Adjust tag for mobile
+    @media screen and (max-width: 768px) {
+      padding: 0.25rem 0.5rem;
+      top: -20px;
+      
+      .p-text {
+        font-size: 0.7rem;
+      }
+    }
+
+    @media screen and (max-width: 450px) {
+      padding: 0.2rem 0.4rem;
+      top: -15px;
+      
+      .p-text {
+        font-size: 0.65rem;
+      }
+    }
   }
 }
