@@ -33,6 +33,13 @@ const Footer = () => {
       publicKey: publicKey ? 'Set' : 'Missing'
     });
 
+    // Debug form data
+    console.log('Form Data:', {
+      username: username,
+      email: email,
+      message: message
+    });
+
     // Check if environment variables are available
     if (!serviceID || !templateID || !publicKey) {
       setLoading(false);
@@ -40,12 +47,17 @@ const Footer = () => {
       return;
     }
 
+    // Simple, reliable template parameters
     const templateParams = {
-      from_name: username,
-      from_email: email,
-      to_name: 'Krish Jain',
-      message: message,
+      name: username || 'No name provided',
+      email: email || 'No email provided', 
+      message: message || 'No message provided',
+      timestamp: new Date().toLocaleString(),
+      to_name: 'Krish Jain'
     };
+
+    // Debug logging for template params
+    console.log('Sending email with simplified params:', templateParams);
 
     emailjs.send(serviceID, templateID, templateParams, publicKey)
       .then(() => {
