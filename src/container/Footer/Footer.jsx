@@ -47,22 +47,11 @@ const Footer = () => {
       return;
     }
 
-    // EmailJS standard format - try different variable names
+    // Match the EmailJS template variables exactly
     const templateParams = {
-      from_name: username || 'No name provided',
-      reply_to: email || 'No email provided',
+      name: username || 'No name provided',
+      email: email || 'No email provided',
       message: message || 'No message provided',
-      to_name: 'Krish Jain',
-      
-      // Try alternative common names
-      user_name: username,
-      user_email: email,
-      user_message: message,
-      
-      // Additional standard formats
-      name: username,
-      email: email,
-      msg: message,
       timestamp: new Date().toLocaleString()
     };
 
