@@ -33,13 +33,6 @@ const Footer = () => {
       publicKey: publicKey ? 'Set' : 'Missing'
     });
 
-    // Debug form data
-    console.log('Form Data:', {
-      username: username,
-      email: email,
-      message: message
-    });
-
     // Check if environment variables are available
     if (!serviceID || !templateID || !publicKey) {
       setLoading(false);
@@ -51,20 +44,9 @@ const Footer = () => {
     const templateParams = {
       name: username || 'No name provided',
       email: email || 'No email provided',
-      message: message || 'No message provided',
+      message: message && message.trim() ? message.trim() : 'No message provided',
       timestamp: new Date().toLocaleString()
     };
-
-    // Debug logging for template params
-    console.log('Sending email with params:', templateParams);
-    console.log('Individual values:', {
-      username: username,
-      email: email,
-      message: message,
-      usernameType: typeof username,
-      emailType: typeof email,
-      messageType: typeof message
-    });
 
     emailjs.send(serviceID, templateID, templateParams, publicKey)
       .then(() => {

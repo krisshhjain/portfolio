@@ -20,7 +20,7 @@
         return false;
       });
 
-      // Disable F12, Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+U, Ctrl+Shift+C
+      // Disable F12, Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+U, Ctrl+Shift+C, Ctrl+S
       document.addEventListener('keydown', function(e) {
         // F12
         if (e.keyCode === 123) {
@@ -42,6 +42,12 @@
         
         // Ctrl+U (View Source)
         if (e.ctrlKey && e.keyCode === 85) {
+          e.preventDefault();
+          return false;
+        }
+        
+        // Ctrl+S (Save)
+        if (e.ctrlKey && e.keyCode === 83) {
           e.preventDefault();
           return false;
         }
