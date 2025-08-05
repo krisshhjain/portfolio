@@ -47,17 +47,35 @@ const Footer = () => {
       return;
     }
 
-    // Simple, reliable template parameters
+    // EmailJS standard format - try different variable names
     const templateParams = {
-      name: username || 'No name provided',
-      email: email || 'No email provided', 
+      from_name: username || 'No name provided',
+      reply_to: email || 'No email provided',
       message: message || 'No message provided',
-      timestamp: new Date().toLocaleString(),
-      to_name: 'Krish Jain'
+      to_name: 'Krish Jain',
+      
+      // Try alternative common names
+      user_name: username,
+      user_email: email,
+      user_message: message,
+      
+      // Additional standard formats
+      name: username,
+      email: email,
+      msg: message,
+      timestamp: new Date().toLocaleString()
     };
 
     // Debug logging for template params
-    console.log('Sending email with simplified params:', templateParams);
+    console.log('Sending email with params:', templateParams);
+    console.log('Individual values:', {
+      username: username,
+      email: email,
+      message: message,
+      usernameType: typeof username,
+      emailType: typeof email,
+      messageType: typeof message
+    });
 
     emailjs.send(serviceID, templateID, templateParams, publicKey)
       .then(() => {
