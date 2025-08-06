@@ -77,21 +77,33 @@
         orientation: null
       };
       
+      // Different thresholds for different browsers
       let threshold = 160;
       
+      // Detect Safari
+      const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+      
+      // Increase threshold for Safari due to its different window chrome behavior
+      if (isSafari) {
+        threshold = 300;
+      }
+      
       setInterval(function() {
-        if (window.outerHeight - window.innerHeight > threshold || 
-            window.outerWidth - window.innerWidth > threshold) {
-          if (!devtools.opened) {
-            devtools.opened = true;
-            // Redirect or show warning
-            alert('Developer tools detected! Access denied.');
-            window.location.href = 'about:blank';
+        // Only check if window is focused to avoid false positives
+        if (document.hasFocus()) {
+          if (window.outerHeight - window.innerHeight > threshold || 
+              window.outerWidth - window.innerWidth > threshold) {
+            if (!devtools.opened) {
+              devtools.opened = true;
+              // Redirect or show warning
+              alert('Developer tools detected! Access denied.');
+              window.location.href = 'about:blank';
+            }
+          } else {
+            devtools.opened = false;
           }
-        } else {
-          devtools.opened = false;
         }
-      }, 500);
+      }, 1000); // Increased interval for Safari compatibility
 
       // Disable text selection
       document.addEventListener('selectstart', function(e) {
