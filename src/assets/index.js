@@ -6,7 +6,7 @@ import about04 from "./about04.png";
 import api from "./api.png";
 import cpp from "./cpp.png";
 import css from "./css.png";
-import ecosort from "./projects/ECOSORT.png";
+import ecosort from "./Projects/ECOSORT.png";
 import email from "./email.png";
 import Express from "./Express.png";
 import figma from "./figma.png";
@@ -37,24 +37,24 @@ import sass from "./sass.png";
 import armyLogo from "./armyLogo.png";
 import army1 from "./army1.jpeg";
 import army2 from "./army2.jpeg";
-import Ayursutra from "./projects/Ayursutra.png";
+import Ayursutra from "./Projects/Ayursutra.png";
 import Socketio from "./Socket.io.png";
 import SyncFit from "./SyncFit.png";
 import TailwindCSS from "./TailwindCSS.png";
 import typescript from "./typescript.png";
 import X_logo from "./X_logo.jpg";
-import Pineapple_muzic from "./projects/Pineapple-Muzic.jpg";
-import Datazen from "./projects/DataZen.png";
+import Pineapple_muzic from "./Projects/Pineapple-Muzic.jpg";
+import Datazen from "./Projects/DataZen.png";
 
 // Project logos (from assets/projects/)
-import projDatazen from "./projects/DataZen.png";
-import projFlowforge from "./projects/flowforge.png";
-import projAyursutra from "./projects/Ayursutra.png";
-import projJudgement from "./projects/Judgement.png";
-import projPineapple from "./projects/Pineapple-Muzic.jpg";
-import projShopsphere from "./projects/ShopSphere.png";
-import projEcosort from "./projects/ECOSORT.png";
-import projPortfolio from "./projects/portfolio.png";
+import projDatazen from "./Projects/DataZen.png";
+import projFlowforge from "./Projects/flowforge.png";
+import projAyursutra from "./Projects/Ayursutra.png";
+import projJudgement from "./Projects/Judgement.png";
+import projPineapple from "./Projects/Pineapple-Muzic.jpg";
+import projShopsphere from "./Projects/ShopSphere.png";
+import projEcosort from "./Projects/ECOSORT.png";
+import projPortfolio from "./Projects/portfolio.png";
 
 // School logos
 import BU from "./BU.png";
