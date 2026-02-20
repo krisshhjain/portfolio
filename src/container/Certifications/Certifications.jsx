@@ -1,341 +1,219 @@
-import React, { useState } from 'react';
-import { motion } from 'framer-motion';
-import AppWrap from "../../Wrapper/AppWrap";
-import MotionWrap from '../../Wrapper/MotionRap';
-import './Certifications.scss';
-import * as images from "../../assets";
-
-// Import certification images
-import infosysLogo from '../../assets/Certification images/infosys.jpeg';
-import ibmLogo from '../../assets/Certification images/IBM.jpeg';
-import ucsdLogo from '../../assets/Certification images/UCSD.png';
-import universityColoradoLogo from '../../assets/Certification images/universitycolorado.jpeg';
-import googleLogo from '../../assets/Certification images/google.jpeg';
-import mongodbLogo from '../../assets/Certification images/mongodb.jpg';
-import awsLogo from '../../assets/Certification images/aws.png';
-
-// Import certificate images
-import cppCert from '../../assets/Certifications jpg/Programmiing-Using-C++.jpg';
-import webDevCert from '../../assets/Certifications jpg/Getting-Started-with-Front-End-and-Web-Development.jpg';
-import dataStructuresCert from '../../assets/Certifications jpg/Data-Structures.jpg';
-import networkCommCert from '../../assets/Certifications jpg/Fundamentals-of-Network-Communication.jpg';
-import p2pProtocolsCert from '../../assets/Certifications jpg/P2p-Protocols-and-Local-Area-Networks.jpg';
-import osCert from '../../assets/Certifications jpg/Operating-System-And-you.jpg';
-import algorithmCert from '../../assets/Certifications jpg/Algorithmic-Toolbox.jpg';
-import combProbCert from '../../assets/Certifications jpg/Combinatorics-and-Probability.jpg';
-import mongodbCert from '../../assets/Certifications jpg/Mongodb.jpg';
-import awsCert from '../../assets/Certifications jpg/AWS.jpg';
-
-// Skill to logo mapping
-const skillLogos = {
-  'C++': images.cpp,
-  'OOP': images.cpp,
-  'Programming': images.cpp,
-  'Data Structures': images.api,
-  'HTML': images.html,
-  'CSS': images.css,
-  'JavaScript': images.javascript,
-  'Web Development': images.reactPng,
-  'Algorithms': images.api,
-  'Problem Solving': images.api,
-  'Analysis': images.api,
-  'Networking': images.api,
-  'Protocols': images.api,
-  'Security': images.api,
-  'Infrastructure': images.api,
-  'P2P Protocols': images.api,
-  'LAN': images.api,
-  'Distributed Systems': images.api,
-  'Operating Systems': images.api,
-  'System Administration': images.api,
-  'Linux': images.api,
-  'Computational Thinking': images.api,
-  'Mathematics': images.api,
-  'Probability': images.api,
-  'Combinatorics': images.api,
-  'Statistics': images.api,
-  'MongoDB': images.MongoDB,
-  'NoSQL': images.MongoDB,
-  'Database Design': images.MongoDB,
-  'Data Modeling': images.MongoDB,
-  'AWS': images.api,
-  'Cloud Computing': images.api,
-  'DevOps': images.api,
-};
+import React, { useState, useCallback } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import * as images from '../../assets';
+import DecryptedText from '../../components/ReactBits/DecryptedText/DecryptedText';
+import CircularGallery from '../../components/ReactBits/CircularGallery/CircularGallery';
+import { AppWrap, MotionWrap } from '../../Wrapper';
+import './Certifications.css';
 
 const certifications = [
   {
-    id: 1,
-    title: 'Programming using C++',
-    organization: 'Infosys',
-    platform: 'Coursera',
-    date: '09/2024',
-    description: 'Comprehensive course covering C++ programming fundamentals, object-oriented programming, and advanced concepts',
-    imgUrl: infosysLogo,
-    certificateImage: cppCert,
-    skills: ['C++', 'OOP', 'Programming', 'Data Structures'],
-    category: 'Programming'
+    title: 'AWS Cloud Practitioner',
+    issuer: 'Amazon Web Services',
+    date: '2024',
+    logo: images.awsLogo,
+    credential: images.awsCertification,
+    color: '#FF9900',
   },
   {
-    id: 2,
-    title: 'IBM Web Development',
-    organization: 'IBM',
-    platform: 'Coursera',
-    date: '10/2024',
-    description: 'Full-stack web development course covering modern web technologies and frameworks',
-    imgUrl: ibmLogo,
-    certificateImage: webDevCert,
-    skills: ['HTML', 'CSS', 'JavaScript', 'Web Development'],
-    category: 'Web Development'
-  },
-  {
-    id: 3,
-    title: 'Data Structures',
-    organization: 'University Of California San Diego',
-    platform: 'Coursera',
-    date: '11/2024',
-    description: 'Advanced data structures and algorithms course focusing on efficient problem-solving techniques',
-    imgUrl: ucsdLogo,
-    certificateImage: dataStructuresCert,
-    skills: ['Data Structures', 'Algorithms', 'Problem Solving', 'Analysis'],
-    category: 'Data & Algorithms'
-  },
-  {
-    id: 4,
-    title: 'Fundamentals of Computer Networks',
-    organization: 'University of Colorado System',
-    platform: 'Coursera',
-    date: '01/2025',
-    description: 'Network protocols, architecture, and security fundamentals',
-    imgUrl: universityColoradoLogo,
-    certificateImage: networkCommCert,
-    skills: ['Networking', 'Protocols', 'Security', 'Infrastructure'],
-    category: 'Networking'
-  },
-  {
-    id: 5,
-    title: 'Peer To Peer Protocols and Local Area Networks',
-    organization: 'University of Colorado System',
-    platform: 'Coursera',
-    date: '04/2025',
-    description: 'Advanced networking concepts focusing on P2P protocols and LAN technologies',
-    imgUrl: universityColoradoLogo,
-    certificateImage: p2pProtocolsCert,
-    skills: ['P2P Protocols', 'LAN', 'Networking', 'Distributed Systems'],
-    category: 'Networking'
-  },
-  {
-    id: 6,
-    title: 'OS & You',
-    organization: 'Google',
-    platform: 'Coursera',
-    date: '04/2025',
-    description: 'Operating systems fundamentals and system administration concepts',
-    imgUrl: googleLogo,
-    certificateImage: osCert,
-    skills: ['Operating Systems', 'System Administration', 'Linux', 'Security'],
-    category: 'Systems'
-  },
-  {
-    id: 7,
     title: 'Algorithmic Toolbox',
-    organization: 'University Of California San Diego',
-    platform: 'Coursera',
-    date: '04/2025',
-    description: 'Advanced algorithms and computational thinking for problem-solving',
-    imgUrl: ucsdLogo,
-    certificateImage: algorithmCert,
-    skills: ['Algorithms', 'Problem Solving', 'Computational Thinking', 'Analysis'],
-    category: 'Data & Algorithms'
+    issuer: 'UC San Diego (Coursera)',
+    date: '2024',
+    logo: images.ucsdLogo,
+    credential: images.algoToolboxCert,
+    color: '#0056D2',
   },
   {
-    id: 9,
-    title: 'Combinatorics and Probability',
-    organization: 'University Of California San Diego',
-    platform: 'Coursera',
-    date: '07/2025',
-    description: 'Mathematical foundations of combinatorics and probability theory',
-    imgUrl: ucsdLogo,
-    certificateImage: combProbCert,
-    skills: ['Mathematics', 'Probability', 'Combinatorics', 'Statistics'],
-    category: 'Mathematics'
+    title: 'Combinatorics & Probability',
+    issuer: 'UC San Diego (Coursera)',
+    date: '2024',
+    logo: images.ucsdLogo,
+    credential: images.combinatoricsCert,
+    color: '#0056D2',
   },
   {
-    id: 10,
-    title: 'Introduction to MongoDB',
-    organization: 'MongoDB',
-    platform: 'Coursera',
-    date: '07/2025',
-    description: 'Database fundamentals and MongoDB development techniques',
-    imgUrl: mongodbLogo,
-    certificateImage: mongodbCert,
-    skills: ['MongoDB', 'NoSQL', 'Database Design', 'Data Modeling'],
-    category: 'Database'
+    title: 'Data Structures',
+    issuer: 'UC San Diego (Coursera)',
+    date: '2024',
+    logo: images.ucsdLogo,
+    credential: images.dataStructuresCert,
+    color: '#0056D2',
   },
   {
-    id: 11,
-    title: 'AWS Cloud Technical Essentials',
-    organization: 'AWS',
-    platform: 'Coursera',
-    date: '08/2025',
-    description: 'Cloud computing fundamentals and AWS services overview',
-    imgUrl: awsLogo,
-    certificateImage: awsCert,
-    skills: ['AWS', 'Cloud Computing', 'Infrastructure', 'DevOps'],
-    category: 'Cloud'
-  }
+    title: 'Network Communication Fundamentals',
+    issuer: 'University of Colorado (Coursera)',
+    date: '2024',
+    logo: images.uColoradoLogo,
+    credential: images.networkCommCert,
+    color: '#CFB87C',
+  },
+  {
+    title: 'Front-End & Web Development',
+    issuer: 'IBM (Coursera)',
+    date: '2024',
+    logo: images.ibmLogo,
+    credential: images.frontEndCert,
+    color: '#006699',
+  },
+  {
+    title: 'MongoDB for Developers',
+    issuer: 'MongoDB University',
+    date: '2024',
+    logo: images.mongodbLogo,
+    credential: images.mongodbCert,
+    color: '#00ED64',
+  },
+  {
+    title: 'Operating Systems',
+    issuer: 'Google (Coursera)',
+    date: '2024',
+    logo: images.googleCloudLogo,
+    credential: images.osCert,
+    color: '#4285F4',
+  },
+  {
+    title: 'P2P Protocols & LANs',
+    issuer: 'University of Colorado (Coursera)',
+    date: '2024',
+    logo: images.uColoradoLogo,
+    credential: images.p2pCert,
+    color: '#CFB87C',
+  },
+  {
+    title: 'Programming Using C++',
+    issuer: 'Infosys Springboard',
+    date: '2024',
+    logo: images.infosysLogo,
+    credential: images.cppCert,
+    color: '#007CC3',
+  },
 ];
 
-const categories = ['All', 'Programming', 'Web Development', 'Data & Algorithms', 'Networking', 'Systems', 'Mathematics', 'Database', 'Cloud'];
+// Build items for CircularGallery — use LOGO images for gallery display
+const galleryItems = certifications.map(cert => ({
+  image: cert.logo,
+  text: cert.title,
+}));
 
 const Certifications = () => {
-  const [selectedCategory, setSelectedCategory] = useState('All');
-  const [selectedCertification, setSelectedCertification] = useState(null);
+  const [selected, setSelected] = useState(null);
 
-  const filteredCertifications = selectedCategory === 'All' 
-    ? certifications 
-    : certifications.filter(cert => cert.category === selectedCategory);
-
-  const handleImageError = (e) => {
-    // If organization logo fails, show a generic fallback icon
-    e.target.style.display = 'none';
-    e.target.onerror = null; // Prevent infinite loop
-  };
-
-  const CertificationCard = ({ certification }) => (
-    <motion.div
-      className="certification-card"
-      whileHover={{ scale: 1.02 }}
-      whileTap={{ scale: 0.98 }}
-      onClick={() => setSelectedCertification(certification)}
-    >
-      <div className="certification-image">
-        <img 
-          src={certification.imgUrl} 
-          alt={certification.organization}
-          onError={handleImageError}
-        />
-      </div>
-      <div className="certification-content">
-        <h3>{certification.title}</h3>
-        <p className="organization">{certification.organization}</p>
-        <p className="platform">{certification.platform}</p>
-        <p className="date">{certification.date}</p>
-        <div className="skills">
-          {certification.skills.map((skill, index) => (
-            <div key={index} className="skill-tag">
-              {skillLogos[skill] && (
-                <img 
-                  src={skillLogos[skill]} 
-                  alt={skill}
-                  className="skill-icon"
-                />
-              )}
-              <span className="skill-text">{skill}</span>
-            </div>
-          ))}
-        </div>
-      </div>
-    </motion.div>
-  );
-
-  const CertificationPreview = ({ certification }) => (
-    <motion.div
-      className="certification-preview"
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: -20 }}
-    >
-      <div className="preview-header">
-        <h2>{certification.title}</h2>
-        <button 
-          className="close-btn"
-          onClick={() => setSelectedCertification(null)}
-        >
-          ×
-        </button>
-      </div>
-      <div className="preview-content">
-        <div className="preview-image">
-          <img 
-            src={certification.certificateImage} 
-            alt={certification.title}
-          />
-        </div>
-        <div className="preview-details">
-          <div className="org-info">
-            <img 
-              src={certification.imgUrl} 
-              alt={certification.organization}
-              onError={handleImageError}
-            />
-            <div>
-              <h3>{certification.organization}</h3>
-              <p>{certification.platform}</p>
-              <p>{certification.date}</p>
-            </div>
-          </div>
-          <p className="description">{certification.description}</p>
-          <div className="skills-section">
-            <h4>Skills Covered:</h4>
-            <div className="skills">
-              {certification.skills.map((skill, index) => (
-                <div key={index} className="skill-tag">
-                  {skillLogos[skill] && (
-                    <img 
-                      src={skillLogos[skill]} 
-                      alt={skill}
-                      className="skill-icon"
-                    />
-                  )}
-                  <span className="skill-text">{skill}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </div>
-    </motion.div>
-  );
+  const handleItemClick = useCallback((index) => {
+    setSelected(certifications[index]);
+  }, []);
 
   return (
     <div className="app__certifications">
       <h2 className="head-text">
-        My <span>Certifications</span>
+        <DecryptedText text="Certifications" speed={50} maxIterations={10} animateOn="view" />
       </h2>
 
-      <div className="app__certifications-filter">
-        {categories.map((category, index) => (
-          <div
-            key={index}
-            onClick={() => setSelectedCategory(category)}
-            className={`app__certifications-filter-item ${selectedCategory === category ? 'item-active' : ''}`}
+      <p className="certifications__hint">
+        Scroll or drag to explore • Click to view
+      </p>
+
+      <div className="certifications__gallery-wrapper">
+        <CircularGallery
+          items={galleryItems}
+          bend={1}
+          textColor="#ffffff"
+          borderRadius={0.05}
+          scrollSpeed={2}
+          scrollEase={0.05}
+          onItemClick={handleItemClick}
+        />
+      </div>
+
+      <AnimatePresence>
+        {selected && (
+          <motion.div
+            className="cert-modal__overlay"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            onClick={() => setSelected(null)}
           >
-            {category}
-          </div>
-        ))}
-      </div>
+            {/* Decorative expanding rings */}
+            <motion.div
+              className="cert-modal__ring cert-modal__ring--1"
+              initial={{ scale: 0, opacity: 0.6 }}
+              animate={{ scale: 3, opacity: 0 }}
+              transition={{ duration: 0.8, ease: 'easeOut' }}
+            />
+            <motion.div
+              className="cert-modal__ring cert-modal__ring--2"
+              initial={{ scale: 0, opacity: 0.4 }}
+              animate={{ scale: 2.5, opacity: 0 }}
+              transition={{ duration: 0.7, delay: 0.1, ease: 'easeOut' }}
+            />
 
-      <div className="app__certifications-portfolio">
-        {filteredCertifications.map((certification, index) => (
-          <CertificationCard 
-            key={certification.id} 
-            certification={certification} 
-          />
-        ))}
-      </div>
+            <motion.div
+              className="cert-modal__card"
+              initial={{ scale: 0.3, opacity: 0, rotateX: 40, y: 100 }}
+              animate={{ scale: 1, opacity: 1, rotateX: 0, y: 0 }}
+              exit={{ scale: 0.5, opacity: 0, rotateX: -20, y: 60 }}
+              transition={{
+                type: 'spring',
+                damping: 25,
+                stiffness: 250,
+                mass: 0.8,
+              }}
+              onClick={e => e.stopPropagation()}
+            >
+              {/* Top accent bar */}
+              <motion.div
+                className="cert-modal__accent"
+                style={{ background: selected.color }}
+                initial={{ scaleX: 0 }}
+                animate={{ scaleX: 1 }}
+                transition={{ delay: 0.2, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+              />
 
-      {selectedCertification && (
-        <div className="certification-preview-overlay">
-          <CertificationPreview certification={selectedCertification} />
-        </div>
-      )}
+              <button className="cert-modal__close" onClick={() => setSelected(null)}>
+                <span>✕</span>
+              </button>
+
+              <motion.div
+                className="cert-modal__header"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.15, duration: 0.4 }}
+              >
+                <div className="cert-modal__logo" style={{ borderColor: selected.color + '40' }}>
+                  <img src={selected.logo} alt={selected.issuer} />
+                </div>
+                <div>
+                  <h3 className="cert-modal__title">{selected.title}</h3>
+                  <p className="cert-modal__issuer">{selected.issuer} • {selected.date}</p>
+                </div>
+              </motion.div>
+
+              <motion.div
+                className="cert-modal__img-wrapper"
+                initial={{ opacity: 0, scale: 0.92 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ delay: 0.25, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+              >
+                <img
+                  src={selected.credential}
+                  alt={selected.title}
+                  className="cert-modal__img"
+                />
+                {/* Shimmer effect on image */}
+                <motion.div
+                  className="cert-modal__shimmer"
+                  initial={{ x: '-100%' }}
+                  animate={{ x: '200%' }}
+                  transition={{ delay: 0.4, duration: 0.8, ease: 'easeInOut' }}
+                />
+              </motion.div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 };
 
-export default AppWrap(
-  MotionWrap(Certifications, 'app__certifications'),
-  'certifications',
-  'app__whitebg',
-);
+export default AppWrap(MotionWrap(Certifications, 'app__certifications'), 'certifications');

@@ -8,7 +8,7 @@ const BottomNavigation = ({ active }) => {
   const mainSections = [
     { id: "home", icon: "🏠", label: "Home" },
     { id: "about", icon: "👤", label: "About" },
-    { id: "schooling", icon: "🎓", label: "Education" },
+    { id: "gallery", icon: "📸", label: "Moments" },
     { id: "experience", icon: "💼", label: "Experience" },
     { id: "work", icon: "🚀", label: "Projects" }
   ];
@@ -39,16 +39,16 @@ const BottomNavigation = ({ active }) => {
             <span className="nav-label">{section.label}</span>
           </a>
         ))}
-        
+
         <div className="bottom-nav-item more-menu">
-          <button 
+          <button
             className="more-button"
             onClick={() => setShowMore(!showMore)}
           >
             <FaEllipsisH className="nav-icon" />
             <span className="nav-label">More</span>
           </button>
-          
+
           {showMore && (
             <div className="more-dropdown">
               <div className="more-sections">
@@ -64,9 +64,9 @@ const BottomNavigation = ({ active }) => {
                   </a>
                 ))}
               </div>
-              
+
               <div className="social-divider"></div>
-              
+
               <div className="social-links">
                 {socialLinks.map((social, index) => (
                   <a

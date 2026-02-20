@@ -1,0 +1,138 @@
+.splash {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    overflow: hidden;
+}
+
+/* Dark background layer */
+.splash__dark {
+    position: absolute;
+    inset: 0;
+    background: #0a0a0f;
+    z-index: 1;
+}
+
+/* White wipe panels */
+.splash__panel {
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 50%;
+    z-index: 2;
+    background: #f0f0f0;
+}
+
+.splash__panel--top {
+    top: 0;
+}
+
+.splash__panel--bottom {
+    bottom: 0;
+}
+
+/* ── Name rows ── */
+.splash__name-row {
+    position: absolute;
+    z-index: 10;
+    left: 5vw;
+    display: flex;
+    align-items: baseline;
+    pointer-events: none;
+    user-select: none;
+}
+
+.splash__name-row--first {
+    top: 8%;
+}
+
+.splash__name-row--last {
+    top: 22%;
+}
+
+/* The initial letter (K / J) */
+.splash__letter {
+    font-family: var(--font-display, 'Inter', sans-serif);
+    font-size: clamp(5rem, 12vw, 10rem);
+    font-weight: 900;
+    line-height: 1;
+    letter-spacing: -4px;
+    color: rgba(255, 255, 255, 0.85);
+}
+
+/* The rest of the name ("rish" / "ain") */
+.splash__letter-rest {
+    font-family: var(--font-display, 'Inter', sans-serif);
+    font-size: clamp(5rem, 12vw, 10rem);
+    font-weight: 900;
+    line-height: 1;
+    letter-spacing: -4px;
+    color: #111;
+}
+
+/* Star/asterisk */
+.splash__star {
+    position: absolute;
+    z-index: 10;
+    right: 5vw;
+    top: 8%;
+    font-family: var(--font-display, 'Inter', sans-serif);
+    font-size: clamp(3rem, 7vw, 5.5rem);
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.7);
+    user-select: none;
+    pointer-events: none;
+}
+
+/* Tagline */
+.splash__tagline {
+    position: absolute;
+    z-index: 10;
+    bottom: 8vh;
+    left: 5vw;
+    font-size: clamp(0.8rem, 1.5vw, 1.1rem);
+    color: #555;
+    font-weight: 500;
+    letter-spacing: 1px;
+    pointer-events: none;
+}
+
+/* Horizontal line */
+.splash__line {
+    position: absolute;
+    z-index: 10;
+    top: 65%;
+    left: 5vw;
+    right: 5vw;
+    height: 1px;
+    background: rgba(0, 0, 0, 0.12);
+    transform-origin: left;
+    pointer-events: none;
+}
+
+/* Mobile */
+@media screen and (max-width: 768px) {
+
+    .splash__letter,
+    .splash__letter-rest {
+        font-size: 4rem;
+        letter-spacing: -2px;
+    }
+
+    .splash__star {
+        font-size: 2.5rem;
+    }
+
+    .splash__name-row--first {
+        top: 10%;
+    }
+
+    .splash__name-row--last {
+        top: 22%;
+    }
+
+    .splash__tagline {
+        font-size: 0.75rem;
+        bottom: 14vh;
+    }
+}

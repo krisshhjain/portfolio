@@ -1,0 +1,222 @@
+.app__work {
+    width: 100%;
+    overflow: hidden;
+}
+
+/* ── SPLIT LAYOUT ── */
+.work__layout {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4rem;
+    padding: 2rem 0;
+}
+
+/* ── LEFT: Project Details ── */
+.work__details {
+    flex: 1;
+    max-width: 420px;
+    min-width: 0;
+    position: relative;
+    min-height: 340px;
+    display: flex;
+    align-items: center;
+}
+
+.work__details-inner {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    width: 100%;
+}
+
+/* Counter */
+.work__details-counter {
+    display: flex;
+    align-items: baseline;
+    gap: 0.3rem;
+    font-family: var(--font-display);
+}
+
+.work__counter-current {
+    font-size: 3.5rem;
+    font-weight: 900;
+    line-height: 1;
+    letter-spacing: -1px;
+}
+
+.work__counter-sep {
+    font-size: 1.4rem;
+    color: rgba(255, 255, 255, 0.2);
+    margin: 0 0.2rem;
+    font-weight: 300;
+}
+
+.work__counter-total {
+    font-size: 1.4rem;
+    color: rgba(255, 255, 255, 0.25);
+    font-weight: 400;
+}
+
+/* Title */
+.work__details-title {
+    font-size: 2.2rem;
+    font-weight: 800;
+    margin: 0;
+    font-family: var(--font-display);
+    line-height: 1.15;
+    letter-spacing: -0.5px;
+}
+
+/* Description */
+.work__details-desc {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.55);
+    line-height: 1.75;
+    margin: 0;
+}
+
+/* Stack */
+.work__details-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-top: 0.15rem;
+}
+
+.work__details-tag {
+    padding: 0.25rem 0.65rem;
+    border-radius: 20px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid;
+    letter-spacing: 0.3px;
+    white-space: nowrap;
+}
+
+/* GitHub button */
+.work__details-github {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 0.4rem;
+    padding: 0.55rem 1.2rem;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.04);
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.82rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    width: fit-content;
+    letter-spacing: 0.3px;
+}
+
+.work__details-github svg {
+    font-size: 1.1rem;
+}
+
+.work__details-github:hover {
+    background: rgba(82, 39, 255, 0.12);
+    border-color: var(--btn-color, rgba(82, 39, 255, 0.4));
+    color: #fff;
+    box-shadow: 0 0 20px rgba(82, 39, 255, 0.2);
+}
+
+/* ── RIGHT: Cards ── */
+.work__cards-area {
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 480px;
+    height: 420px;
+    position: relative;
+}
+
+.work__click-hint {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.68rem;
+    color: rgba(255, 255, 255, 0.25);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+/* Image-only cards */
+.work__image-card {
+    overflow: hidden;
+    padding: 0 !important;
+}
+
+.work__image-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    pointer-events: none;
+    user-select: none;
+    -webkit-user-drag: none;
+}
+
+/* ── MOBILE ── */
+@media screen and (max-width: 900px) {
+    .work__layout {
+        flex-direction: column-reverse;
+        gap: 2rem;
+        padding: 1rem 0;
+    }
+
+    .work__details {
+        min-height: auto;
+        text-align: center;
+        max-width: 100%;
+    }
+
+    .work__details-inner {
+        align-items: center;
+    }
+
+    .work__details-desc {
+        text-align: center;
+        font-size: 0.82rem;
+    }
+
+    .work__details-stack {
+        justify-content: center;
+    }
+
+    .work__details-title {
+        font-size: 1.6rem;
+    }
+
+    .work__counter-current {
+        font-size: 2.4rem;
+    }
+
+    .work__cards-area {
+        width: 380px;
+        height: 340px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .work__cards-area {
+        width: 320px;
+        height: 300px;
+    }
+
+    .work__details-title {
+        font-size: 1.3rem;
+    }
+
+    .work__details-desc {
+        font-size: 0.78rem;
+    }
+}

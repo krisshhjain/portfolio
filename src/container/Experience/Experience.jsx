@@ -1,201 +1,190 @@
 import React, { useState } from 'react';
-import { motion } from 'framer-motion';
-import * as images from "../../assets";
-import AppWrap from "../../Wrapper/AppWrap";
-import MotionWrap from '../../Wrapper/MotionRap';
-import './Experience.scss';
+import { motion, AnimatePresence } from 'framer-motion';
+import * as images from '../../assets';
+import DecryptedText from '../../components/ReactBits/DecryptedText/DecryptedText';
+import { AppWrap, MotionWrap } from '../../Wrapper';
+import './Experience.css';
 
 const experiences = [
   {
-    id: 1,
-    title: 'SDE (Software Developer Engineer) Intern',
-    organization: 'Indian Army - Defense Technology',
-    period: '2025 - Present',
-    description: 'Collaborating with Military personnel to explore cloud and full-stack technologies for real-world operational needs.',
-    detailedDescription: 'Working directly with military personnel to develop and implement cutting-edge technology solutions for operational requirements. Focused on cloud infrastructure, full-stack development, and creating robust systems that meet the demanding requirements of defense operations.',
+    title: 'MERN Stack Developer',
+    organization: 'Southern Command – Indian Army',
+    location: 'Remote',
+    period: 'Aug 2025 – Oct 2025',
     logo: images.armyLogo,
-    images: [
-      { url: images.army1, caption: 'Military Technology Integration' },
-      { url: images.army2, caption: 'Defense Systems Development' }
+    color: '#5227FF',
+    highlights: [
+      'Built secure MERN applications for internal Army workflows, reducing manual effort by 40%.',
+      'Designed APIs, schemas, and RBAC, improving data security and access control by 50%.',
+      'Delivered scalable, production-ready systems, increasing operational efficiency by 30%.',
     ],
-    technologies: ['Cloud Computing', 'Full-Stack Development', 'Military Systems', 'React', 'Node.js', 'AWS', 'Security Systems'],
-    type: 'Internship',
-    status: 'Current',
-    responsibilities: [
-      'Develop cloud-based solutions for military operations',
-      'Collaborate with defense personnel on technology requirements',
-      'Implement secure full-stack applications',
-      'Research emerging technologies for defense applications',
-      'Maintain high security standards in all development work'
+    technologies: ['React', 'Node.js', 'MongoDB', 'Express.js', 'RBAC', 'REST APIs'],
+    gallery: [images.army1, images.army2],
+  },
+  {
+    title: 'Software Developer Engineer Intern',
+    organization: 'Indian Army – Mhow, India',
+    location: 'On-Site',
+    period: 'Jun 2025 – Aug 2025',
+    logo: images.armyLogo,
+    color: '#06D6A0',
+    highlights: [
+      'Built an internal cloud platform, improving workflow efficiency by ~30%.',
+      'Optimized backend APIs and database queries, reducing response time by ~20%.',
+      'Delivered production-ready components based on real operational requirements in a mission-critical environment.',
     ],
-    achievements: [
-      'Successfully deployed cloud infrastructure for operational use',
-      'Improved system efficiency by 40% through optimization',
-      'Earned commendation for innovative problem-solving approach'
-    ]
-  }
+    technologies: ['React', 'Node.js', 'MongoDB', 'Express.js', 'Cloud', 'Git'],
+    gallery: [images.army1, images.army2],
+  },
 ];
 
+const cardVariants = {
+  collapsed: { height: 0, opacity: 0 },
+  expanded: { height: 'auto', opacity: 1, transition: { height: { duration: 0.4, ease: [0.04, 0.62, 0.23, 0.98] }, opacity: { duration: 0.3, delay: 0.1 } } },
+  exit: { height: 0, opacity: 0, transition: { height: { duration: 0.3 }, opacity: { duration: 0.15 } } }
+};
+
 const Experience = () => {
-  const [selectedExperience, setSelectedExperience] = useState(experiences[0]);
-  const [activeImageIndex, setActiveImageIndex] = useState(0);
+  const [expandedIndex, setExpandedIndex] = useState(null);
+  const [galleryData, setGalleryData] = useState(null);
+
+  const toggle = (index) => {
+    setExpandedIndex(prev => (prev === index ? null : index));
+  };
 
   return (
-    <>
+    <div className="app__experience">
       <h2 className="head-text">
-        Professional <span>Experience</span>
+        <DecryptedText text="Experience" speed={50} maxIterations={10} animateOn="view" />
       </h2>
-      <p className="p-text experience-description">
-        Real-world experience building technology solutions for critical applications
-      </p>
 
-      <div className="app__experience-container">
-        {/* Left Side - Experience Details */}
-        <motion.div 
-          className="experience-details"
-          initial={{ opacity: 0, x: -50 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.6 }}
-        >
-          <div className="details-header">
-            <div className="experience-logo">
-              <img src={selectedExperience.logo} alt={selectedExperience.organization} />
-              <div className={`status-indicator ${selectedExperience.status.toLowerCase()}`}>
-                {selectedExperience.status}
+      <div className="exp__timeline">
+        <div className="exp__timeline-line" />
+
+        {experiences.map((exp, index) => (
+          <motion.div
+            key={index}
+            className={`exp__card ${expandedIndex === index ? 'exp__card--active' : ''}`}
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: index * 0.15 }}
+            viewport={{ once: true, margin: '-40px' }}
+            style={{ '--card-accent': exp.color }}
+          >
+            {/* Timeline dot */}
+            <div className="exp__dot" style={{ background: exp.color, boxShadow: `0 0 12px ${exp.color}55` }} />
+
+            {/* Collapsed header — always visible, clickable */}
+            <div className="exp__card-header cursor-target" onClick={() => toggle(index)}>
+              <div className="exp__logo">
+                <img src={exp.logo} alt={exp.organization} />
+              </div>
+
+              <div className="exp__meta">
+                <h3 className="exp__title">{exp.title}</h3>
+                <p className="exp__org">{exp.organization}</p>
+                <div className="exp__badges">
+                  <span className="exp__period">{exp.period}</span>
+                  <span className="exp__location" style={{ color: exp.color }}>{exp.location}</span>
+                </div>
+              </div>
+
+              <div className={`exp__chevron ${expandedIndex === index ? 'exp__chevron--open' : ''}`}>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <polyline points="6 9 12 15 18 9" />
+                </svg>
               </div>
             </div>
-            
-            <div className="experience-info">
-              <h3>{selectedExperience.title}</h3>
-              <h4 className="organization-name">{selectedExperience.organization}</h4>
-              <div className="experience-meta">
-                <span className="experience-period">{selectedExperience.period}</span>
-                <span className="experience-type">{selectedExperience.type}</span>
-              </div>
-            </div>
-          </div>
 
-          <div className="experience-content">
-            <div className="description-section">
-              <h5>Overview</h5>
-              <p>{selectedExperience.detailedDescription}</p>
-            </div>
+            {/* Expandable details */}
+            <AnimatePresence initial={false}>
+              {expandedIndex === index && (
+                <motion.div
+                  className="exp__details"
+                  variants={cardVariants}
+                  initial="collapsed"
+                  animate="expanded"
+                  exit="exit"
+                >
+                  <div className="exp__details-inner">
+                    {/* Highlights */}
+                    <ul className="exp__highlights">
+                      {exp.highlights.map((h, i) => (
+                        <motion.li
+                          key={i}
+                          initial={{ opacity: 0, x: -16 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          transition={{ delay: 0.15 + i * 0.08 }}
+                        >
+                          <span className="exp__highlight-marker" style={{ background: exp.color }} />
+                          {h}
+                        </motion.li>
+                      ))}
+                    </ul>
 
-            <div className="responsibilities-section">
-              <h5>Key Responsibilities</h5>
-              <ul>
-                {selectedExperience.responsibilities.map((responsibility, index) => (
-                  <motion.li 
-                    key={index}
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ delay: index * 0.1 }}
-                  >
-                    {responsibility}
-                  </motion.li>
-                ))}
-              </ul>
-            </div>
+                    {/* Tech tags */}
+                    <div className="exp__tech-row">
+                      {exp.technologies.map((tech, i) => (
+                        <motion.span
+                          key={i}
+                          className="exp__tech-tag"
+                          initial={{ opacity: 0, scale: 0.8 }}
+                          animate={{ opacity: 1, scale: 1 }}
+                          transition={{ delay: 0.25 + i * 0.04 }}
+                          style={{ borderColor: `${exp.color}33`, color: exp.color }}
+                        >
+                          {tech}
+                        </motion.span>
+                      ))}
+                    </div>
 
-            <div className="achievements-section">
-              <h5>Key Achievements</h5>
-              <ul>
-                {selectedExperience.achievements.map((achievement, index) => (
-                  <motion.li 
-                    key={index}
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ delay: index * 0.1 }}
-                  >
-                    {achievement}
-                  </motion.li>
-                ))}
-              </ul>
-            </div>
+                    {/* Gallery button */}
+                    {exp.gallery && exp.gallery.length > 0 && (
+                      <button
+                        className="exp__gallery-btn cursor-target"
+                        onClick={(e) => { e.stopPropagation(); setGalleryData(exp); }}
+                        style={{ borderColor: `${exp.color}44` }}
+                      >
+                        📸 View Photos ({exp.gallery.length})
+                      </button>
+                    )}
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </motion.div>
+        ))}
+      </div>
 
-            <div className="technologies-section">
-              <h5>Technologies & Skills</h5>
-              <div className="tech-tags">
-                {selectedExperience.technologies.map((tech, index) => (
-                  <span key={index} className="tech-tag">{tech}</span>
-                ))}
-              </div>
-            </div>
-          </div>
-        </motion.div>
-
-        {/* Right Side - Visual Content */}
-        <motion.div 
-          className="experience-visual"
-          initial={{ opacity: 0, x: 50 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-        >
-          <div className="visual-header">
-            <h3>Project Gallery</h3>
-            <div className="image-counter">
-              {activeImageIndex + 1} / {selectedExperience.images.length}
-            </div>
-          </div>
-
-          <div className="main-image-viewer">
-            <motion.div 
-              className="main-image"
-              key={activeImageIndex}
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.3 }}
+      {/* Gallery overlay */}
+      <AnimatePresence>
+        {galleryData && (
+          <motion.div
+            className="exp__gallery-overlay"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setGalleryData(null)}
+          >
+            <motion.div
+              className="exp__gallery-modal"
+              initial={{ scale: 0.85, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.85, opacity: 0 }}
+              onClick={e => e.stopPropagation()}
             >
-              <img 
-                src={selectedExperience.images[activeImageIndex].url} 
-                alt={selectedExperience.images[activeImageIndex].caption}
-              />
-              <div className="image-caption">
-                {selectedExperience.images[activeImageIndex].caption}
+              <button className="exp__gallery-close" onClick={() => setGalleryData(null)}>✕</button>
+              <div className="exp__gallery-grid">
+                {galleryData.gallery.map((img, i) => (
+                  <img key={i} src={img} alt={`${galleryData.organization} - ${i + 1}`} className="exp__gallery-img" />
+                ))}
               </div>
             </motion.div>
-          </div>
-
-          <div className="image-thumbnails">
-            {selectedExperience.images.map((image, index) => (
-              <motion.div
-                key={index}
-                className={`thumbnail ${activeImageIndex === index ? 'active' : ''}`}
-                onClick={() => setActiveImageIndex(index)}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <img src={image.url} alt={image.caption} />
-              </motion.div>
-            ))}
-          </div>
-
-          <div className="experience-stats">
-            <div className="stat-item">
-              <h4>Duration</h4>
-              <p>{selectedExperience.period}</p>
-            </div>
-            <div className="stat-item">
-              <h4>Type</h4>
-              <p>{selectedExperience.type}</p>
-            </div>
-            <div className="stat-item">
-              <h4>Technologies</h4>
-              <p>{selectedExperience.technologies.length}+</p>
-            </div>
-            <div className="stat-item">
-              <h4>Status</h4>
-              <p className={selectedExperience.status.toLowerCase()}>{selectedExperience.status}</p>
-            </div>
-          </div>
-        </motion.div>
-      </div>
-    </>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
   );
 };
 
-export default AppWrap(
-  MotionWrap(Experience, 'app__experience'),
-  'experience',
-  'app__primarybg'
-);
+export default AppWrap(MotionWrap(Experience, 'app__experience'), 'experience');

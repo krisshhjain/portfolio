@@ -1,0 +1,120 @@
+.stepper {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.stepper-progress {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0;
+    margin-bottom: 2rem;
+    position: relative;
+    padding: 0 1rem;
+}
+
+.stepper-progress-bar {
+    position: absolute;
+    top: 50%;
+    left: 2rem;
+    right: 2rem;
+    height: 2px;
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-50%);
+    z-index: 0;
+    border-radius: 1px;
+}
+
+.stepper-progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #5227FF, #8B5CF6);
+    border-radius: 1px;
+}
+
+.stepper-dot {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.05);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.3);
+    font-size: 0.85rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 1;
+}
+
+.stepper-dot.active {
+    background: linear-gradient(135deg, #5227FF, #8B5CF6);
+    border-color: #5227FF;
+    color: #fff;
+    box-shadow: 0 0 20px rgba(82, 39, 255, 0.4);
+}
+
+.stepper-dot.current {
+    transform: scale(1.15);
+}
+
+.stepper-body {
+    min-height: 200px;
+    padding: 1rem;
+    overflow: hidden;
+}
+
+.stepper-step {
+    width: 100%;
+}
+
+.step-content {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.stepper-actions {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1rem 0;
+}
+
+.stepper-btn {
+    padding: 0.75rem 2rem;
+    border: none;
+    border-radius: 12px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: inherit;
+}
+
+.stepper-btn-back {
+    background: rgba(255, 255, 255, 0.05);
+    color: rgba(255, 255, 255, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.stepper-btn-back:hover:not(:disabled) {
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+}
+
+.stepper-btn-back:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+}
+
+.stepper-btn-next {
+    background: linear-gradient(135deg, #5227FF, #8B5CF6);
+    color: #fff;
+    box-shadow: 0 4px 20px rgba(82, 39, 255, 0.3);
+}
+
+.stepper-btn-next:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 25px rgba(82, 39, 255, 0.5);
+}

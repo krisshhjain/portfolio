@@ -1,52 +1,41 @@
-import React from "react";
-import "./Navbar.scss";
-import * as images from "../../assets"; // relative path from Navbar.jsx
-import { HiMenuAlt4, HiX } from "react-icons/hi";
-import { motion } from "framer-motion";
-import { useState } from "react";
+import React from 'react';
+import StaggeredMenu from '../ReactBits/StaggeredMenu/StaggeredMenu';
+import { krishjainLogo } from '../../assets';
+import './Navbar.css';
+
+const menuItems = [
+  { label: 'Home', ariaLabel: 'Go to home section', link: '#home' },
+  { label: 'About', ariaLabel: 'Go to about section', link: '#about' },
+  { label: 'Moments', ariaLabel: 'Go to gallery section', link: '#gallery' },
+  { label: 'Experience', ariaLabel: 'Go to experience section', link: '#experience' },
+  { label: 'Work', ariaLabel: 'Go to work section', link: '#work' },
+  { label: 'Skills', ariaLabel: 'Go to skills section', link: '#skills' },
+  { label: 'Contact', ariaLabel: 'Go to contact section', link: '#contact' },
+];
+
+const socialItems = [
+  { label: 'LinkedIn', link: 'https://www.linkedin.com/in/krishjain710/' },
+  { label: 'GitHub', link: 'https://github.com/krisshhjain' },
+  { label: 'Instagram', link: 'https://www.instagram.com/krisshhjain' },
+  { label: 'X', link: 'https://x.com/krisshhjain' },
+];
 
 const Navbar = () => {
-  const [toggle, setToggle] = useState(false);
   return (
-    <nav className="app__navbar">
-      <div className="app__navbar-logo">
-        <img src={images.nameLogo} alt="Krish Jain Logo" />
-      </div>
-      <ul className="app__navbar-links">
-        {["home", "about", "schooling", "experience", "work", "certifications", "skills", "contact"].map(
-          (item) => (
-            // proving unique key to each element so that react can render react items correctly and uniquely
-            <li className="app__flex p-text" key={`link-${item}`}>
-              <div></div>
-              <a href={`#${item}`}>{item}</a>
-            </li>
-          )
-        )}
-      </ul>
-      <div className="app__navbar-menu">
-        <HiMenuAlt4 onClick={() => setToggle(true)} />
-
-        {toggle && (
-          <motion.div
-            whileInView={{ x: [300, 0] }}
-            transition={{ duration: 0.85, ease: "easeOut" }}
-          >
-            <HiX onClick={() => setToggle(false)} />
-            <ul>
-              {["home", "about", "schooling", "experience", "work", "certifications", "skills", "contact"].map(
-                (item) => (
-                  <li className="app__flex p-text" key={item}>
-                    <a href={`#${item}`} onClick={() => setToggle(false)}>
-                      {item}
-                    </a>
-                  </li>
-                )
-              )}
-            </ul>
-          </motion.div>
-        )}
-      </div>
-    </nav>
+    <StaggeredMenu
+      position="right"
+      items={menuItems}
+      socialItems={socialItems}
+      displaySocials
+      displayItemNumbering={true}
+      menuButtonColor="#ffffff"
+      openMenuButtonColor="#fff"
+      changeMenuColorOnOpen={true}
+      colors={['#B19EEF', '#5227FF']}
+      logoUrl={krishjainLogo}
+      accentColor="#5227FF"
+      isFixed={true}
+    />
   );
 };
 

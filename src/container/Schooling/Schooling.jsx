@@ -1,136 +1,79 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import * as images from "../../assets";
-import AppWrap from "../../Wrapper/AppWrap";
-import MotionWrap from '../../Wrapper/MotionRap';
-import './Schooling.scss';
+import * as images from '../../assets';
+import DecryptedText from '../../components/ReactBits/DecryptedText/DecryptedText';
+import { AppWrap, MotionWrap } from '../../Wrapper';
+import './Schooling.css';
 
-const schoolingData = [
+const education = [
   {
-    level: 'Bachelor of Technology',
     institution: 'Bennett University',
-    period: 'August 2023 - September 2027',
-    subjects: ['Computer Science', 'Data Structures', 'Algorithms', 'Software Engineering', 'Database Management', 'Computer Networks'],
-    achievements: [
-      'Currently pursuing BTech in Computer Science',
-      'Strong focus on practical programming and software development',
-      'Active participation in coding competitions and tech events'
-    ],
-    description: 'Pursuing Bachelor of Technology in Computer Science with emphasis on modern software development, cloud computing, and emerging technologies. Gaining hands-on experience through internships and real-world projects.',
-    imgUrl: images.BU,
-    highlights: ['Computer Science', 'Current Student', 'Tech Focus']
+    degree: 'B.Tech Computer Science',
+    period: '2023 - 2027',
+    logo: images.BU,
+    description: 'Pursuing a B.Tech in Computer Science and Engineering with a focus on full-stack development and machine learning.',
+    subjects: ['Data Structures & Algorithms', 'DBMS', 'OS', 'Computer Networks', 'Machine Learning'],
+    grade: '9.0 CGPA',
+    color: '#5227FF',
   },
   {
-    level: 'Higher Secondary',
-    institution: 'Rockwoods High School - India',
-    period: 'April 2021 - March 2023',
-    subjects: ['Physics', 'Chemistry', 'Mathematics'],
-    achievements: [
-
-      'Student Council Member',
-      'Participated in Academic competitions',
-      'School Basketball Team Captain',
-      'Consistent academic performance'
-      
-    ],
-    description: 'Focused on Science stream with Mathematics, building analytical and problem-solving skills that form the foundation of my engineering journey.',
-    imgUrl: images.RHS,
-    highlights: ['PCM Stream', 'Academic Excellence']
+    institution: 'BPS Public School',
+    degree: 'Senior Secondary (XII)',
+    period: '2021 - 2023',
+    logo: images.BPS,
+    description: 'Completed senior secondary education with a strong academic record in science and mathematics.',
+    subjects: ['Physics', 'Chemistry', 'Mathematics', 'Computer Science', 'English'],
+    grade: '90%',
+    color: '#06D6A0',
   },
   {
-    level: 'Secondary Education',
-    institution: 'Birla Public School, Pilani',
-    period: 'April 2015 - March 2021',
-    subjects: ['Mathematics', 'Science', 'English', 'Social Science', 'Hindi'],
-    achievements: [
-      'Participated in multiple MUN as Chair and Vice Chair',
-      'Strong foundation in Science and Mathematics',     
-      'Most Promising Student award in 2020',
-      'U14 Basketball Team Captain'
-    ],
-    description: 'Comprehensive education with strong emphasis on leadership, communication skills, and academic excellence. Active participation in Model United Nations and student governance.',
-    imgUrl: images.BPS,
-    highlights: ['Leadership', 'MUN Expert', 'All-rounder']
-  }
+    institution: 'Ryan Holiday School',
+    degree: 'Secondary (X)',
+    period: '2019 - 2021',
+    logo: images.RHS,
+    description: 'Strong foundation in academics with distinction in mathematics and sciences.',
+    subjects: ['Mathematics', 'Science', 'English', 'Social Studies', 'Hindi'],
+    grade: '92%',
+    color: '#FF6B6B',
+  },
 ];
 
 const Schooling = () => {
   return (
     <div className="app__schooling">
       <h2 className="head-text">
-        My <span>Academic</span> Foundation
+        <DecryptedText text="Education" speed={50} maxIterations={10} animateOn="view" />
       </h2>
-      
-      <div className="app__schooling-portfolio">
-        {schoolingData.map((school, index) => (
+
+      <div className="schooling__timeline">
+        <div className="schooling__line" />
+        {education.map((edu, index) => (
           <motion.div
             key={index}
-            whileInView={{ opacity: 1, y: 0 }}
-            initial={{ opacity: 0, y: 80 }}
-            transition={{ 
-              duration: 0.8, 
-              delay: index * 0.3,
-              type: "spring",
-              stiffness: 80
-            }}
-            className="schooling-card"
+            className="schooling__card glass-card"
+            initial={{ opacity: 0, x: index % 2 === 0 ? -40 : 40 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, delay: index * 0.15 }}
+            viewport={{ once: true, margin: '-50px' }}
+            style={{ '--edu-color': edu.color }}
           >
-            <div className="school-header">
-              <div className="school-image">
-                <img src={school.imgUrl} alt={school.institution} />
-                {school.grade && <div className="grade-badge">{school.grade}</div>}
+            <div className="schooling__dot" style={{ background: edu.color }} />
+            <div className="schooling__card-header">
+              <div className="schooling__logo">
+                <img src={edu.logo} alt={edu.institution} />
               </div>
-              <div className="school-info">
-                <h3 className="bold-text">{school.level}</h3>
-                <h4 className="school-name">{school.institution}</h4>
-                <span className="school-period">{school.period}</span>
+              <div className="schooling__meta">
+                <h3>{edu.institution}</h3>
+                <p className="schooling__degree">{edu.degree}</p>
+                <span className="schooling__period">{edu.period}</span>
               </div>
+              <span className="schooling__grade" style={{ color: edu.color }}>{edu.grade}</span>
             </div>
-
-            {school.description && <p className="p-text school-desc">{school.description}</p>}
-
-            {school.highlights && school.highlights.length > 0 && (
-              <div className="highlights">
-                {school.highlights.map((highlight, hIndex) => (
-                  <span key={hIndex} className="highlight-tag">
-                    {highlight}
-                  </span>
-                ))}
-              </div>
-            )}
-
-            <div className="subjects-section">
-              <h5>Key Subjects</h5>
-              <div className="subjects">
-                {school.subjects.map((subject, sIndex) => (
-                  <motion.span 
-                    key={sIndex} 
-                    className="subject-tag"
-                    whileHover={{ scale: 1.05 }}
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    transition={{ delay: sIndex * 0.1 }}
-                  >
-                    {subject}
-                  </motion.span>
-                ))}
-              </div>
-            </div>
-
-            <div className="achievements-section">
-              <h5>Key Achievements</h5>
-              <ul className="achievements-list">
-                {school.achievements.map((achievement, aIndex) => (
-                  <motion.li 
-                    key={aIndex}
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ delay: aIndex * 0.1 }}
-                  >
-                    {achievement}
-                  </motion.li>
-                ))}
-              </ul>
+            <p className="schooling__desc">{edu.description}</p>
+            <div className="schooling__subjects">
+              {edu.subjects.map((s, i) => (
+                <span key={i} className="schooling__subject-tag">{s}</span>
+              ))}
             </div>
           </motion.div>
         ))}
@@ -139,8 +82,4 @@ const Schooling = () => {
   );
 };
 
-export default AppWrap(
-  MotionWrap(Schooling, 'app__schooling-section'),
-  'schooling',
-  'app__whitebg'
-);
+export default AppWrap(MotionWrap(Schooling, 'app__schooling'), 'education');

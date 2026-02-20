@@ -1,0 +1,139 @@
+.app__about {
+    width: 100%;
+}
+
+.about__scroll-reveal {
+    max-width: 800px;
+    margin: 0 auto 3rem;
+    text-align: center;
+}
+
+.about__achievements {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+}
+
+.about__stat {
+    text-align: center;
+    padding: 1.5rem 1rem;
+}
+
+.about__stat-number {
+    font-size: 2.5rem;
+    font-weight: 800;
+    font-family: var(--font-display);
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 0.5rem;
+}
+
+.about__stat-label {
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.about__expertise {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+}
+
+.about__expertise-card {
+    padding: 2rem;
+}
+
+.about__expertise-icon {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    display: block;
+}
+
+.about__expertise-title {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+}
+
+.about__expertise-desc {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+}
+
+.about__expertise-skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.about__skill-tag {
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    background: rgba(82, 39, 255, 0.1);
+    border: 1px solid rgba(82, 39, 255, 0.2);
+    color: var(--accent-secondary);
+}
+
+/* ── MOBILE ── */
+@media screen and (max-width: 768px) {
+    .about__scroll-reveal {
+        margin-bottom: 1.5rem;
+        font-size: 0.9rem;
+    }
+
+    .about__achievements {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.75rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .about__stat {
+        padding: 1rem 0.5rem;
+    }
+
+    .about__stat-number {
+        font-size: 1.8rem;
+    }
+
+    .about__stat-label {
+        font-size: 0.7rem;
+    }
+
+    .about__expertise {
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+    }
+
+    .about__expertise-card {
+        padding: 1.25rem;
+    }
+
+    .about__expertise-icon {
+        font-size: 1.5rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .about__expertise-title {
+        font-size: 1rem;
+    }
+
+    .about__expertise-desc {
+        font-size: 0.8rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .about__skill-tag {
+        padding: 0.2rem 0.6rem;
+        font-size: 0.65rem;
+    }
+}

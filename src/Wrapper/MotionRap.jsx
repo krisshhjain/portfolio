@@ -1,11 +1,15 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-//to give animation to all the components
+
+// Animate sections only ONCE when they first scroll into view (downward).
+// Using viewport: { once: true } prevents re-triggering when scrolling back up.
 const MotionWrap = (Component, classNames) => function HOC() {
   return (
     <motion.div
-      whileInView={{ y: [100, 50, 0], opacity: [0, 0, 1] }}
-      transition={{ duration: 0.5 }}
+      initial={{ y: 60, opacity: 0 }}
+      whileInView={{ y: 0, opacity: 1 }}
+      viewport={{ once: true, amount: 0.1 }}
+      transition={{ duration: 0.5, ease: 'easeOut' }}
       className={`${classNames} `}
     >
       <Component />
