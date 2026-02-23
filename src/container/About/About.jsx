@@ -113,7 +113,7 @@ const About = () => {
           transition={{ duration: 0.6 }} viewport={{ once: true }}
         >
           <ScrollReveal baseOpacity={0.08} enableBlur baseRotation={1} blurStrength={3}>
-            AI/ML developer and full-stack engineer at Bennett University, building intelligent systems that learn and beautiful interfaces that delight. I don't just write code — I craft solutions that push boundaries.
+            AI/ML developer and full-stack engineer in the making at Bennett University, building intelligent systems that learn and beautiful interfaces that delight. I don't just write code, I craft solutions that push boundaries.
           </ScrollReveal>
         </motion.div>
 

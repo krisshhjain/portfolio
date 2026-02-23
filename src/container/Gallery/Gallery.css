@@ -75,18 +75,23 @@
 }
 
 @media screen and (max-width: 768px) {
+    .gallery__dome-container {
+        height: 60vh;
+        min-height: 350px;
+    }
+
     .gallery__scroll-hint {
-        bottom: 1rem;
-        right: 1rem;
-        padding: 0.4rem 0.8rem 0.4rem 0.4rem;
+        display: none;
     }
 
-    .gallery__progress-ring {
-        width: 26px;
-        height: 26px;
+    .gallery__subtitle {
+        font-size: 0.75rem;
     }
+}
 
-    .gallery__scroll-label {
-        font-size: 0.65rem;
+@media screen and (max-width: 480px) {
+    .gallery__dome-container {
+        height: 50vh;
+        min-height: 280px;
     }
 }

@@ -11,15 +11,62 @@
     text-align: center;
     color: var(--text-muted);
     font-size: 0.9rem;
-    margin-bottom: 1rem;
+    margin-bottom: 2rem;
     letter-spacing: 1px;
     text-transform: uppercase;
 }
 
-.skills__globe-wrapper {
+.skills__loops {
     width: 100%;
-    height: 600px;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.skills__loop-row {
+    width: 100%;
     position: relative;
+    overflow: hidden;
+    height: 100px;
+}
+
+/* ── Skill item with hover label ── */
+.skills__item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+    position: relative;
+}
+
+.skills__item img {
+    height: 50px;
+    width: auto;
+    object-fit: contain;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.skills__item:hover img {
+    transform: scale(1.15);
+}
+
+.skills__item-name {
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    color: var(--text-primary, #fff);
+    opacity: 0;
+    transform: translateY(4px);
+    transition: opacity 0.25s ease, transform 0.25s ease;
+    margin-top: 6px;
+    white-space: nowrap;
+}
+
+.skills__item:hover .skills__item-name {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 /* ── MOBILE ── */
@@ -28,18 +75,20 @@
         padding: 2rem 0 1rem;
     }
 
-    .skills__globe-wrapper {
-        height: 400px;
-    }
-
     .skills__subtitle {
         font-size: 0.75rem;
-        margin-bottom: 0.5rem;
+        margin-bottom: 1rem;
     }
-}
 
-@media screen and (max-width: 450px) {
-    .skills__globe-wrapper {
-        height: 320px;
+    .skills__loop-row {
+        height: 80px;
+    }
+
+    .skills__item img {
+        height: 38px;
+    }
+
+    .skills__item-name {
+        font-size: 0.6rem;
     }
 }

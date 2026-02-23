@@ -1,50 +1,89 @@
 import React from 'react';
 import DecryptedText from '../../components/ReactBits/DecryptedText/DecryptedText';
-import InfiniteMenu from '../../components/ReactBits/InfiniteMenu/InfiniteMenu';
+import LogoLoop from '../../components/ReactBits/LogoLoop/LogoLoop';
 import './Skills.css';
 
 const C = 'https://res.cloudinary.com/dtku6vik9/image/upload/f_auto,q_auto,w_200,c_limit';
 
-const skillItems = [
-  { image: `${C}/react_converted_mc6gwo`, title: 'React', description: 'Frontend Library' },
-  { image: `${C}/node_converted_proaio`, title: 'Node.js', description: 'Runtime' },
-  { image: `${C}/python_converted_zk74ru`, title: 'Python', description: 'Programming' },
-  { image: `${C}/javascript_converted_krnnll`, title: 'JavaScript', description: 'Language' },
-  { image: `${C}/typescript_converted_a0429i`, title: 'TypeScript', description: 'Language' },
-  { image: `${C}/git_converted_t4wjlw`, title: 'Git', description: 'Version Control' },
-  { image: `${C}/MongoDB_converted_nrpqdn`, title: 'MongoDB', description: 'Database' },
-  { image: `${C}/html_converted_cwltkp`, title: 'HTML5', description: 'Markup' },
-  { image: `${C}/css_converted_xxasoc`, title: 'CSS3', description: 'Styling' },
-  { image: `${C}/cpp_converted_rtdgov`, title: 'C++', description: 'Language' },
-  { image: `${C}/Java_converted_sspyxn`, title: 'Java', description: 'Language' },
-  { image: `${C}/aws_converted_pfsyoa`, title: 'AWS', description: 'Cloud' },
-  { image: `${C}/figma_converted_sd8vlt`, title: 'Figma', description: 'Design' },
-  { image: `${C}/Next.js_converted_gveqrh`, title: 'Next.js', description: 'Framework' },
-  { image: `${C}/Express_converted_tauak4`, title: 'Express', description: 'Backend' },
-  { image: `${C}/redux_converted_u5vghw`, title: 'Redux', description: 'State Mgmt' },
-  { image: `${C}/TailwindCSS_converted_osmwvm`, title: 'Tailwind', description: 'CSS Framework' },
-  { image: `${C}/PostgresSQL_converted_jtmley`, title: 'PostgreSQL', description: 'Database' },
-  { image: `${C}/MySQL_converted_n113x2`, title: 'MySQL', description: 'Database' },
-  { image: `${C}/graphql_converted_d3x1wv`, title: 'GraphQL', description: 'API' },
-  { image: `${C}/Postman_converted_d77ile`, title: 'Postman', description: 'API Testing' },
-  { image: `${C}/Socket.io_converted_cdgf0m`, title: 'Socket.io', description: 'Real-time' },
+/* Split skills into two rows for visual variety */
+const row1 = [
+  { src: `${C}/react_converted_mc6gwo`, alt: 'React', title: 'React' },
+  { src: `${C}/node_converted_proaio`, alt: 'Node.js', title: 'Node.js' },
+  { src: `${C}/python_converted_zk74ru`, alt: 'Python', title: 'Python' },
+  { src: `${C}/javascript_converted_krnnll`, alt: 'JavaScript', title: 'JavaScript' },
+  { src: `${C}/typescript_converted_a0429i`, alt: 'TypeScript', title: 'TypeScript' },
+  { src: `${C}/git_converted_t4wjlw`, alt: 'Git', title: 'Git' },
+  { src: `${C}/MongoDB_converted_nrpqdn`, alt: 'MongoDB', title: 'MongoDB' },
+  { src: `${C}/html_converted_cwltkp`, alt: 'HTML5', title: 'HTML5' },
+  { src: `${C}/css_converted_xxasoc`, alt: 'CSS3', title: 'CSS3' },
+  { src: `${C}/cpp_converted_rtdgov`, alt: 'C++', title: 'C++' },
+  { src: `${C}/Java_converted_sspyxn`, alt: 'Java', title: 'Java' },
+];
+
+const row2 = [
+  { src: `${C}/aws_converted_pfsyoa`, alt: 'AWS', title: 'AWS' },
+  { src: `${C}/figma_converted_sd8vlt`, alt: 'Figma', title: 'Figma' },
+  { src: `${C}/Next.js_converted_gveqrh`, alt: 'Next.js', title: 'Next.js' },
+  { src: `${C}/Express_converted_tauak4`, alt: 'Express', title: 'Express' },
+  { src: `${C}/redux_converted_u5vghw`, alt: 'Redux', title: 'Redux' },
+  { src: `${C}/TailwindCSS_converted_osmwvm`, alt: 'Tailwind', title: 'Tailwind' },
+  { src: `${C}/PostgresSQL_converted_jtmley`, alt: 'PostgreSQL', title: 'PostgreSQL' },
+  { src: `${C}/MySQL_converted_n113x2`, alt: 'MySQL', title: 'MySQL' },
+  { src: `${C}/graphql_converted_d3x1wv`, alt: 'GraphQL', title: 'GraphQL' },
+  { src: `${C}/Postman_converted_d77ile`, alt: 'Postman', title: 'Postman' },
+  { src: `${C}/Socket.io_converted_cdgf0m`, alt: 'Socket.io', title: 'Socket.io' },
 ];
 
 const Skills = () => {
+
+  const renderSkill = (item) => (
+    <div className="skills__item">
+      <img src={item.src} alt={item.alt} draggable={false} />
+      <span className="skills__item-name">{item.alt}</span>
+    </div>
+  );
   return (
     <section id="skills" className="app__skills app__skills--free">
       <h2 className="head-text">
         <DecryptedText text="Tech Stack" speed={50} maxIterations={10} animateOn="view" />
       </h2>
 
-      <p className="skills__subtitle">Drag to explore the globe</p>
+      <p className="skills__subtitle">Hover to pause & see skill names</p>
 
-      <div className="skills__globe-wrapper">
-        <InfiniteMenu items={skillItems} scale={1} />
+      <div className="skills__loops">
+        <div className="skills__loop-row">
+          <LogoLoop
+            logos={row1}
+            speed={80}
+            direction="left"
+            logoHeight={50}
+            gap={56}
+            hoverSpeed={0}
+            scaleOnHover
+            fadeOut
+            fadeOutColor="#050510"
+            renderItem={renderSkill}
+            ariaLabel="Tech skills row 1"
+          />
+        </div>
+        <div className="skills__loop-row">
+          <LogoLoop
+            logos={row2}
+            speed={60}
+            direction="right"
+            logoHeight={50}
+            gap={56}
+            hoverSpeed={0}
+            scaleOnHover
+            fadeOut
+            fadeOutColor="#050510"
+            renderItem={renderSkill}
+            ariaLabel="Tech skills row 2"
+          />
+        </div>
       </div>
     </section>
   );
 };
 
 export default Skills;
-

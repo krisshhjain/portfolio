@@ -79,7 +79,11 @@ const Gallery = () => {
     }, []);
 
     /* Wheel event capture — only hijack scroll DOWN, never block scroll UP */
+    /* Disabled on touch devices — they can drag the dome instead */
     useEffect(() => {
+        const isTouchDevice = window.matchMedia('(pointer: coarse)').matches;
+        if (isTouchDevice) return; // Don't hijack scroll on mobile
+
         const handleWheel = (e) => {
             if (!domeRef.current) return;
 

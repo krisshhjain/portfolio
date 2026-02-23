@@ -299,23 +299,8 @@
    RESPONSIVE
    ============================================ */
 @media screen and (max-width: 1100px) {
-    .about__bio-row {
-        flex-direction: column;
-        text-align: center;
-    }
-
-    .about__bio {
-        text-align: center;
-    }
-
-    .about__spotlight {
-        width: 280px;
-        height: 370px;
-    }
-
-    .about__spotlight-img-wrap {
-        width: 230px;
-        height: 300px;
+    .about__spotlight-wrap {
+        flex: 0 0 300px;
     }
 
     .about__expertise-grid {
@@ -338,18 +323,17 @@
         height: 42px;
     }
 
+    .about__bio-row {
+        gap: 1.5rem;
+    }
+
     .about__bio {
-        font-size: 1rem;
+        font-size: 0.95rem;
+        line-height: 1.7;
     }
 
-    .about__spotlight {
-        width: 220px;
-        height: 300px;
-    }
-
-    .about__spotlight-img-wrap {
-        width: 180px;
-        height: 240px;
+    .about__spotlight-wrap {
+        flex: 0 0 160px;
     }
 
     .about__milestones {
@@ -375,6 +359,19 @@
 }
 
 @media screen and (max-width: 480px) {
+    .about__bio-row {
+        gap: 1rem;
+    }
+
+    .about__bio {
+        font-size: 0.85rem;
+        line-height: 1.65;
+    }
+
+    .about__spotlight-wrap {
+        flex: 0 0 120px;
+    }
+
     .about__milestones {
         flex-wrap: wrap;
         gap: 1rem;
