@@ -58,6 +58,16 @@ const Gallery = () => {
     const fullyVisibleRef = useRef(false);  // true when globe is fully in view
     const completedRef = useRef(false);     // true once rotation finished
 
+    const [isMobile, setIsMobile] = useState(false);
+
+    useEffect(() => {
+        const mq = window.matchMedia('(max-width: 768px)');
+        setIsMobile(mq.matches);
+        const handler = (e) => setIsMobile(e.matches);
+        mq.addEventListener('change', handler);
+        return () => mq.removeEventListener('change', handler);
+    }, []);
+
     /* Only start hijack when globe is almost fully visible */
     useEffect(() => {
         const section = sectionRef.current;
@@ -167,17 +177,17 @@ const Gallery = () => {
                 <DomeGallery
                     ref={domeRef}
                     images={galleryImages}
-                    fit={0.8}
-                    minRadius={600}
+                    fit={isMobile ? 0.6 : 0.8}
+                    minRadius={isMobile ? 280 : 600}
                     maxVerticalRotationDeg={0}
-                    segments={34}
+                    segments={isMobile ? 20 : 34}
                     dragDampening={2}
                     grayscale
                     overlayBlurColor="#060010"
                     imageBorderRadius="12px"
                     openedImageBorderRadius="16px"
-                    openedImageWidth="300px"
-                    openedImageHeight="420px"
+                    openedImageWidth={isMobile ? "200px" : "300px"}
+                    openedImageHeight={isMobile ? "280px" : "420px"}
                 />
             </div>
         </div>

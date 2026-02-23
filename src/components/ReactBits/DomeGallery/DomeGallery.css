@@ -194,3 +194,18 @@ main.sphere-main {
 .edge-fade--bottom {
     bottom: 0;
 }
+
+/* ── Mobile: allow vertical scroll through dome ── */
+@media screen and (max-width: 768px) {
+    main.sphere-main {
+        touch-action: pan-y;
+    }
+
+    .item__image {
+        inset: 5px;
+    }
+
+    .edge-fade {
+        height: 60px;
+    }
+}
