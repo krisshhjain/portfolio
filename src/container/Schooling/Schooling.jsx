@@ -1,6 +1,5 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import * as images from '../../assets';
 import DecryptedText from '../../components/ReactBits/DecryptedText/DecryptedText';
 import { AppWrap, MotionWrap } from '../../Wrapper';
 import './Schooling.css';
@@ -10,7 +9,7 @@ const education = [
     institution: 'Bennett University',
     degree: 'B.Tech Computer Science',
     period: '2023 - 2027',
-    logo: images.BU,
+    logo: '',
     description: 'Pursuing a B.Tech in Computer Science and Engineering with a focus on full-stack development and machine learning.',
     subjects: ['Data Structures & Algorithms', 'DBMS', 'OS', 'Computer Networks', 'Machine Learning'],
     grade: '9.0 CGPA',
@@ -20,7 +19,7 @@ const education = [
     institution: 'BPS Public School',
     degree: 'Senior Secondary (XII)',
     period: '2021 - 2023',
-    logo: images.BPS,
+    logo: '',
     description: 'Completed senior secondary education with a strong academic record in science and mathematics.',
     subjects: ['Physics', 'Chemistry', 'Mathematics', 'Computer Science', 'English'],
     grade: '90%',
@@ -30,7 +29,7 @@ const education = [
     institution: 'Ryan Holiday School',
     degree: 'Secondary (X)',
     period: '2019 - 2021',
-    logo: images.RHS,
+    logo: '',
     description: 'Strong foundation in academics with distinction in mathematics and sciences.',
     subjects: ['Mathematics', 'Science', 'English', 'Social Studies', 'Hindi'],
     grade: '92%',

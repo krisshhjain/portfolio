@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import * as images from '../../assets';
 import DecryptedText from '../../components/ReactBits/DecryptedText/DecryptedText';
 import { AppWrap, MotionWrap } from '../../Wrapper';
 import './Experience.css';
+
+const C = 'https://res.cloudinary.com/dtku6vik9/image/upload/f_auto,q_auto,w_800,c_limit,fl_progressive';
 
 const experiences = [
   {
@@ -11,7 +12,7 @@ const experiences = [
     organization: 'Southern Command – Indian Army',
     location: 'Remote',
     period: 'Aug 2025 – Oct 2025',
-    logo: images.armyLogo,
+    logo: `${C}/armyLogo_stnojn`,
     color: '#5227FF',
     highlights: [
       'Built secure MERN applications for internal Army workflows, reducing manual effort by 40%.',
@@ -19,14 +20,14 @@ const experiences = [
       'Delivered scalable, production-ready systems, increasing operational efficiency by 30%.',
     ],
     technologies: ['React', 'Node.js', 'MongoDB', 'Express.js', 'RBAC', 'REST APIs'],
-    gallery: [images.army1, images.army2],
+    gallery: [`${C}/army1_converted_tgj1c1`, `${C}/army2_converted_ij6pfa`],
   },
   {
     title: 'Software Developer Engineer Intern',
     organization: 'Indian Army – Mhow, India',
     location: 'On-Site',
     period: 'Jun 2025 – Aug 2025',
-    logo: images.armyLogo,
+    logo: `${C}/armyLogo_stnojn`,
     color: '#06D6A0',
     highlights: [
       'Built an internal cloud platform, improving workflow efficiency by ~30%.',
@@ -34,7 +35,7 @@ const experiences = [
       'Delivered production-ready components based on real operational requirements in a mission-critical environment.',
     ],
     technologies: ['React', 'Node.js', 'MongoDB', 'Express.js', 'Cloud', 'Git'],
-    gallery: [images.army1, images.army2],
+    gallery: [`${C}/army1_converted_tgj1c1`, `${C}/army2_converted_ij6pfa`],
   },
 ];
 

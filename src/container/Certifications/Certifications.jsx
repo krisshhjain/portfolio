@@ -1,90 +1,91 @@
 import React, { useState, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import * as images from '../../assets';
 import DecryptedText from '../../components/ReactBits/DecryptedText/DecryptedText';
 import CircularGallery from '../../components/ReactBits/CircularGallery/CircularGallery';
 import { AppWrap, MotionWrap } from '../../Wrapper';
 import './Certifications.css';
+
+const C = 'https://res.cloudinary.com/dtku6vik9/image/upload/f_auto,q_auto,w_800,c_limit,fl_progressive';
 
 const certifications = [
   {
     title: 'AWS Cloud Practitioner',
     issuer: 'Amazon Web Services',
     date: '2024',
-    logo: images.awsLogo,
-    credential: images.awsCertification,
+    logo: `${C}/aws_converted_cdxchb`,
+    credential: `${C}/AWS_converted_ktrs1l`,
     color: '#FF9900',
   },
   {
     title: 'Algorithmic Toolbox',
     issuer: 'UC San Diego (Coursera)',
     date: '2024',
-    logo: images.ucsdLogo,
-    credential: images.algoToolboxCert,
+    logo: `${C}/UCSD_converted_lv0vmk`,
+    credential: `${C}/Algorithmic-Toolbox_converted_zg0ok4`,
     color: '#0056D2',
   },
   {
     title: 'Combinatorics & Probability',
     issuer: 'UC San Diego (Coursera)',
     date: '2024',
-    logo: images.ucsdLogo,
-    credential: images.combinatoricsCert,
+    logo: `${C}/UCSD_converted_lv0vmk`,
+    credential: `${C}/Combinatorics-and-Probability_converted_zeixun`,
     color: '#0056D2',
   },
   {
     title: 'Data Structures',
     issuer: 'UC San Diego (Coursera)',
     date: '2024',
-    logo: images.ucsdLogo,
-    credential: images.dataStructuresCert,
+    logo: `${C}/UCSD_converted_lv0vmk`,
+    credential: `${C}/Data-Structures_converted_oi0m0j`,
     color: '#0056D2',
   },
   {
     title: 'Network Communication Fundamentals',
     issuer: 'University of Colorado (Coursera)',
     date: '2024',
-    logo: images.uColoradoLogo,
-    credential: images.networkCommCert,
+    logo: `${C}/universitycolorado_converted_mcuzdr`,
+    credential: `${C}/Fundamentals-of-Network-Communication_converted_jsusqo`,
     color: '#CFB87C',
   },
   {
     title: 'Front-End & Web Development',
     issuer: 'IBM (Coursera)',
     date: '2024',
-    logo: images.ibmLogo,
-    credential: images.frontEndCert,
+    logo: `${C}/IBM_converted_prapce`,
+    credential: `${C}/Getting-Started-with-Front-End-and-Web-Development_converted_f2wtvi`,
     color: '#006699',
   },
   {
     title: 'MongoDB for Developers',
     issuer: 'MongoDB University',
     date: '2024',
-    logo: images.mongodbLogo,
-    credential: images.mongodbCert,
+    logo: `${C}/mongodb_converted_udxdgq`,
+    credential: `${C}/Mongodb_converted_o9srio`,
     color: '#00ED64',
   },
   {
     title: 'Operating Systems',
     issuer: 'Google (Coursera)',
     date: '2024',
-    logo: images.googleCloudLogo,
-    credential: images.osCert,
+    logo: `${C}/google_converted_u7agng`,
+    credential: `${C}/Operating-System-And-you_converted_wkip8v`,
     color: '#4285F4',
   },
   {
     title: 'P2P Protocols & LANs',
     issuer: 'University of Colorado (Coursera)',
     date: '2024',
-    logo: images.uColoradoLogo,
-    credential: images.p2pCert,
+    logo: `${C}/universitycolorado_converted_mcuzdr`,
+    credential: `${C}/P2p-Protocols-and-Local-Area-Networks_converted_yzu9zz`,
     color: '#CFB87C',
   },
   {
     title: 'Programming Using C++',
     issuer: 'Infosys Springboard',
     date: '2024',
-    logo: images.infosysLogo,
-    credential: images.cppCert,
+    logo: `${C}/infosys_converted_ytmh3q`,
+    credential: `${C}/Programmiing-Using-C__converted_l8jqr7`,
     color: '#007CC3',
   },
 ];

@@ -1,11 +1,13 @@
 import React, { useEffect, useRef, useCallback } from 'react';
 import { motion, useMotionValue, useTransform, useSpring } from 'framer-motion';
-import * as images from '../../assets';
 import './Header.css';
 import DecryptedText from '../../components/ReactBits/DecryptedText/DecryptedText';
 import RotatingText from '../../components/ReactBits/RotatingText/RotatingText';
 import LightRays from '../../components/ReactBits/LightRays/LightRays';
 import TextType from '../../components/ReactBits/TextType/TextType';
+
+const S = 'https://res.cloudinary.com/dtku6vik9/image/upload/f_auto,q_auto,w_200,c_limit';
+const P = 'https://res.cloudinary.com/dtku6vik9/image/upload/v1771860448/profile_gvukop.png';
 
 /* ── tiny particle canvas ── */
 const ParticleField = () => {
@@ -65,21 +67,21 @@ const ParticleField = () => {
 
 /* ── orbiting badges ── */
 const orbitSkills = [
-  { img: images.reactPng, label: 'React', angle: 0 },
-  { img: images.node, label: 'Node', angle: 60 },
-  { img: images.python, label: 'Python', angle: 120 },
-  { img: images.MongoDB, label: 'Mongo', angle: 180 },
-  { img: images.awsLogo, label: 'Cloud', angle: 240 },
-  { img: images.javascript, label: 'JS', angle: 300 },
+  { img: `${S}/react_converted_mc6gwo`, label: 'React', angle: 0 },
+  { img: `${S}/node_converted_proaio`, label: 'Node', angle: 60 },
+  { img: `${S}/python_converted_zk74ru`, label: 'Python', angle: 120 },
+  { img: `${S}/MongoDB_converted_nrpqdn`, label: 'Mongo', angle: 180 },
+  { img: `${S}/aws_converted_pfsyoa`, label: 'Cloud', angle: 240 },
+  { img: `${S}/javascript_converted_krnnll`, label: 'JS', angle: 300 },
 ];
 
 /* ── tech dock ── */
 const dockItems = [
-  { img: images.reactPng, label: 'React' },
-  { img: images.node, label: 'Node.js' },
-  { img: images.python, label: 'Python' },
-  { img: images.typescript, label: 'TypeScript' },
-  { img: images.git, label: 'Git' },
+  { img: `${S}/react_converted_mc6gwo`, label: 'React' },
+  { img: `${S}/node_converted_proaio`, label: 'Node.js' },
+  { img: `${S}/python_converted_zk74ru`, label: 'Python' },
+  { img: `${S}/typescript_converted_a0429i`, label: 'TypeScript' },
+  { img: `${S}/git_converted_t4wjlw`, label: 'Git' },
 ];
 
 const Header = () => {
@@ -187,7 +189,7 @@ const Header = () => {
             style={{ rotateX, rotateY, transformPerspective: 1200 }}
           >
             <div className="header__img-wrapper">
-              <img src={images.profile} alt="Krish Jain" />
+              <img src={P} alt="Krish Jain" />
               <div className="header__img-ring" />
               <motion.div className="header__img-glow" style={{ x: glowX, y: glowY }} />
             </div>

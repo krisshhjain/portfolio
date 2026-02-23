@@ -1,6 +1,5 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import * as images from '../../assets';
 import DecryptedText from '../../components/ReactBits/DecryptedText/DecryptedText';
 import ScrollReveal from '../../components/ReactBits/ScrollReveal/ScrollReveal';
 import { AppWrap, MotionWrap } from '../../Wrapper';
@@ -8,7 +7,7 @@ import './About.css';
 
 const personalInfo = {
   intro: "I'm a passionate Full Stack Developer and Cloud Enthusiast currently pursuing B.Tech in Computer Science at Bennett University. I love building scalable, performant web applications and exploring cutting-edge technologies.",
-  image: images.profile,
+  image: 'https://res.cloudinary.com/dtku6vik9/image/upload/v1771860448/profile_gvukop.png',
 };
 
 const expertiseAreas = [

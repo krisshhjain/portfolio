@@ -1,18 +1,19 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { AiFillGithub } from 'react-icons/ai';
-import * as images from '../../assets';
 import DecryptedText from '../../components/ReactBits/DecryptedText/DecryptedText';
 import CardSwap, { Card } from '../../components/ReactBits/CardSwap/CardSwap';
 import { AppWrap, MotionWrap } from '../../Wrapper';
 import './Work.css';
+
+const C = 'https://res.cloudinary.com/dtku6vik9/image/upload/f_auto,q_auto,w_600,c_limit,fl_progressive';
 
 const projects = [
   {
     title: 'DataZen',
     description: 'A secure cloud storage and file management platform with encrypted file storage, real-time collaboration via WebSockets, admin dashboard with user management, temporary accounts, storage quotas, activity logging, voice/video capabilities, and automated maintenance—deployed on AWS with MongoDB.',
     stack: ['Next.js', 'React', 'Node.js', 'MongoDB', 'Socket.io', 'Tailwind CSS', 'Docker', 'Nginx', 'AWS'],
-    image: images.projDatazen,
+    image: `${C}/DataZen_converted_ien0rm`,
     github: 'https://github.com/krisshhjain',
     color: '#5227FF',
   },
@@ -20,7 +21,7 @@ const projects = [
     title: 'FlowForge',
     description: 'An AI-powered web application that transforms natural language into structured, interactive visual diagrams—flowcharts, timelines, trees, or network graphs. Users simply type ideas and the system intelligently converts them into visual thinking tools.',
     stack: ['React', 'TypeScript', 'Vite', 'Node.js', 'Express', 'MongoDB', 'Mongoose', 'Gemini API'],
-    image: images.projFlowforge,
+    image: `${C}/flowforge_converted_bwshal`,
     github: 'https://github.com/krisshhjain',
     color: '#06D6A0',
   },
@@ -28,7 +29,7 @@ const projects = [
     title: 'Ayursutra',
     description: 'A full-stack Ayurvedic healthcare platform with patient and practitioner portals, appointment scheduling, therapy programs, progress tracking, reviews, chat, notifications, and an admin dashboard—with a Docker-ready backend and modern Vite React frontend.',
     stack: ['TypeScript', 'Vite', 'Tailwind CSS', 'Node.js', 'Express', 'MongoDB', 'Docker'],
-    image: images.projAyursutra,
+    image: `${C}/Ayursutra_converted_frw84d`,
     github: 'https://github.com/krisshhjain',
     color: '#FF6B6B',
   },
@@ -36,7 +37,7 @@ const projects = [
     title: 'Judgement (Oh Hell)',
     description: 'A real-time multiplayer trick-taking card game with intelligent bot opponents, dynamic bidding, strategic AI with difficulty levels, polished animations, and immersive UI. Emphasizes precision, control, and calculated risk.',
     stack: ['React', 'Node.js', 'Express.js', 'Socket.IO', 'MongoDB'],
-    image: images.projJudgement,
+    image: `${C}/Judgement_converted_pea5ko`,
     github: 'https://github.com/krisshhjain',
     color: '#FFD93D',
   },
@@ -44,7 +45,7 @@ const projects = [
     title: 'Pineapple Muzic',
     description: 'A modern, responsive music streaming app featuring artist profiles, album browsing, search, and a Spotify-style player—offering a sleek, dark-themed interface with fictionalized music data.',
     stack: ['React', 'TypeScript', 'Vite', 'Tailwind CSS'],
-    image: images.projPineapple,
+    image: `${C}/Pineapple-Muzic_converted_t0oxa7`,
     github: 'https://github.com/krisshhjain',
     color: '#FF9F43',
   },
@@ -52,7 +53,7 @@ const projects = [
     title: 'ShopSphere',
     description: 'A full-stack e-commerce platform with three portals: Super Admin for oversight, Seller Dashboard for product/order management, and a Customer Storefront with futuristic glassmorphic UI, cart, wishlist, checkout, and order tracking.',
     stack: ['Next.js', 'React', 'MongoDB', 'Mongoose', 'REST API'],
-    image: images.projShopsphere,
+    image: `${C}/ShopSphere_converted_l7fdsx`,
     github: 'https://github.com/krisshhjain',
     color: '#54A0FF',
   },
@@ -60,7 +61,7 @@ const projects = [
     title: 'Spam Mail Detection',
     description: 'Detects spam vs ham emails using a labeled CSV dataset. Preprocesses email text, converts it into numeric features via TF-IDF, trains a machine-learning classifier, and predicts whether new messages are spam.',
     stack: ['Python', 'Scikit-learn', 'TF-IDF', 'ML'],
-    image: images.projEcosort,
+    image: `${C}/spam-mail-detection_converted_aglmd2`,
     github: 'https://github.com/krisshhjain',
     color: '#A29BFE',
   },
@@ -68,7 +69,7 @@ const projects = [
     title: 'Portfolio',
     description: 'This Vite-powered React portfolio showcases work, skills, experience, and certifications with smooth navigation, interactive UI bits (galleries, menus, text effects), background animations, a splash screen, and responsive design.',
     stack: ['React', 'Vite', 'Framer Motion', 'WebGL', 'GSAP', 'CSS3'],
-    image: images.projPortfolio,
+    image: `${C}/portfolio_converted_kgppty`,
     github: 'https://github.com/krisshhjain',
     color: '#FD79A8',
   },
