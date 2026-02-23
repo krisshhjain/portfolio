@@ -1,0 +1,30 @@
+import React, { createContext, useContext, useState, useEffect, useCallback } from 'react';
+
+const ThemeContext = createContext();
+
+export const useTheme = () => useContext(ThemeContext);
+
+export const ThemeProvider = ({ children }) => {
+    const [theme, setTheme] = useState(() => {
+        try {
+            return localStorage.getItem('portfolio-theme') || 'dark';
+        } catch {
+            return 'dark';
+        }
+    });
+
+    useEffect(() => {
+        document.documentElement.setAttribute('data-theme', theme);
+        try { localStorage.setItem('portfolio-theme', theme); } catch { }
+    }, [theme]);
+
+    const toggleTheme = useCallback(() => {
+        setTheme(prev => (prev === 'dark' ? 'light' : 'dark'));
+    }, []);
+
+    return (
+        <ThemeContext.Provider value={{ theme, toggleTheme }}>
+            {children}
+        </ThemeContext.Provider>
+    );
+};

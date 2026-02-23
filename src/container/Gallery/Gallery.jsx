@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef, useState, useEffect, useCallback } from 'react';
 import DomeGallery from '../../components/ReactBits/DomeGallery/DomeGallery';
 import DecryptedText from '../../components/ReactBits/DecryptedText/DecryptedText';
 import './Gallery.css';
@@ -46,15 +46,122 @@ const galleryImages = publicIds.map((id, i) => ({
     alt: `Moment ${i + 1}`
 }));
 
+/* ── Scroll-hijack settings ── */
+const TOTAL_SCROLL_DEG = 360;            // 1 full rotation before release
+const DEG_PER_PIXEL = 0.35;             // how fast wheel-delta maps to rotation
+
 const Gallery = () => {
+    const domeRef = useRef(null);
+    const sectionRef = useRef(null);
+    const accumulatedRef = useRef(0);       // degrees rotated so far
+    const hijackingRef = useRef(false);
+    const fullyVisibleRef = useRef(false);  // true when globe is fully in view
+    const completedRef = useRef(false);     // true once rotation finished
+
+    /* Only start hijack when globe is almost fully visible */
+    useEffect(() => {
+        const section = sectionRef.current;
+        if (!section) return;
+
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                fullyVisibleRef.current = entry.isIntersecting;
+                if (!entry.isIntersecting) {
+                    hijackingRef.current = false;
+                    // Don't reset completedRef — once done, it's done until reload
+                }
+            },
+            { threshold: 0.85 }
+        );
+
+        observer.observe(section);
+        return () => observer.disconnect();
+    }, []);
+
+    /* Wheel event capture — only hijack scroll DOWN, never block scroll UP */
+    useEffect(() => {
+        const handleWheel = (e) => {
+            if (!domeRef.current) return;
+
+            const deltaY = e.deltaY;
+            const scrollingDown = deltaY > 0;
+
+            // Never block scrolling up — user should always be able to scroll back
+            if (!scrollingDown) return;
+
+            // If rotation already completed, let normal scrolling happen
+            if (completedRef.current) return;
+
+            // Only start hijacking when fully visible and scrolling down
+            if (fullyVisibleRef.current && !hijackingRef.current && !completedRef.current) {
+                hijackingRef.current = true;
+            }
+
+            if (!hijackingRef.current) return;
+
+            e.preventDefault();
+
+            const degreeDelta = deltaY * DEG_PER_PIXEL;
+            accumulatedRef.current += Math.abs(degreeDelta);
+
+            // Rotate the globe smoothly
+            domeRef.current.scrollRotate(degreeDelta);
+
+            // Check if we've hit the target
+            if (accumulatedRef.current >= TOTAL_SCROLL_DEG) {
+                completedRef.current = true;
+                hijackingRef.current = false;
+            }
+        };
+
+        window.addEventListener('wheel', handleWheel, { passive: false });
+        return () => window.removeEventListener('wheel', handleWheel);
+    }, []);
+
+    /* Progress indicator (subtle) */
+    const [progress, setProgress] = useState(0);
+
+    useEffect(() => {
+        let raf;
+        const tick = () => {
+            const p = Math.min(accumulatedRef.current / TOTAL_SCROLL_DEG, 1);
+            setProgress(p);
+            raf = requestAnimationFrame(tick);
+        };
+        raf = requestAnimationFrame(tick);
+        return () => cancelAnimationFrame(raf);
+    }, []);
+
     return (
-        <div className="app__gallery" id="gallery">
+        <div className="app__gallery" id="gallery" ref={sectionRef}>
             <h2 className="head-text gallery__title">
                 <DecryptedText text="Moments" speed={50} maxIterations={10} animateOn="view" />
             </h2>
             <p className="gallery__subtitle">Drag to explore • Click to enlarge</p>
+
+            {/* Scroll progress ring */}
+            {progress > 0 && progress < 1 && (
+                <div className="gallery__scroll-hint">
+                    <svg className="gallery__progress-ring" viewBox="0 0 40 40">
+                        <circle cx="20" cy="20" r="17" fill="none" stroke="rgba(82,39,255,0.15)" strokeWidth="2.5" />
+                        <circle
+                            cx="20" cy="20" r="17"
+                            fill="none"
+                            stroke="#5227FF"
+                            strokeWidth="2.5"
+                            strokeDasharray={`${progress * 106.8} 106.8`}
+                            strokeLinecap="round"
+                            transform="rotate(-90 20 20)"
+                            style={{ transition: 'stroke-dasharray 0.1s ease' }}
+                        />
+                    </svg>
+                    <span className="gallery__scroll-label">Scroll to explore</span>
+                </div>
+            )}
+
             <div className="gallery__dome-container">
                 <DomeGallery
+                    ref={domeRef}
                     images={galleryImages}
                     fit={0.8}
                     minRadius={600}

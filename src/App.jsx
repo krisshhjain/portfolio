@@ -7,12 +7,13 @@ import ClickSpark from './components/ReactBits/ClickSpark/ClickSpark';
 import TargetCursor from './components/ReactBits/TargetCursor/TargetCursor';
 import CurvedLoop from './components/ReactBits/CurvedLoop/CurvedLoop';
 import SplashScreen from './components/SplashScreen/SplashScreen';
+import { ThemeProvider } from './context/ThemeContext';
 
 const App = () => {
   const [splashDone, setSplashDone] = useState(false);
 
   return (
-    <>
+    <ThemeProvider>
       {!splashDone && <SplashScreen onComplete={() => setSplashDone(true)} />}
       <ClickSpark sparkColor="#8B5CF6" sparkSize={8} sparkRadius={20} sparkCount={10} duration={500}>
         <div className="app">
@@ -59,7 +60,7 @@ const App = () => {
           </nav>
         </div>
       </ClickSpark>
-    </>
+    </ThemeProvider>
   );
 };
 

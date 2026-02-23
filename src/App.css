@@ -4,6 +4,7 @@
     position: relative;
     overflow-x: hidden;
     min-height: 100vh;
+    transition: background var(--theme-transition);
 }
 
 /* Subtle grid overlay */
@@ -198,6 +199,11 @@
         padding-bottom: max(0.5rem, env(safe-area-inset-bottom));
         justify-content: space-around;
         align-items: center;
+    }
+
+    [data-theme="light"] .mobile-bottom-nav {
+        background: rgba(245, 243, 255, 0.85);
+        border-top-color: rgba(82, 39, 255, 0.1);
     }
 
     .mobile-bottom-nav__item {

@@ -1,1 +1,74 @@
-/* Navbar is now handled by BubbleMenu - this file only provides overrides */
+/* ═══════════════════════════════
+   THEME TOGGLE BUTTON
+   ═══════════════════════════════ */
+.theme-toggle {
+    position: fixed;
+    top: 1.25rem;
+    right: 10rem;
+    z-index: 9999;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(10, 10, 30, 0.6);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+    color: var(--text-secondary);
+    padding: 0;
+}
+
+.theme-toggle:hover {
+    border-color: var(--accent-primary);
+    background: rgba(82, 39, 255, 0.12);
+    color: var(--text-primary);
+    transform: scale(1.08);
+    box-shadow: 0 0 20px rgba(82, 39, 255, 0.2);
+}
+
+.theme-toggle__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.theme-toggle__icon--sun:hover {
+    transform: rotate(45deg);
+}
+
+.theme-toggle__icon--moon:hover {
+    transform: rotate(-15deg);
+}
+
+/* ── Light theme: toggle button adapts ── */
+[data-theme="light"] .theme-toggle {
+    background: rgba(255, 255, 255, 0.7);
+    border-color: rgba(82, 39, 255, 0.12);
+    color: #1a1035;
+}
+
+[data-theme="light"] .theme-toggle:hover {
+    background: rgba(82, 39, 255, 0.08);
+    border-color: var(--accent-primary);
+    box-shadow: 0 0 20px rgba(82, 39, 255, 0.12);
+}
+
+/* ── Mobile ── */
+@media screen and (max-width: 768px) {
+    .theme-toggle {
+        top: 1rem;
+        right: 7.5rem;
+        width: 36px;
+        height: 36px;
+    }
+
+    .theme-toggle svg {
+        width: 15px;
+        height: 15px;
+    }
+}

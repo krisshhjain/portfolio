@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useCallback } from 'react';
+import { useEffect, useMemo, useRef, useCallback, forwardRef, useImperativeHandle } from 'react';
 import { useGesture } from '@use-gesture/react';
 import './DomeGallery.css';
 
@@ -72,7 +72,7 @@ function computeItemBaseRotation(offsetX, offsetY, sizeX, sizeY, segments) {
     return { rotateX, rotateY };
 }
 
-export default function DomeGallery({
+const DomeGallery = forwardRef(function DomeGallery({
     images = [],
     fit = 0.5,
     fitBasis = 'auto',
@@ -90,7 +90,7 @@ export default function DomeGallery({
     imageBorderRadius = '30px',
     openedImageBorderRadius = '30px',
     grayscale = true
-}) {
+}, ref) {
     const rootRef = useRef(null);
     const mainRef = useRef(null);
     const sphereRef = useRef(null);
@@ -124,6 +124,33 @@ export default function DomeGallery({
     }, []);
 
     const items = useMemo(() => buildItems(images, segments), [images, segments]);
+
+    /* Smooth scroll-driven rotation via lerp */
+    const scrollTargetRef = useRef(0);
+    const scrollRafRef = useRef(null);
+
+    useImperativeHandle(ref, () => ({
+        scrollRotate(deltaDeg) {
+            scrollTargetRef.current += deltaDeg;
+            if (scrollRafRef.current) return; // animation already running
+
+            const animate = () => {
+                const remaining = scrollTargetRef.current;
+                if (Math.abs(remaining) < 0.05) {
+                    scrollTargetRef.current = 0;
+                    scrollRafRef.current = null;
+                    return;
+                }
+                const step = remaining * 0.12; // lerp factor — smooth chase
+                scrollTargetRef.current -= step;
+                const nextY = wrapAngleSigned(rotationRef.current.y + step);
+                rotationRef.current = { ...rotationRef.current, y: nextY };
+                applyTransform(rotationRef.current.x, nextY);
+                scrollRafRef.current = requestAnimationFrame(animate);
+            };
+            scrollRafRef.current = requestAnimationFrame(animate);
+        }
+    }), []);
 
     const applyTransform = (xDeg, yDeg) => {
         const el = sphereRef.current;
@@ -615,4 +642,6 @@ export default function DomeGallery({
             </main>
         </div>
     );
-}
+});
+
+export default DomeGallery;

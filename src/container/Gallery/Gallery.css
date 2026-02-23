@@ -12,7 +12,7 @@
 
 .gallery__subtitle {
     font-size: 0.9rem;
-    color: rgba(255, 255, 255, 0.4);
+    color: var(--text-muted);
     letter-spacing: 0.08em;
     text-transform: uppercase;
     margin-bottom: 1.5rem;
@@ -23,4 +23,70 @@
     height: 85vh;
     min-height: 500px;
     position: relative;
+}
+
+/* ── Scroll progress indicator ── */
+.gallery__scroll-hint {
+    position: absolute;
+    bottom: 2rem;
+    right: 2rem;
+    z-index: 50;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.5rem 1rem 0.5rem 0.5rem;
+    background: rgba(5, 5, 16, 0.7);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(82, 39, 255, 0.15);
+    border-radius: 100px;
+    animation: scrollHintFadeIn 0.4s ease;
+}
+
+[data-theme="light"] .gallery__scroll-hint {
+    background: rgba(255, 255, 255, 0.75);
+    border-color: rgba(82, 39, 255, 0.12);
+}
+
+@keyframes scrollHintFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.gallery__progress-ring {
+    width: 32px;
+    height: 32px;
+    flex-shrink: 0;
+}
+
+.gallery__scroll-label {
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+@media screen and (max-width: 768px) {
+    .gallery__scroll-hint {
+        bottom: 1rem;
+        right: 1rem;
+        padding: 0.4rem 0.8rem 0.4rem 0.4rem;
+    }
+
+    .gallery__progress-ring {
+        width: 26px;
+        height: 26px;
+    }
+
+    .gallery__scroll-label {
+        font-size: 0.65rem;
+    }
 }
