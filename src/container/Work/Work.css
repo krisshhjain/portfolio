@@ -176,7 +176,8 @@
     .work__details {
         min-height: auto;
         text-align: center;
-        max-width: 100%;
+        max-width: 90vw;
+        padding: 0 0.5rem;
     }
 
     .work__details-inner {
@@ -193,6 +194,8 @@
     .work__details-stack {
         justify-content: center;
         gap: 0.25rem;
+        max-width: 90vw;
+        padding: 0 0.5rem;
     }
 
     .work__details-tag {

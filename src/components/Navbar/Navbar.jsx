@@ -21,8 +21,14 @@ const socialItems = [
   { label: 'X', link: 'https://x.com/krisshhjain' },
 ];
 
-const Navbar = () => {
+const Navbar = ({ splashDone = true }) => {
   const { theme, toggleTheme } = useTheme();
+
+  const navStyle = {
+    opacity: splashDone ? 1 : 0,
+    pointerEvents: splashDone ? 'auto' : 'none',
+    transition: 'opacity 0.5s ease',
+  };
 
   return (
     <>
@@ -32,6 +38,7 @@ const Navbar = () => {
         onClick={toggleTheme}
         aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} theme`}
         title={`Switch to ${theme === 'dark' ? 'light' : 'dark'} theme`}
+        style={navStyle}
       >
         <span className={`theme-toggle__icon ${theme === 'dark' ? 'theme-toggle__icon--sun' : 'theme-toggle__icon--moon'}`}>
           {theme === 'dark' ? (
@@ -63,7 +70,7 @@ const Navbar = () => {
         displaySocials
         displayItemNumbering={true}
         menuButtonColor={theme === 'dark' ? '#ffffff' : '#1a1035'}
-        openMenuButtonColor="#fff"
+        openMenuButtonColor="#1a1035"
         changeMenuColorOnOpen={true}
         colors={['#B19EEF', '#5227FF']}
         logoUrl={krishjainLogo}

@@ -18,7 +18,7 @@ const App = () => {
       <ClickSpark sparkColor="#8B5CF6" sparkSize={8} sparkRadius={20} sparkCount={10} duration={500}>
         <div className="app">
           <TargetCursor spinDuration={2.5} hideDefaultCursor parallaxOn hoverDuration={0.2} />
-          <Navbar />
+          <Navbar splashDone={splashDone} />
           <Header />
           <CurvedLoop
             marqueeText="Full Stack Developer ✦ Cloud Enthusiast ✦ Open Source ✦ DSA Practitioner ✦ "

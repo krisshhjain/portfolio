@@ -18,6 +18,7 @@
 .sphere,
 .item,
 .item__image {
+    -webkit-transform-style: preserve-3d;
     transform-style: preserve-3d;
 }
 
@@ -38,9 +39,9 @@ main.sphere-main {
     height: 100%;
     display: grid;
     place-items: center;
+    -webkit-perspective: calc(var(--radius) * 2);
     perspective: calc(var(--radius) * 2);
     perspective-origin: 50% 50%;
-    contain: layout paint size;
 }
 
 .sphere {
@@ -76,9 +77,9 @@ main.sphere-main {
     right: -999px;
     margin: auto;
     transform-origin: 50% 50%;
+    -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
     will-change: transform;
-    contain: layout style paint;
     transform: rotateY(calc(var(--rot-y) * (var(--offset-x) + ((var(--item-size-x) - 1) / 2)) + var(--rot-y-delta, 0deg))) rotateX(calc(var(--rot-x) * (var(--offset-y) - ((var(--item-size-y) - 1) / 2)) + var(--rot-x-delta, 0deg))) translateZ(var(--radius));
 }
 
@@ -89,6 +90,7 @@ main.sphere-main {
     border-radius: var(--tile-radius, 12px);
     background: transparent;
     overflow: hidden;
+    -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
     cursor: pointer;
     -webkit-tap-highlight-color: transparent;
@@ -108,6 +110,7 @@ main.sphere-main {
     height: 100%;
     object-fit: cover;
     pointer-events: none;
+    -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
     filter: var(--image-filter, none);
 }
@@ -199,6 +202,11 @@ main.sphere-main {
 @media screen and (max-width: 768px) {
     main.sphere-main {
         touch-action: pan-y;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .sphere-root {
+        --viewer-pad: 24px;
     }
 
     .item__image {
@@ -207,5 +215,9 @@ main.sphere-main {
 
     .edge-fade {
         height: 60px;
+    }
+
+    .viewer .enlarge {
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
     }
 }
