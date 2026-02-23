@@ -61,8 +61,9 @@
 /* ── Mobile ── */
 @media screen and (max-width: 768px) {
     .theme-toggle {
-        top: 1rem;
-        right: 7.5rem;
+        top: 2rem;
+        right: auto;
+        left: 2rem;
         width: 36px;
         height: 36px;
     }

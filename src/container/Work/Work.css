@@ -169,8 +169,8 @@
 @media screen and (max-width: 900px) {
     .work__layout {
         flex-direction: column-reverse;
-        gap: 2rem;
-        padding: 1rem 0;
+        gap: 1rem;
+        padding: 0.5rem 0;
     }
 
     .work__details {
@@ -181,42 +181,77 @@
 
     .work__details-inner {
         align-items: center;
+        gap: 0.6rem;
     }
 
     .work__details-desc {
         text-align: center;
-        font-size: 0.82rem;
+        font-size: 0.72rem;
+        line-height: 1.5;
     }
 
     .work__details-stack {
         justify-content: center;
+        gap: 0.25rem;
     }
 
-    .work__details-title {
-        font-size: 1.6rem;
-    }
-
-    .work__counter-current {
-        font-size: 2.4rem;
-    }
-
-    .work__cards-area {
-        width: 380px;
-        height: 340px;
-    }
-}
-
-@media screen and (max-width: 480px) {
-    .work__cards-area {
-        width: 320px;
-        height: 300px;
+    .work__details-tag {
+        font-size: 0.55rem;
+        padding: 0.15rem 0.45rem;
     }
 
     .work__details-title {
         font-size: 1.3rem;
     }
 
+    .work__counter-current {
+        font-size: 2rem;
+    }
+
+    .work__counter-sep,
+    .work__counter-total {
+        font-size: 1rem;
+    }
+
+    .work__details-github {
+        font-size: 0.7rem;
+        padding: 0.4rem 0.9rem;
+        margin-top: 0.2rem;
+    }
+
+    .app__work .head-text {
+        margin-bottom: 0;
+        position: relative;
+        z-index: 2;
+    }
+
+    .work__cards-area {
+        width: 280px;
+        height: 280px;
+        margin-top: 9rem;
+    }
+
+    .work__click-hint {
+        font-size: 0.55rem;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .work__cards-area {
+        width: 240px;
+        height: 200px;
+    }
+
+    .work__details-title {
+        font-size: 1.1rem;
+    }
+
     .work__details-desc {
-        font-size: 0.78rem;
+        font-size: 0.65rem;
+    }
+
+    .work__details-tag {
+        font-size: 0.5rem;
+        padding: 0.1rem 0.35rem;
     }
 }

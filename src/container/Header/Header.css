@@ -644,6 +644,26 @@
     bottom: 2rem;
 }
 
+/* ── Mobile-only quip ── */
+.header__mobile-quip {
+    display: none;
+    position: absolute;
+    top: 0.75rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    text-align: center;
+    font-family: 'Georgia', 'Times New Roman', serif;
+    font-style: italic;
+    font-size: 0.6rem;
+    color: rgba(255, 255, 255, 0.3);
+    margin: 0;
+    padding: 0;
+    line-height: 1.4;
+    letter-spacing: 0.3px;
+    z-index: 10;
+}
+
 /* ============================================
    RESPONSIVE
    ============================================ */
@@ -668,6 +688,10 @@
 }
 
 @media screen and (max-width: 768px) {
+    .header__mobile-quip {
+        display: block;
+    }
+
     .header__layout {
         gap: 1.5rem;
         padding: 0 1.2rem;
@@ -738,11 +762,21 @@
     }
 
     .header__stats {
-        gap: 1.5rem;
+        justify-content: center;
+        width: 100%;
+    }
+
+    .header__stat {
+        padding: 0 0.8rem;
     }
 
     .header__stat-val {
         font-size: 1.5rem;
+    }
+
+    .header__stat-lbl {
+        font-size: 0.55rem;
+        letter-spacing: 1px;
     }
 
     .header__cta {

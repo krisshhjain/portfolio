@@ -73,7 +73,12 @@ const Header = () => {
       <div className="header__orb header__orb--2" />
       <div className="header__orb header__orb--3" />
 
+      <p className="header__mobile-quip">
+        PC-only was the plan… but the nerd in me said "we're shipping mobile too"
+      </p>
+
       <motion.div className="header__layout" variants={stagger} initial="hidden" animate="show">
+
 
         {/* ══════════════════════════════════
             MAIN EDITORIAL BLOCK
@@ -115,9 +120,9 @@ const Header = () => {
         <motion.div className="header__bottom" variants={fadeUp}>
           <div className="header__stats">
             {[
-              { val: '2+', lbl: 'Years Exp' },
-              { val: '15+', lbl: 'Projects' },
-              { val: '5+', lbl: 'Tech Stacks' },
+              { val: '1+', lbl: 'Year of Exp' },
+              { val: '10+', lbl: 'Projects' },
+              { val: '10+', lbl: 'Certifications' },
             ].map((s, i) => (
               <div key={i} className="header__stat">
                 <span className="header__stat-val">{s.val}</span>

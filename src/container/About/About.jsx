@@ -65,7 +65,7 @@ const expertise = [
 const milestones = [
   { val: 10, suffix: '+', label: 'Projects' },
   { val: 500, suffix: '+', label: 'DSA Problems' },
-  { val: 5, suffix: '+', label: 'Certifications' },
+  { val: 10, suffix: '+', label: 'Certifications' },
   { val: 1, suffix: '', label: 'Internship' },
 ];
 
