@@ -1,6 +1,7 @@
 import React, { useRef, useState, useEffect, useCallback } from 'react';
 import DomeGallery from '../../components/ReactBits/DomeGallery/DomeGallery';
 import DecryptedText from '../../components/ReactBits/DecryptedText/DecryptedText';
+import { useTheme } from '../../context/ThemeContext';
 import './Gallery.css';
 
 const CLOUDINARY_BASE = 'https://res.cloudinary.com/dtku6vik9/image/upload/f_auto,q_auto,w_600,c_limit,fl_progressive';
@@ -55,8 +56,8 @@ const Gallery = () => {
     const sectionRef = useRef(null);
     const accumulatedRef = useRef(0);       // degrees rotated so far
     const hijackingRef = useRef(false);
-    const fullyVisibleRef = useRef(false);  // true when globe is fully in view
     const completedRef = useRef(false);     // true once rotation finished
+    const { theme } = useTheme();
 
     const [isMobile, setIsMobile] = useState(false);
 
@@ -68,68 +69,91 @@ const Gallery = () => {
         return () => mq.removeEventListener('change', handler);
     }, []);
 
-    /* Only start hijack when globe is almost fully visible */
-    useEffect(() => {
-        const section = sectionRef.current;
-        if (!section) return;
-
-        const observer = new IntersectionObserver(
-            ([entry]) => {
-                fullyVisibleRef.current = entry.isIntersecting;
-                if (!entry.isIntersecting) {
-                    hijackingRef.current = false;
-                    // Don't reset completedRef — once done, it's done until reload
-                }
-            },
-            { threshold: 0.85 }
-        );
-
-        observer.observe(section);
-        return () => observer.disconnect();
-    }, []);
-
-    /* Wheel event capture — only hijack scroll DOWN, never block scroll UP */
-    /* Disabled on touch devices — they can drag the dome instead */
+    /* ── Bulletproof scroll-hijack using overflow:hidden ── */
+    /* When dome is in view, freeze the page (overflow:hidden), then
+       only wheel events rotate the dome. No scroll fighting. */
     useEffect(() => {
         const isTouchDevice = window.matchMedia('(pointer: coarse)').matches;
-        if (isTouchDevice) return; // Don't hijack scroll on mobile
+        if (isTouchDevice) return;
 
+        let cooldown = false;
+
+        /* Observe the dome container */
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                if (cooldown || completedRef.current) return;
+                if (!entry.isIntersecting) {
+                    // If scrolled away before completing, reset
+                    if (!hijackingRef.current) {
+                        accumulatedRef.current = 0;
+                    }
+                    return;
+                }
+
+                // Dome is sufficiently visible — snap to center and lock
+                if (!hijackingRef.current) {
+                    sectionRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+                    setTimeout(() => {
+                        // Freeze the page
+                        document.documentElement.style.overflow = 'hidden';
+                        document.body.style.overflow = 'hidden';
+                        hijackingRef.current = true;
+                    }, 500);
+                }
+            },
+            { threshold: 0.6 }
+        );
+
+        const startObserving = () => {
+            const domeEl = sectionRef.current?.querySelector('.gallery__dome-container');
+            if (domeEl) observer.observe(domeEl);
+        };
+        startObserving();
+
+        /* Wheel handler — rotate dome while locked, or allow up-scroll to escape */
         const handleWheel = (e) => {
-            if (!domeRef.current) return;
+            if (!hijackingRef.current || !domeRef.current) return;
 
             const deltaY = e.deltaY;
-            const scrollingDown = deltaY > 0;
 
-            // Never block scrolling up — user should always be able to scroll back
-            if (!scrollingDown) return;
-
-            // If rotation already completed, let normal scrolling happen
-            if (completedRef.current) return;
-
-            // Only start hijacking when fully visible and scrolling down
-            if (fullyVisibleRef.current && !hijackingRef.current && !completedRef.current) {
-                hijackingRef.current = true;
+            // Allow scrolling up to escape — unfreeze the page
+            if (deltaY < 0) {
+                document.documentElement.style.overflow = '';
+                document.body.style.overflow = '';
+                hijackingRef.current = false;
+                accumulatedRef.current = 0;
+                return;
             }
 
-            if (!hijackingRef.current) return;
-
+            // Scrolling down — prevent default and rotate dome
             e.preventDefault();
 
             const degreeDelta = deltaY * DEG_PER_PIXEL;
             accumulatedRef.current += Math.abs(degreeDelta);
 
-            // Rotate the globe smoothly
             domeRef.current.scrollRotate(degreeDelta);
 
-            // Check if we've hit the target
+            // Done — unfreeze and mark completed
             if (accumulatedRef.current >= TOTAL_SCROLL_DEG) {
                 completedRef.current = true;
                 hijackingRef.current = false;
+                document.documentElement.style.overflow = '';
+                document.body.style.overflow = '';
+
+                // Cooldown so the observer doesn't re-trigger immediately
+                cooldown = true;
+                setTimeout(() => { cooldown = false; }, 2000);
             }
         };
 
         window.addEventListener('wheel', handleWheel, { passive: false });
-        return () => window.removeEventListener('wheel', handleWheel);
+        return () => {
+            observer.disconnect();
+            window.removeEventListener('wheel', handleWheel);
+            document.documentElement.style.overflow = '';
+            document.body.style.overflow = '';
+        };
     }, []);
 
     /* Progress indicator (subtle) */
@@ -183,7 +207,7 @@ const Gallery = () => {
                     segments={isMobile ? 20 : 34}
                     dragDampening={2}
                     grayscale
-                    overlayBlurColor="#060010"
+                    overlayBlurColor={theme === 'light' ? '#f5f3ff' : '#060010'}
                     imageBorderRadius="12px"
                     openedImageBorderRadius="16px"
                     openedImageWidth={isMobile ? "200px" : "300px"}

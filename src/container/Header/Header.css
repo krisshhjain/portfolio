@@ -653,15 +653,85 @@
     transform: translateX(-50%);
     width: 90%;
     text-align: center;
-    font-family: 'Georgia', 'Times New Roman', serif;
-    font-style: italic;
-    font-size: 0.6rem;
-    color: rgba(255, 255, 255, 0.3);
+    font-family: 'JetBrains Mono', 'Fira Code', 'SF Mono', 'Consolas', monospace;
+    font-style: normal;
+    font-size: 0.55rem;
+    font-weight: 500;
+    letter-spacing: 0.8px;
     margin: 0;
     padding: 0;
-    line-height: 1.4;
-    letter-spacing: 0.3px;
+    line-height: 1.5;
     z-index: 10;
+
+    /* Grainy text effect */
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E"),
+        linear-gradient(135deg, rgba(255, 255, 255, 0.45) 0%, rgba(130, 130, 180, 0.35) 50%, rgba(255, 255, 255, 0.25) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+}
+
+/* ── Social icons — bottom left ── */
+.header__socials {
+    position: fixed;
+    left: 0.8rem;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+    z-index: 50;
+}
+
+.header__social-icon {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    color: var(--text-muted);
+    transition: color 0.25s ease, transform 0.25s ease, background 0.25s ease;
+    text-decoration: none;
+}
+
+.header__social-icon svg {
+    width: 22px;
+    height: 22px;
+}
+
+.header__social-icon:hover {
+    color: var(--accent-primary);
+    transform: translateX(3px);
+    background: rgba(82, 39, 255, 0.1);
+}
+
+/* Tooltip */
+.header__social-icon::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    left: calc(100% + 8px);
+    top: 50%;
+    transform: translateY(-50%) translateX(-4px);
+    background: var(--bg-tertiary, #0f0f24);
+    color: var(--text-primary);
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    padding: 0.4rem 0.85rem;
+    border-radius: 6px;
+    white-space: nowrap;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    border: 1px solid var(--border-subtle);
+}
+
+.header__social-icon:hover::after {
+    opacity: 1;
+    transform: translateY(-50%) translateX(0);
 }
 
 /* ============================================
@@ -739,7 +809,8 @@
     }
 
     .header__side-tag,
-    .header__deco {
+    .header__deco,
+    .header__socials {
         display: none;
     }
 }

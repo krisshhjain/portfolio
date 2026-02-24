@@ -1,6 +1,7 @@
 import React, { useRef, useState, useEffect, useCallback } from 'react';
 import { motion, useScroll, useTransform, useInView } from 'framer-motion';
 import ScrollReveal from '../../components/ReactBits/ScrollReveal/ScrollReveal';
+import { useTheme } from '../../context/ThemeContext';
 import { AppWrap, MotionWrap } from '../../Wrapper';
 import './About.css';
 
@@ -81,6 +82,7 @@ const scaleIn = {
 
 const About = () => {
   const sectionRef = useRef(null);
+  const { theme } = useTheme();
   const { scrollYProgress } = useScroll({ target: sectionRef, offset: ['start end', 'end start'] });
 
   /* Parallax values for cards */
@@ -112,7 +114,7 @@ const About = () => {
           initial={{ opacity: 0 }} whileInView={{ opacity: 1 }}
           transition={{ duration: 0.6 }} viewport={{ once: true }}
         >
-          <ScrollReveal baseOpacity={0.08} enableBlur baseRotation={1} blurStrength={3}>
+          <ScrollReveal baseOpacity={theme === 'light' ? 0.25 : 0.08} enableBlur baseRotation={1} blurStrength={3}>
             AI/ML developer and full-stack engineer in the making at Bennett University, building intelligent systems that learn and beautiful interfaces that delight. I don't just write code, I craft solutions that push boundaries.
           </ScrollReveal>
         </motion.div>

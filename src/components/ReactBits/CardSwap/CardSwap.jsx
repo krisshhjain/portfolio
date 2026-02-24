@@ -34,6 +34,7 @@ const CardSwap = ({
     verticalDistance = 70,
     delay = 5000,
     pauseOnHover = false,
+    autoPlay = true,
     onActiveChange,
     skewAmount = 6,
     easing = 'elastic',
@@ -101,8 +102,10 @@ const CardSwap = ({
 
         swapRef.current = swap;
 
-        // Auto-cycle
-        intervalRef.current = window.setInterval(swap, delay);
+        // Auto-cycle only when autoPlay is true
+        if (autoPlay) {
+            intervalRef.current = window.setInterval(swap, delay);
+        }
 
         if (pauseOnHover) {
             const node = container.current;
@@ -114,7 +117,7 @@ const CardSwap = ({
         }
         return () => clearInterval(intervalRef.current);
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [cardDistance, verticalDistance, delay, pauseOnHover, skewAmount, easing]);
+    }, [cardDistance, verticalDistance, delay, pauseOnHover, skewAmount, easing, autoPlay]);
 
     // Click on front card → trigger swap + reset timer
     // Front card naturally receives clicks (highest zIndex), no guard needed

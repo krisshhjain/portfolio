@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence, useInView } from 'framer-motion';
 import DecryptedText from '../../components/ReactBits/DecryptedText/DecryptedText';
 import { AppWrap, MotionWrap } from '../../Wrapper';
@@ -27,7 +27,10 @@ const experiences = [
       { value: '30%', label: 'Efficiency gained' },
     ],
     technologies: ['React', 'Node.js', 'MongoDB', 'Express.js', 'RBAC', 'REST APIs'],
-    gallery: [`${C}/army1_converted_tgj1c1`, `${C}/army2_converted_ij6pfa`],
+    gallery: [
+      `${C}/1769596000768_converted_r7fsaa`,
+      `${C}/20260224_183739023_iOS_converted_jilotc`,
+    ],
   },
   {
     title: 'Software Developer Engineer Intern',
@@ -49,7 +52,14 @@ const experiences = [
       { value: '100%', label: 'Production-ready' },
     ],
     technologies: ['React', 'Node.js', 'MongoDB', 'Express.js', 'Cloud', 'Git'],
-    gallery: [`${C}/army1_converted_tgj1c1`, `${C}/army2_converted_ij6pfa`],
+    gallery: [
+      `${C}/army2_converted_ij6pfa`,
+      `${C}/20250721_110552554_iOS_converted_k7n3hx`,
+      `${C}/army1_converted_tgj1c1`,
+      `${C}/20250616_072849061_iOS_converted_khb6qa`,
+      `${C}/20250615_134917063_iOS_converted_r910eq`,
+      `${C}/20250612_125951784_iOS_converted_wvkkfe`,
+    ],
   },
 ];
 
@@ -69,8 +79,21 @@ const Experience = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [galleryData, setGalleryData] = useState(null);
   const [galleryIdx, setGalleryIdx] = useState(0);
+  const [carouselIdx, setCarouselIdx] = useState(0);
 
   const exp = experiences[activeIndex];
+
+  /* Reset carousel on tab change */
+  useEffect(() => { setCarouselIdx(0); }, [activeIndex]);
+
+  /* Auto-rotate carousel every 2 seconds */
+  useEffect(() => {
+    if (!exp.gallery || exp.gallery.length <= 1) return;
+    const timer = setInterval(() => {
+      setCarouselIdx(prev => (prev + 1) % exp.gallery.length);
+    }, 3000);
+    return () => clearInterval(timer);
+  }, [activeIndex, exp.gallery]);
 
   return (
     <div className="app__experience">
@@ -143,14 +166,25 @@ const Experience = () => {
               </div>
             </div>
 
-            {/* Right: Gallery preview */}
+            {/* Right: Auto-rotating carousel */}
             <div className="exp__hero-gallery">
               {exp.gallery && exp.gallery.length > 0 && (
                 <div
                   className="exp__gallery-preview cursor-target"
-                  onClick={() => { setGalleryData(exp); setGalleryIdx(0); }}
+                  onClick={() => { setGalleryData(exp); setGalleryIdx(carouselIdx); }}
                 >
-                  <img src={exp.gallery[0]} alt={`${exp.organization} workplace`} className="exp__gallery-thumb" />
+                  <AnimatePresence mode="wait">
+                    <motion.img
+                      key={`${activeIndex}-${carouselIdx}`}
+                      src={exp.gallery[carouselIdx]}
+                      alt={`${exp.organization} - ${carouselIdx + 1}`}
+                      className="exp__gallery-thumb"
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                      transition={{ duration: 0.5 }}
+                    />
+                  </AnimatePresence>
                   <div className="exp__gallery-overlay-hint">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                       <rect x="3" y="3" width="18" height="18" rx="2" />
@@ -159,9 +193,17 @@ const Experience = () => {
                     </svg>
                     <span>View Photos</span>
                   </div>
-                  {exp.gallery.length > 1 && (
-                    <div className="exp__gallery-count">+{exp.gallery.length - 1}</div>
-                  )}
+                  {/* Dot indicators */}
+                  <div className="exp__carousel-dots">
+                    {exp.gallery.map((_, i) => (
+                      <span
+                        key={i}
+                        className={`exp__carousel-dot ${i === carouselIdx ? 'exp__carousel-dot--active' : ''}`}
+                        style={i === carouselIdx ? { background: exp.color } : {}}
+                      />
+                    ))}
+                  </div>
+                  <div className="exp__gallery-count">{carouselIdx + 1}/{exp.gallery.length}</div>
                 </div>
               )}
             </div>

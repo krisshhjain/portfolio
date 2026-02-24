@@ -269,6 +269,8 @@
 }
 
 .exp__gallery-thumb {
+    position: absolute;
+    inset: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -312,6 +314,30 @@
     font-size: 0.75rem;
     font-weight: 700;
     border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Carousel dot indicators */
+.exp__carousel-dots {
+    position: absolute;
+    bottom: 14px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 6px;
+    z-index: 5;
+}
+
+.exp__carousel-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.35);
+    transition: all 0.3s ease;
+}
+
+.exp__carousel-dot--active {
+    width: 18px;
+    border-radius: 100px;
 }
 
 /* ══════════════════════

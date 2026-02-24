@@ -13,7 +13,7 @@
     overflow: visible;
     display: block;
     font-size: 6rem;
-    fill: rgba(255, 255, 255, 0.08);
+    fill: var(--text-muted, rgba(255, 255, 255, 0.08));
     -moz-user-select: none;
     -webkit-user-select: none;
     font-weight: 700;

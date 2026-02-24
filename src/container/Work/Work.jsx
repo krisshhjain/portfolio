@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { AiFillGithub } from 'react-icons/ai';
 import DecryptedText from '../../components/ReactBits/DecryptedText/DecryptedText';
@@ -16,6 +16,14 @@ const projects = [
     image: `${C}/DataZen_converted_ien0rm`,
     github: 'https://github.com/krisshhjain',
     color: '#5227FF',
+  },
+  {
+    title: 'EmoDB',
+    description: 'Developed an end-to-end multimodal emotion recognition system using PyTorch and deep learning to classify human emotions from audio and video inputs with 85%+ accuracy. Built and optimized convolutional neural networks on RAVDESS and CREMA-D datasets containing 7,000+ audio samples across 7 emotion categories.',
+    stack: ['PyTorch', 'Flask', 'Next.js', 'librosa', 'OpenCV', 'NumPy', 'pandas', 'matplotlib', 'seaborn', 'scikit-learn'],
+    image: `${C}/emodb_converted_plemai`,
+    github: 'https://github.com/krisshhjain',
+    color: '#E84393',
   },
   {
     title: 'FlowForge',
@@ -93,10 +101,24 @@ const tagVariant = {
 
 const Work = () => {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef(null);
   const project = projects[activeIndex] || projects[0];
 
+  /* Only auto-play when the section is in view */
+  useEffect(() => {
+    const node = sectionRef.current;
+    if (!node) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => setIsVisible(entry.isIntersecting),
+      { threshold: 0.2 }
+    );
+    observer.observe(node);
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <div className="app__work">
+    <div className="app__work" ref={sectionRef}>
       <h2 className="head-text">
         <DecryptedText text="My Projects" speed={50} maxIterations={10} animateOn="view" />
       </h2>
@@ -162,8 +184,9 @@ const Work = () => {
           <CardSwap
             cardDistance={40}
             verticalDistance={45}
-            delay={6000}
+            delay={12000}
             pauseOnHover={false}
+            autoPlay={isVisible}
             width={340}
             height={240}
             skewAmount={4}

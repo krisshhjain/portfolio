@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import DecryptedText from '../../components/ReactBits/DecryptedText/DecryptedText';
 import LogoLoop from '../../components/ReactBits/LogoLoop/LogoLoop';
 import './Skills.css';
@@ -35,6 +35,18 @@ const row2 = [
 ];
 
 const Skills = () => {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const mq = window.matchMedia('(max-width: 768px)');
+    setIsMobile(mq.matches);
+    const handler = (e) => setIsMobile(e.matches);
+    mq.addEventListener('change', handler);
+    return () => mq.removeEventListener('change', handler);
+  }, []);
+
+  const logoH = isMobile ? 32 : 50;
+  const logoGap = isMobile ? 28 : 56;
 
   const renderSkill = (item) => (
     <div className="skills__item">
@@ -56,8 +68,8 @@ const Skills = () => {
             logos={row1}
             speed={80}
             direction="left"
-            logoHeight={50}
-            gap={56}
+            logoHeight={logoH}
+            gap={logoGap}
             hoverSpeed={0}
             scaleOnHover
             fadeOut
@@ -71,8 +83,8 @@ const Skills = () => {
             logos={row2}
             speed={60}
             direction="right"
-            logoHeight={50}
-            gap={56}
+            logoHeight={logoH}
+            gap={logoGap}
             hoverSpeed={0}
             scaleOnHover
             fadeOut

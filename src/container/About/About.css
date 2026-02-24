@@ -428,13 +428,13 @@
 
 /* ── Light theme ── */
 [data-theme="light"] .about__card {
-    background: rgba(0, 0, 0, 0.01);
-    border-color: rgba(0, 0, 0, 0.06);
+    background: rgba(255, 255, 255, 0.55);
+    border-color: rgba(82, 39, 255, 0.08);
 }
 
 [data-theme="light"] .about__card:hover {
-    border-color: rgba(82, 39, 255, 0.15);
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.06);
+    border-color: rgba(82, 39, 255, 0.2);
+    box-shadow: 0 20px 50px rgba(82, 39, 255, 0.08);
 }
 
 [data-theme="light"] .about__heading-avatar {
@@ -443,9 +443,28 @@
 }
 
 [data-theme="light"] .about__milestone {
-    border-color: rgba(0, 0, 0, 0.08);
+    border-right-color: rgba(26, 16, 53, 0.1);
 }
 
 [data-theme="light"] .about__card-tag {
-    background: rgba(0, 0, 0, 0.02);
+    background: rgba(82, 39, 255, 0.04);
+}
+
+[data-theme="light"] .about__card:hover .about__card-tag {
+    background: rgba(82, 39, 255, 0.08);
+}
+
+[data-theme="light"] .about__spotlight-img-wrap {
+    border-color: rgba(82, 39, 255, 0.15);
+    box-shadow:
+        0 0 50px rgba(82, 39, 255, 0.08),
+        0 25px 70px rgba(82, 39, 255, 0.12);
+}
+
+[data-theme="light"] .about__bio {
+    color: var(--text-primary);
+}
+
+[data-theme="light"] .about__bio .word {
+    color: var(--text-primary);
 }

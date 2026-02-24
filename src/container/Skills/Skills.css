@@ -5,6 +5,7 @@
     align-items: center;
     padding: 4rem 0 2rem;
     position: relative;
+    overflow: visible;
 }
 
 .skills__subtitle {
@@ -81,14 +82,14 @@
     }
 
     .skills__loop-row {
-        height: 80px;
+        height: 85px;
     }
 
     .skills__item img {
-        height: 38px;
+        height: 34px;
     }
 
     .skills__item-name {
-        font-size: 0.6rem;
+        font-size: 0.55rem;
     }
 }

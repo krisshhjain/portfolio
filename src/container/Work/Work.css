@@ -1,6 +1,6 @@
 .app__work {
     width: 100%;
-    overflow: hidden;
+    overflow: visible;
 }
 
 /* ── SPLIT LAYOUT ── */
@@ -193,14 +193,13 @@
 
     .work__details-stack {
         justify-content: center;
-        gap: 0.25rem;
-        max-width: 90vw;
-        padding: 0 0.5rem;
+        gap: 0.3rem;
+        overflow: visible;
     }
 
     .work__details-tag {
-        font-size: 0.55rem;
-        padding: 0.15rem 0.45rem;
+        font-size: 0.6rem;
+        padding: 0.2rem 0.5rem;
     }
 
     .work__details-title {
