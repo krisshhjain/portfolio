@@ -404,23 +404,40 @@
    WORK / PROJECTS
    ═══════════════════ */
 [data-theme="light"] .work__counter-sep {
-    color: rgba(26, 16, 53, 0.15);
+    color: rgba(26, 16, 53, 0.2);
 }
 
 [data-theme="light"] .work__counter-total {
-    color: rgba(26, 16, 53, 0.25);
+    color: rgba(26, 16, 53, 0.3);
 }
 
 [data-theme="light"] .work__counter-current {
-    color: var(--text-primary);
+    text-shadow: 0 0 20px color-mix(in srgb, var(--project-color, #5227FF) 25%, transparent),
+                 0 0 40px color-mix(in srgb, var(--project-color, #5227FF) 15%, transparent);
 }
 
 [data-theme="light"] .work__details-title {
-    color: var(--text-primary);
+    background: linear-gradient(
+        135deg,
+        var(--project-color, #5227FF) 0%,
+        #1a1035 45%,
+        var(--project-color, #5227FF) 100%
+    );
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 0 15px color-mix(in srgb, var(--project-color, #5227FF) 20%, transparent));
 }
 
 [data-theme="light"] .work__details-desc {
-    color: var(--text-secondary);
+    color: rgba(26, 16, 53, 0.65);
+    border-left-color: color-mix(in srgb, var(--project-color, #5227FF) 25%, transparent);
+}
+
+[data-theme="light"] .work__details-desc:hover {
+    color: rgba(26, 16, 53, 0.85);
+    border-left-color: var(--project-color, #5227FF);
 }
 
 [data-theme="light"] .work__details-tag {
@@ -428,17 +445,24 @@
     border-color: rgba(82, 39, 255, 0.12);
 }
 
+[data-theme="light"] .work__details-tag:hover {
+    background: color-mix(in srgb, currentColor 10%, transparent);
+    box-shadow: 0 4px 20px color-mix(in srgb, currentColor 15%, transparent),
+               0 0 30px color-mix(in srgb, currentColor 8%, transparent);
+}
+
 [data-theme="light"] .work__details-github {
-    background: rgba(82, 39, 255, 0.04);
-    border-color: rgba(82, 39, 255, 0.1);
-    color: var(--text-secondary);
+    background: linear-gradient(135deg, color-mix(in srgb, var(--btn-color, #5227FF) 6%, transparent), rgba(26, 16, 53, 0.02));
+    border-color: color-mix(in srgb, var(--btn-color, #5227FF) 18%, transparent);
+    color: rgba(26, 16, 53, 0.7);
 }
 
 [data-theme="light"] .work__details-github:hover {
-    background: rgba(82, 39, 255, 0.1);
-    border-color: rgba(82, 39, 255, 0.3);
-    color: var(--accent-primary);
-    box-shadow: 0 0 20px rgba(82, 39, 255, 0.08);
+    background: color-mix(in srgb, var(--btn-color, #5227FF) 10%, transparent);
+    border-color: var(--btn-color, #5227FF);
+    color: var(--btn-color, #5227FF);
+    box-shadow: 0 6px 24px color-mix(in srgb, var(--btn-color, #5227FF) 20%, transparent),
+               0 0 40px color-mix(in srgb, var(--btn-color, #5227FF) 8%, transparent);
 }
 
 [data-theme="light"] .work__click-hint {
