@@ -14,7 +14,7 @@ const projects = [
     description: 'A secure cloud storage and file management platform with encrypted file storage, real-time collaboration via WebSockets, admin dashboard with user management, temporary accounts, storage quotas, activity logging, voice/video capabilities, and automated maintenance—deployed on AWS with MongoDB.',
     stack: ['Next.js', 'React', 'Node.js', 'MongoDB', 'Socket.io', 'Tailwind CSS', 'Docker', 'Nginx', 'AWS'],
     image: `${C}/DataZen_converted_ien0rm`,
-    github: 'https://github.com/krisshhjain',
+    github: 'https://github.com/krisshhjain/DataZen',
     color: '#5227FF',
   },
   {
@@ -22,7 +22,7 @@ const projects = [
     description: 'Developed an end-to-end multimodal emotion recognition system using PyTorch and deep learning to classify human emotions from audio and video inputs with 85%+ accuracy. Built and optimized convolutional neural networks on RAVDESS and CREMA-D datasets containing 7,000+ audio samples across 7 emotion categories.',
     stack: ['PyTorch', 'Flask', 'Next.js', 'librosa', 'OpenCV', 'NumPy', 'pandas', 'matplotlib', 'seaborn', 'scikit-learn'],
     image: `${C}/emodb_converted_plemai`,
-    github: 'https://github.com/krisshhjain',
+    github: 'https://github.com/krisshhjain/EmoDB',
     color: '#E84393',
   },
   {
@@ -30,7 +30,7 @@ const projects = [
     description: 'An AI-powered web application that transforms natural language into structured, interactive visual diagrams—flowcharts, timelines, trees, or network graphs. Users simply type ideas and the system intelligently converts them into visual thinking tools.',
     stack: ['React', 'TypeScript', 'Vite', 'Node.js', 'Express', 'MongoDB', 'Mongoose', 'Gemini API'],
     image: `${C}/flowforge_converted_bwshal`,
-    github: 'https://github.com/krisshhjain',
+    github: 'https://github.com/krisshhjain/FlowForge',
     color: '#06D6A0',
   },
   {
@@ -38,7 +38,7 @@ const projects = [
     description: 'A full-stack Ayurvedic healthcare platform with patient and practitioner portals, appointment scheduling, therapy programs, progress tracking, reviews, chat, notifications, and an admin dashboard—with a Docker-ready backend and modern Vite React frontend.',
     stack: ['TypeScript', 'Vite', 'Tailwind CSS', 'Node.js', 'Express', 'MongoDB', 'Docker'],
     image: `${C}/Ayursutra_converted_frw84d`,
-    github: 'https://github.com/krisshhjain',
+    github: 'https://github.com/krisshhjain/Ayursutra',
     color: '#FF6B6B',
   },
   {
@@ -46,7 +46,7 @@ const projects = [
     description: 'A real-time multiplayer trick-taking card game with intelligent bot opponents, dynamic bidding, strategic AI with difficulty levels, polished animations, and immersive UI. Emphasizes precision, control, and calculated risk.',
     stack: ['React', 'Node.js', 'Express.js', 'Socket.IO', 'MongoDB'],
     image: `${C}/Judgement_converted_pea5ko`,
-    github: 'https://github.com/krisshhjain',
+    github: 'https://github.com/krisshhjain/Judgement',
     color: '#FFD93D',
   },
   {
@@ -54,7 +54,7 @@ const projects = [
     description: 'A modern, responsive music streaming app featuring artist profiles, album browsing, search, and a Spotify-style player—offering a sleek, dark-themed interface with fictionalized music data.',
     stack: ['React', 'TypeScript', 'Vite', 'Tailwind CSS'],
     image: `${C}/Pineapple-Muzic_converted_t0oxa7`,
-    github: 'https://github.com/krisshhjain',
+    github: 'https://github.com/krisshhjain/PineAPPLE-Music',
     color: '#FF9F43',
   },
   {
@@ -62,7 +62,7 @@ const projects = [
     description: 'A full-stack e-commerce platform with three portals: Super Admin for oversight, Seller Dashboard for product/order management, and a Customer Storefront with futuristic glassmorphic UI, cart, wishlist, checkout, and order tracking.',
     stack: ['Next.js', 'React', 'MongoDB', 'Mongoose', 'REST API'],
     image: `${C}/ShopSphere_converted_l7fdsx`,
-    github: 'https://github.com/krisshhjain',
+    github: 'https://github.com/krisshhjain/ShopSphere',
     color: '#54A0FF',
   },
   {
@@ -70,7 +70,7 @@ const projects = [
     description: 'Detects spam vs ham emails using a labeled CSV dataset. Preprocesses email text, converts it into numeric features via TF-IDF, trains a machine-learning classifier, and predicts whether new messages are spam.',
     stack: ['Python', 'Scikit-learn', 'TF-IDF', 'ML'],
     image: `${C}/spam-mail-detection_converted_aglmd2`,
-    github: 'https://github.com/krisshhjain',
+    github: 'https://github.com/krisshhjain/Email-Spam-Detection',
     color: '#A29BFE',
   },
   {
@@ -78,7 +78,7 @@ const projects = [
     description: 'This Vite-powered React portfolio showcases work, skills, experience, and certifications with smooth navigation, interactive UI bits (galleries, menus, text effects), background animations, a splash screen, and responsive design.',
     stack: ['React', 'Vite', 'Framer Motion', 'WebGL', 'GSAP', 'CSS3'],
     image: `${C}/portfolio_converted_kgppty`,
-    github: 'https://github.com/krisshhjain',
+    github: 'https://github.com/krisshhjain/portfolio',
     color: '#FD79A8',
   },
 ];
