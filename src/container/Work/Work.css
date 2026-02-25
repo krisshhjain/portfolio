@@ -39,41 +39,93 @@
 }
 
 .work__counter-current {
-    font-size: 3.5rem;
+    font-size: 4.5rem;
     font-weight: 900;
     line-height: 1;
-    letter-spacing: -1px;
+    letter-spacing: -2px;
+    text-shadow: 0 0 30px var(--project-color, #5227FF),
+                 0 0 60px color-mix(in srgb, var(--project-color, #5227FF) 40%, transparent);
+    animation: counterPulse 3s ease-in-out infinite;
+}
+
+@keyframes counterPulse {
+    0%, 100% { text-shadow: 0 0 30px var(--project-color, #5227FF), 0 0 60px color-mix(in srgb, var(--project-color, #5227FF) 40%, transparent); }
+    50% { text-shadow: 0 0 40px var(--project-color, #5227FF), 0 0 80px color-mix(in srgb, var(--project-color, #5227FF) 60%, transparent), 0 0 120px color-mix(in srgb, var(--project-color, #5227FF) 20%, transparent); }
 }
 
 .work__counter-sep {
-    font-size: 1.4rem;
+    font-size: 1.6rem;
     color: rgba(255, 255, 255, 0.2);
-    margin: 0 0.2rem;
+    margin: 0 0.3rem;
     font-weight: 300;
 }
 
 .work__counter-total {
-    font-size: 1.4rem;
+    font-size: 1.6rem;
     color: rgba(255, 255, 255, 0.25);
     font-weight: 400;
 }
 
 /* Title */
 .work__details-title {
-    font-size: 2.2rem;
-    font-weight: 800;
+    font-size: 2.8rem;
+    font-weight: 900;
     margin: 0;
     font-family: var(--font-display);
-    line-height: 1.15;
-    letter-spacing: -0.5px;
+    line-height: 1.1;
+    letter-spacing: -1px;
+    position: relative;
+    background: linear-gradient(
+        135deg,
+        var(--project-color, #5227FF) 0%,
+        #fff 45%,
+        var(--project-color, #5227FF) 100%
+    );
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: titleShimmer 4s ease-in-out infinite;
+    filter: drop-shadow(0 0 25px color-mix(in srgb, var(--project-color, #5227FF) 35%, transparent));
+}
+
+@keyframes titleShimmer {
+    0%   { background-position: 0% 50%; }
+    50%  { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.work__details-title::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    height: 3px;
+    width: 0;
+    background: linear-gradient(90deg, var(--project-color, #5227FF), transparent);
+    border-radius: 3px;
+    animation: titleUnderline 0.8s 0.3s ease-out forwards;
+}
+
+@keyframes titleUnderline {
+    to { width: 60%; }
 }
 
 /* Description */
 .work__details-desc {
-    font-size: 0.9rem;
-    color: rgba(255, 255, 255, 0.55);
-    line-height: 1.75;
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.6);
+    line-height: 1.8;
     margin: 0;
+    position: relative;
+    padding-left: 1rem;
+    border-left: 2px solid color-mix(in srgb, var(--project-color, #5227FF) 30%, transparent);
+    transition: border-color 0.4s ease;
+}
+
+.work__details-desc:hover {
+    color: rgba(255, 255, 255, 0.8);
+    border-left-color: var(--project-color, #5227FF);
 }
 
 /* Stack */
@@ -85,44 +137,92 @@
 }
 
 .work__details-tag {
-    padding: 0.25rem 0.65rem;
+    padding: 0.35rem 0.75rem;
     border-radius: 20px;
-    font-size: 0.7rem;
+    font-size: 0.75rem;
     font-weight: 600;
     background: rgba(255, 255, 255, 0.03);
     border: 1px solid;
     letter-spacing: 0.3px;
     white-space: nowrap;
+    position: relative;
+    overflow: hidden;
+    cursor: default;
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.work__details-tag::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: linear-gradient(135deg, transparent 30%, currentColor 50%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    mix-blend-mode: overlay;
+}
+
+.work__details-tag:hover {
+    transform: translateY(-2px) scale(1.08);
+    background: color-mix(in srgb, currentColor 12%, transparent);
+    box-shadow: 0 4px 20px color-mix(in srgb, currentColor 25%, transparent),
+               0 0 40px color-mix(in srgb, currentColor 10%, transparent);
+}
+
+.work__details-tag:hover::before {
+    opacity: 0.15;
 }
 
 /* GitHub button */
 .work__details-github {
     display: inline-flex;
     align-items: center;
-    gap: 0.5rem;
-    margin-top: 0.4rem;
-    padding: 0.55rem 1.2rem;
-    border-radius: 10px;
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    background: rgba(255, 255, 255, 0.04);
-    color: rgba(255, 255, 255, 0.6);
-    font-size: 0.82rem;
+    gap: 0.6rem;
+    margin-top: 0.6rem;
+    padding: 0.65rem 1.5rem;
+    border-radius: 12px;
+    border: 1px solid color-mix(in srgb, var(--btn-color, #5227FF) 25%, transparent);
+    background: linear-gradient(135deg, color-mix(in srgb, var(--btn-color, #5227FF) 8%, transparent), rgba(255, 255, 255, 0.02));
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.9rem;
     font-weight: 600;
     text-decoration: none;
-    transition: all 0.3s ease;
+    transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     width: fit-content;
     letter-spacing: 0.3px;
+    position: relative;
+    overflow: hidden;
+}
+
+.work__details-github::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, var(--btn-color, #5227FF), color-mix(in srgb, var(--btn-color, #5227FF) 60%, #fff));
+    opacity: 0;
+    transition: opacity 0.35s ease;
+    z-index: -1;
 }
 
 .work__details-github svg {
-    font-size: 1.1rem;
+    font-size: 1.2rem;
+    transition: transform 0.3s ease;
 }
 
 .work__details-github:hover {
-    background: rgba(82, 39, 255, 0.12);
-    border-color: var(--btn-color, rgba(82, 39, 255, 0.4));
+    border-color: var(--btn-color, #5227FF);
     color: #fff;
-    box-shadow: 0 0 20px rgba(82, 39, 255, 0.2);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px color-mix(in srgb, var(--btn-color, #5227FF) 35%, transparent),
+               0 0 60px color-mix(in srgb, var(--btn-color, #5227FF) 15%, transparent);
+}
+
+.work__details-github:hover::before {
+    opacity: 0.2;
+}
+
+.work__details-github:hover svg {
+    transform: rotate(-8deg) scale(1.15);
 }
 
 /* ── RIGHT: Cards ── */
@@ -203,21 +303,32 @@
     }
 
     .work__details-title {
-        font-size: 1.3rem;
+        font-size: 1.6rem;
+    }
+
+    .work__details-title::after {
+        bottom: -2px;
+        height: 2px;
+    }
+
+    .work__details-desc {
+        padding-left: 0.6rem;
+        font-size: 0.75rem;
+        border-left-width: 2px;
     }
 
     .work__counter-current {
-        font-size: 2rem;
+        font-size: 2.8rem;
     }
 
     .work__counter-sep,
     .work__counter-total {
-        font-size: 1rem;
+        font-size: 1.1rem;
     }
 
     .work__details-github {
-        font-size: 0.7rem;
-        padding: 0.4rem 0.9rem;
+        font-size: 0.75rem;
+        padding: 0.45rem 1rem;
         margin-top: 0.2rem;
     }
 
@@ -245,15 +356,16 @@
     }
 
     .work__details-title {
-        font-size: 1.1rem;
+        font-size: 1.3rem;
     }
 
     .work__details-desc {
-        font-size: 0.65rem;
+        font-size: 0.68rem;
+        padding-left: 0.5rem;
     }
 
     .work__details-tag {
-        font-size: 0.5rem;
-        padding: 0.1rem 0.35rem;
+        font-size: 0.55rem;
+        padding: 0.15rem 0.4rem;
     }
 }

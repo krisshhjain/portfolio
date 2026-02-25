@@ -84,19 +84,31 @@ const projects = [
 ];
 
 const textVariants = {
-  initial: { opacity: 0, y: 20, filter: 'blur(6px)' },
-  animate: { opacity: 1, y: 0, filter: 'blur(0px)', transition: { duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] } },
-  exit: { opacity: 0, y: -15, filter: 'blur(6px)', transition: { duration: 0.25 } }
+  initial: { opacity: 0, y: 30, filter: 'blur(10px)', scale: 0.95 },
+  animate: { opacity: 1, y: 0, filter: 'blur(0px)', scale: 1, transition: { duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] } },
+  exit: { opacity: 0, y: -20, filter: 'blur(10px)', scale: 0.97, transition: { duration: 0.3 } }
+};
+
+const titleVariants = {
+  initial: { opacity: 0, x: -40, filter: 'blur(12px)', scale: 0.9 },
+  animate: { opacity: 1, x: 0, filter: 'blur(0px)', scale: 1, transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] } },
+  exit: { opacity: 0, x: 40, filter: 'blur(12px)', scale: 0.9, transition: { duration: 0.3 } }
+};
+
+const descVariants = {
+  initial: { opacity: 0, y: 20, filter: 'blur(8px)' },
+  animate: { opacity: 1, y: 0, filter: 'blur(0px)', transition: { duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] } },
+  exit: { opacity: 0, y: -10, filter: 'blur(6px)', transition: { duration: 0.25 } }
 };
 
 const staggerContainer = {
-  animate: { transition: { staggerChildren: 0.06, delayChildren: 0.1 } }
+  animate: { transition: { staggerChildren: 0.08, delayChildren: 0.12 } }
 };
 
 const tagVariant = {
-  initial: { opacity: 0, scale: 0.7 },
-  animate: { opacity: 1, scale: 1 },
-  exit: { opacity: 0, scale: 0.7 }
+  initial: { opacity: 0, scale: 0.5, y: 10, filter: 'blur(4px)' },
+  animate: { opacity: 1, scale: 1, y: 0, filter: 'blur(0px)', transition: { type: 'spring', stiffness: 300, damping: 18 } },
+  exit: { opacity: 0, scale: 0.5, y: -5, filter: 'blur(4px)' }
 };
 
 const Work = () => {
@@ -130,24 +142,35 @@ const Work = () => {
             <motion.div
               key={activeIndex}
               className="work__details-inner"
+              style={{ '--project-color': project.color }}
               variants={staggerContainer}
               initial="initial"
               animate="animate"
               exit="exit"
             >
-              <motion.div className="work__details-counter" variants={textVariants}>
-                <span className="work__counter-current" style={{ color: project.color }}>
+              <motion.div className="work__details-counter" variants={textVariants}
+                style={{ '--project-color': project.color }}
+              >
+                <span className="work__counter-current" style={{ color: project.color, '--project-color': project.color }}>
                   {String(activeIndex + 1).padStart(2, '0')}
                 </span>
                 <span className="work__counter-sep">/</span>
                 <span className="work__counter-total">{String(projects.length).padStart(2, '0')}</span>
               </motion.div>
 
-              <motion.h3 className="work__details-title" variants={textVariants} style={{ color: project.color }}>
+              <motion.h3
+                className="work__details-title"
+                variants={titleVariants}
+                style={{ '--project-color': project.color }}
+              >
                 {project.title}
               </motion.h3>
 
-              <motion.p className="work__details-desc" variants={textVariants}>
+              <motion.p
+                className="work__details-desc"
+                variants={descVariants}
+                style={{ '--project-color': project.color }}
+              >
                 {project.description}
               </motion.p>
 

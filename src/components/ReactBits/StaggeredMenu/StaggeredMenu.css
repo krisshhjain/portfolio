@@ -366,3 +366,68 @@
         filter: invert(100%);
     }
 }
+
+/* ── Hamburger icon (mobile only) ── */
+.sm-hamburger {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    /* Strip pill styling from toggle */
+    .sm-toggle {
+        background: transparent;
+        border: none;
+        padding: 0.6em;
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
+        gap: 0;
+    }
+
+    .sm-toggle:hover {
+        background: transparent;
+        border-color: transparent;
+        box-shadow: none;
+        transform: none;
+    }
+
+    /* Hide text and plus icon */
+    .sm-toggle-textWrap {
+        display: none;
+    }
+
+    .sm-icon {
+        display: none;
+    }
+
+    /* Show hamburger */
+    .sm-hamburger {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 5px;
+        width: 22px;
+        height: 18px;
+    }
+
+    .sm-hamburger span {
+        display: block;
+        height: 2px;
+        width: 100%;
+        background: currentColor;
+        border-radius: 2px;
+        transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+
+    /* Animate to X when open */
+    .staggered-menu-wrapper[data-open] .sm-hamburger span:nth-child(1) {
+        transform: translateY(7px) rotate(45deg);
+    }
+
+    .staggered-menu-wrapper[data-open] .sm-hamburger span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .staggered-menu-wrapper[data-open] .sm-hamburger span:nth-child(3) {
+        transform: translateY(-7px) rotate(-45deg);
+    }
+}
